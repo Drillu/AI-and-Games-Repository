@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class ActivateHUDScript : MonoBehaviour
 {
-    public GameObject hud;
+    private Image hud;
+    public GameObject inventoryBar;
 
-    // Update is called once per frame
-    public void OnOffClicked ()
+    private void Start()
     {
-        if (hud.activeInHierarchy == true)
-            hud.SetActive(false);
-        else
-            hud.SetActive(true);
+        hud = GetComponent<Image>();
+    }
+
+    public void HUDClicked()
+    {
+        hud.enabled = !inventoryBar.activeInHierarchy;
     }
 }
