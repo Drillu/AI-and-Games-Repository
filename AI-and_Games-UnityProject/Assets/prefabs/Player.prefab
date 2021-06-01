@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5517256828585081599}
   - component: {fileID: 5517256828585081592}
   - component: {fileID: 5517256830150671743}
+  - component: {fileID: 5517256830150671741}
+  - component: {fileID: 5517256830150671742}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -82,6 +84,38 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5517256830150671741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517256828585081594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3921be2f550c72e43b6a3749327774fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToAdd: {fileID: 11400000, guid: bbc255a2e498ace4ba176e10344ad867, type: 2}
+  amountToAdd: 10
+  itemToRemove: {fileID: 11400000, guid: bbc255a2e498ace4ba176e10344ad867, type: 2}
+  amountToRemove: 5
+--- !u!114 &5517256830150671742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517256828585081594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2db54e985c4bf408bf5f7a80acbb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotCount: 10
+  slots: []
+  slotUIRoot: {fileID: 0}
+  slotUIPrefab: {fileID: 4637789602477894034, guid: 1b9f38b27985bb343aedbd544f5e5b9a, type: 3}
 --- !u!1001 &5517256830156758400
 PrefabInstance:
   m_ObjectHideFlags: 0
