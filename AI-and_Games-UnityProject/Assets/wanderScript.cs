@@ -16,7 +16,7 @@ public class wanderScript : MonoBehaviour
     {
         start = transform.position;
         agent = GetComponent<NavMeshAgent>();
-        nextPoint = generatePoint();
+        nextPoint = GetRandomPoint(transform.position, 10000);
         agent.SetDestination(nextPoint);
     }
 
@@ -25,7 +25,7 @@ public class wanderScript : MonoBehaviour
     {
         if(isTolerated(nextPoint))
         {
-            nextPoint = generatePoint();
+            nextPoint = GetRandomPoint(transform.position, 10000);
             agent.SetDestination(nextPoint);
         }
     }
@@ -37,12 +37,17 @@ public class wanderScript : MonoBehaviour
         }
         return false;
     }
-    private Vector3 generatePoint()
+    // Get Random Point on a Navmesh surface
+    public static Vector3 GetRandomPoint(Vector3 center, float maxDistance)
     {
-        float X = Random.Range(start.x - wonderAmount, start.x + wonderAmount);
-        float Y = transform.position.y;
-        float Z = Random.Range(start.z - wonderAmount, start.z + wonderAmount);
+        // Get Random Point inside Sphere which position is center, radius is maxDistance
+        Vector3 randomPos = Random.insideUnitSphere * maxDistance + center;
 
-        return new Vector3(X, Y, Z);
+        NavMeshHit hit; // NavMesh Sampling Info Container
+
+        // from randomPos find a nearest point on NavMesh surface in range of maxDistance
+        NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas);
+
+        return hit.position;
     }
 }
