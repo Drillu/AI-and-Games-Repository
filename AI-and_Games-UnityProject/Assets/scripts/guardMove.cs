@@ -9,6 +9,7 @@ public class guardMove : MonoBehaviour
     public List<Transform> wayPoints;
     public float wayPointTolerance;
     public GameObject Player;
+    private Inventory inventory;
     public bool IsPlayerInWiev;
     private bool isPerquisitionTime;
     public float collisinDebugTime;
@@ -49,8 +50,16 @@ public class guardMove : MonoBehaviour
             {
                 if (isPerquisitionTime)
                 {
-                    Debug.Log("caught");
-                    perquisitionManager.instance.EndPerquisition();
+                    if(inventory.slots.Count == 0)
+                    {
+                        perquisitionManager.instance.EndPerquisition();
+                        Debug.Log("Go on :)");
+                    }
+                    else
+                    {
+                        Debug.Log("caught");
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    }
                     StartCoroutine(stopCollision());
                 }
                 else

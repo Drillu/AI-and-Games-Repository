@@ -988,7 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd18db6affd57b428db47e29c8103b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToPerquisition: 10
+  timeToPerquisition: 30
   settleTime: 3
   guards:
   - {fileID: 753650394}
@@ -1484,10 +1484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1946621504, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5292879436894650557, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
       propertyPath: m_Name
       value: Guard
@@ -1537,28 +1533,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
-      propertyPath: angle
-      value: 135
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 5517256830150671740}
     - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
-      propertyPath: followDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
-      propertyPath: collisinDebugTime
-      value: 3
+      propertyPath: radius
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
       propertyPath: collisionDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
-      propertyPath: PlayerLayer.m_Bits
-      value: 8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5292879437897849637, guid: ede13cb3dedbde64eaa8364c24437c91, type: 3}
       propertyPath: wayPoints.Array.data[0]
@@ -1637,10 +1621,6 @@ PrefabInstance:
       propertyPath: slotUIRoot
       value: 
       objectReference: {fileID: 1569613450}
-    - target: {fileID: 5517256830150671743, guid: ee46feb16440eea4caaee6b0ac824aff, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee46feb16440eea4caaee6b0ac824aff, type: 3}
 --- !u!1 &5517256830150671740 stripped

@@ -8,8 +8,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private int slotCount = 10;
 
-    [SerializeField]
-    private List<InventorySlot> slots = new List<InventorySlot>();
+    public List<InventorySlot> slots = new List<InventorySlot>();
 
     public Transform slotUIRoot;
 
