@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(NavMeshAgent))]
 public class guardMove : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class guardMove : MonoBehaviour
     public float wayPointTolerance;
     public GameObject Player;
     public bool IsPlayerInWiev;
+    private bool isPerquisitionTime;
+    public float collisinDebugTime;
+    private bool canTrack;
+    public LayerMask PlayerLayer;
+    public float collisionDistance;
 
     [Header("Vision")]
     public float radius;
@@ -23,6 +29,7 @@ public class guardMove : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
+        canTrack = true;
         agent = GetComponent<NavMeshAgent>();
         currentPoint = 0;
         if (Player == null)
@@ -35,18 +42,43 @@ public class guardMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerInWiev)
+        if(canTrack)
         {
-            agent.SetDestination(Player.transform.position);
+            Collider[] player = Physics.OverlapSphere(transform.position, collisionDistance, PlayerLayer);
+            if (player.Length != 0)
+            {
+                if (isPerquisitionTime)
+                {
+                    Debug.Log("caught");
+                    perquisitionManager.instance.EndPerquisition();
+                    StartCoroutine(stopCollision());
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+            }
+        }
+
+        if (!isPerquisitionTime)
+        {
+            if (IsPlayerInWiev && canTrack)
+            {
+                agent.SetDestination(Player.transform.position);
+            }
+            else
+            {
+                if (Vector3.Distance(transform.position, wayPoints[currentPoint].position) < wayPointTolerance)
+                    currentPoint++;
+                if (currentPoint >= wayPoints.Count)
+                    currentPoint = 0;
+
+                agent.SetDestination(wayPoints[currentPoint].position);
+            }
         }
         else
         {
-            if (Vector3.Distance(transform.position, wayPoints[currentPoint].position) < wayPointTolerance)
-                currentPoint++;
-            if (currentPoint >= wayPoints.Count)
-                currentPoint = 0;
-
-            agent.SetDestination(wayPoints[currentPoint].position);
+            agent.SetDestination(Player.transform.position);
         }
     }
     private IEnumerator FOVRoutine()
@@ -84,7 +116,7 @@ public class guardMove : MonoBehaviour
                 }
             }
             else
-                IsPlayerInWiev = false;
+                StartCoroutine(stopFollow());
         }
         else if (IsPlayerInWiev)
             StartCoroutine(stopFollow());
@@ -95,4 +127,30 @@ public class guardMove : MonoBehaviour
         yield return new WaitForSeconds(followDelay);
         IsPlayerInWiev = false;
     }
+    private IEnumerator stopPerquisition(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isPerquisitionTime = false;
+    }
+    public void perquisition(bool isOn, float time)
+    {
+        if(isOn)
+        {
+            isPerquisitionTime = true;
+            Debug.Log("it's perquisition time!");
+            StartCoroutine(stopPerquisition(time));
+        }
+        else
+        {
+            StopCoroutine(stopPerquisition(time));
+            isPerquisitionTime = false;
+        }
+    }
+    private IEnumerator stopCollision()
+    {
+        canTrack = false;
+        yield return new WaitForSeconds(collisinDebugTime);
+        canTrack = true;
+    }
+
 }
