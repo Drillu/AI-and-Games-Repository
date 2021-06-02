@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(NavMeshAgent))]
 public class guardMove : MonoBehaviour
 {
+    public LineRenderer left;
+    public LineRenderer right;
+    public LineRenderer mid;
+
     public List<Transform> wayPoints;
     public float wayPointTolerance;
     public GameObject Player;
@@ -13,9 +17,10 @@ public class guardMove : MonoBehaviour
     public bool IsPlayerInWiev;
     private bool isPerquisitionTime;
     public float collisinDebugTime;
-    private bool canTrack;
+    public bool canTrack;
     public LayerMask PlayerLayer;
     public float collisionDistance;
+    public Transform look;
 
     [Header("Vision")]
     public float radius;
@@ -89,6 +94,25 @@ public class guardMove : MonoBehaviour
         {
             agent.SetDestination(Player.transform.position);
         }
+        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
+        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
+
+        left.SetPosition(0, transform.position);
+        left.SetPosition(1, transform.position + viewAngle01 * radius);
+
+        right.SetPosition(0, transform.position);
+        right.SetPosition(1, transform.position + viewAngle02 * radius);
+
+        if (IsPlayerInWiev && canTrack)
+        {
+            mid.enabled = true;
+            mid.SetPosition(0, transform.position);
+            mid.SetPosition(1, Player.transform.position);
+        }
+        else
+        {
+            mid.enabled = false;
+        }
     }
     private IEnumerator FOVRoutine()
     {
@@ -110,9 +134,14 @@ public class guardMove : MonoBehaviour
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
+            look.position = transform.position;
+            
 
-            if (Vector3.Angle(transform.position, directionToTarget) < angle / 2)
+            look.rotation.SetLookRotation(target.position);
+            Debug.Log(look.rotation.y);
+            if (look.rotation.y < angle / 2)
             {
+                Debug.Log("found");
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
@@ -160,6 +189,12 @@ public class guardMove : MonoBehaviour
         canTrack = false;
         yield return new WaitForSeconds(collisinDebugTime);
         canTrack = true;
+    }
+    private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+    {
+        angleInDegrees += eulerY;
+
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
 }
