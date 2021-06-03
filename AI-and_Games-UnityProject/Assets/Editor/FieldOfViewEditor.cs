@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(guardMove))]
 public class FieldOfViewEditor : Editor
 {
-    private void OnSceneGUI()
+    /*private void OnSceneGUI()
     {
         guardMove fov = (guardMove)target;
         Handles.color = Color.black;
@@ -31,5 +31,5 @@ public class FieldOfViewEditor : Editor
         angleInDegrees += eulerY;
 
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
+    }*/
 }

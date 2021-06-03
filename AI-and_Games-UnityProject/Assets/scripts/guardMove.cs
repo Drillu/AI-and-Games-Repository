@@ -48,14 +48,14 @@ public class guardMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canTrack)
+        if (canTrack)
         {
             Collider[] player = Physics.OverlapSphere(transform.position, collisionDistance, PlayerLayer);
             if (player.Length != 0)
             {
                 if (isPerquisitionTime)
                 {
-                    if(inventory.slots.Count == 0)
+                    if (inventory.slots.Count == 0)
                     {
                         perquisitionManager.instance.EndPerquisition();
                         Debug.Log("Go on :)");
@@ -135,7 +135,7 @@ public class guardMove : MonoBehaviour
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
             look.position = transform.position;
-            
+
 
             look.rotation.SetLookRotation(target.position);
             Debug.Log(look.rotation.y);
@@ -172,7 +172,7 @@ public class guardMove : MonoBehaviour
     }
     public void perquisition(bool isOn, float time)
     {
-        if(isOn)
+        if (isOn)
         {
             isPerquisitionTime = true;
             Debug.Log("it's perquisition time!");
