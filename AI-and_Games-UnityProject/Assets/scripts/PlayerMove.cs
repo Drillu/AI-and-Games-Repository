@@ -6,10 +6,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove instance;
     private NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         agent = GetComponent<NavMeshAgent>();
     }
 
