@@ -28,7 +28,7 @@ public class perquisitionManager : MonoBehaviour
     {
         isTimerGoing = true;
         yield return new WaitForSeconds(timeToPerquisition);
-
+        UIManager.Instance.AddInfo("the guards are going to search you!");
         foreach(guardMove g in guards)
         {
             g.perquisition(true, settleTime);
@@ -37,6 +37,7 @@ public class perquisitionManager : MonoBehaviour
     }
     public void EndPerquisition()
     {
+        UIManager.Instance.AddInfo("All good, go on");
         foreach (guardMove g in guards)
         {
             g.perquisition(false, settleTime);
