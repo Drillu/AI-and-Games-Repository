@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028517, g: 0.22571586, b: 0.30692464, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802849, g: 0.22571652, b: 0.30692464, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1151,8 +1151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -252.18, y: 129.96}
-  m_SizeDelta: {x: 163.1957, y: 53.6286}
+  m_AnchoredPosition: {x: -249.804, y: 129.96}
+  m_SizeDelta: {x: 245.3364, y: 53.6286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220278006
 MonoBehaviour:
@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Title
+  m_text: 'Sebastian Knight''s escape
 
 '
   m_isRightToLeft: 0
