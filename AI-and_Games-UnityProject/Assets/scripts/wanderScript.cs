@@ -11,6 +11,7 @@ public class wanderScript : MonoBehaviour
     private Vector3 start;
     private NavMeshAgent agent;
     private Vector3 nextPoint;
+    public bool canGo = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class wanderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isTolerated(nextPoint))
+        if(isTolerated(nextPoint) && canGo)
         {
             nextPoint = GetRandomPoint(transform.position, 10000);
             agent.SetDestination(nextPoint);
@@ -57,5 +58,16 @@ public class wanderScript : MonoBehaviour
         NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas);
 
         return hit.position;
+    }
+    public void stopIt()
+    {
+        agent.ResetPath();
+        canGo = false;
+    }
+    public void startIt()
+    {
+        nextPoint = GetRandomPoint(transform.position, 10000);
+        agent.SetDestination(nextPoint);
+        canGo = true;
     }
 }

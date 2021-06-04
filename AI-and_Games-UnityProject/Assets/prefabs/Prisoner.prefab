@@ -59,6 +59,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 649897419}
+        m_TargetAssemblyTypeName: wanderScript, Assembly-CSharp
+        m_MethodName: stopIt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTriggerStay_:
     m_PersistentCalls:
       m_Calls: []
@@ -76,6 +88,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 649897419}
+        m_TargetAssemblyTypeName: wanderScript, Assembly-CSharp
+        m_MethodName: startIt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!135 &912153119
 SphereCollider:
@@ -154,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopDistance: 3
   tolerance: 0.5
+  canGo: 1
 --- !u!195 &649897420
 NavMeshAgent:
   m_ObjectHideFlags: 0

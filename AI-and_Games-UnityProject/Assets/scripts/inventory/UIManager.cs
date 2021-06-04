@@ -16,6 +16,6 @@ public class UIManager : MonoBehaviour
 
     public void AddInfo(string info)
     {
-        infoBox.text = info;
+        infoBox.text = "latest message: " + info;
     }
 }
