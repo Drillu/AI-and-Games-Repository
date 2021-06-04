@@ -18,4 +18,5 @@ public class UIManager : MonoBehaviour
     {
         infoBox.text = "latest message: " + info;
     }
+    
 }
