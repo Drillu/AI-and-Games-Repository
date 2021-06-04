@@ -17,7 +17,6 @@ public class guardMove : MonoBehaviour
     public bool canTrack;
     public LayerMask PlayerLayer;
     public float collisionDistance;
-    public Transform look;
 
     [Header("Vision")]
     public float radius;
@@ -47,9 +46,6 @@ public class guardMove : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player");
         }
-    }
-    private void Awake()
-    {
         firstLine.transform.localScale = new Vector3(1, 1, radius);
         secondLine.transform.localScale = new Vector3(1, 1, radius);
     }
@@ -100,7 +96,7 @@ public class guardMove : MonoBehaviour
             if (IsPlayerInWiev && canTrack)
             {
                 agent.SetDestination(playerPos);
-                thing.transform.position = playerPos;
+                
                 //DrawNavMeshPath.path = agent.path.corners;
             }
             else
@@ -117,6 +113,11 @@ public class guardMove : MonoBehaviour
         {
             agent.SetDestination(Player.transform.position);
         }
+        if(playerPos != Vector3.zero && playerPos != Player.transform.position)
+            thing.transform.position = playerPos;
+        else
+            thing.transform.position = new Vector3(0, -10, 0);
+
     }
     private void startRay()
     {
@@ -126,10 +127,12 @@ public class guardMove : MonoBehaviour
         if(right || left)
         {
             IsPlayerInWiev = true;
+            Debug.Log("found");
         }
         else if(right && left)
         {
             IsPlayerInWiev = true;
+            Debug.Log("found");
         }
         /*else
         {
@@ -142,7 +145,7 @@ public class guardMove : MonoBehaviour
     {
         Vector3 pos = transform.position + heightOffset;
         Vector3 rot = new Vector3(0, angleIn, 0);
-
+        Debug.DrawRay(pos, Quaternion.Euler(rot) * Vector3.forward, Color.red);
         if (Physics.Raycast(pos, Quaternion.Euler(rot) * Vector3.forward, out RaycastHit hit, radius, targetMask))
         {
             playerPos = Player.transform.position;
@@ -156,6 +159,7 @@ public class guardMove : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, playerPos) < wayPointTolerance)
         {
+            Debug.Log("lost");
             IsPlayerInWiev = false;
             playerPos = Vector3.zero;
         }
