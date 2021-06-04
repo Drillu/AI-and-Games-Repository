@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(NavMeshAgent))]
 public class guardMove : MonoBehaviour
 {
-    public LineRenderer left;
-    public LineRenderer right;
-    public LineRenderer mid;
-
+    public GameObject thing;
     public List<Transform> wayPoints;
     public float wayPointTolerance;
     public GameObject Player;
@@ -24,14 +21,22 @@ public class guardMove : MonoBehaviour
 
     [Header("Vision")]
     public float radius;
-    [Range(0, 360)]
-    public float angle;
+    private float angle;
+    public float speed;
+    public Vector3 heightOffset;
+    public Vector3 playerPos;
     public float followDelay;
     public LayerMask targetMask;
     public LayerMask obstructionMask;
 
     private int currentPoint;
     private NavMeshAgent agent;
+    [SerializeField]
+    private LineRenderer firstLine;
+
+    [SerializeField]
+    private LineRenderer secondLine;
+
     //Start is called before the first frame update
     void Start()
     {
@@ -42,12 +47,28 @@ public class guardMove : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player");
         }
-        StartCoroutine(FOVRoutine());
+    }
+    private void Awake()
+    {
+        firstLine.transform.localScale = new Vector3(1, 1, radius);
+        secondLine.transform.localScale = new Vector3(1, 1, radius);
+    }
+    private void UpdateVisionLines()
+    {
+        firstLine.transform.rotation = Quaternion.Euler(0, angle, 0);
+        firstLine.transform.position = transform.position + heightOffset;
+        secondLine.transform.rotation = Quaternion.Euler(0, -angle, 0);
+        secondLine.transform.position = transform.position + heightOffset;
     }
 
     // Update is called once per frame
     void Update()
     {
+        agent.ResetPath();
+        startRay();
+
+        cancelIf();
+
         if (canTrack)
         {
             Collider[] player = Physics.OverlapSphere(transform.position, collisionDistance, PlayerLayer);
@@ -78,7 +99,9 @@ public class guardMove : MonoBehaviour
         {
             if (IsPlayerInWiev && canTrack)
             {
-                agent.SetDestination(Player.transform.position);
+                agent.SetDestination(playerPos);
+                thing.transform.position = playerPos;
+                //DrawNavMeshPath.path = agent.path.corners;
             }
             else
             {
@@ -94,77 +117,50 @@ public class guardMove : MonoBehaviour
         {
             agent.SetDestination(Player.transform.position);
         }
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
-
-        left.SetPosition(0, transform.position);
-        left.SetPosition(1, transform.position + viewAngle01 * radius);
-
-        right.SetPosition(0, transform.position);
-        right.SetPosition(1, transform.position + viewAngle02 * radius);
-
-        if (IsPlayerInWiev && canTrack)
-        {
-            mid.enabled = true;
-            mid.SetPosition(0, transform.position);
-            mid.SetPosition(1, Player.transform.position);
-        }
-        else
-        {
-            mid.enabled = false;
-        }
     }
-    private IEnumerator FOVRoutine()
+    private void startRay()
     {
-        float delay = 0.2f;
-        WaitForSeconds wait = new WaitForSeconds(delay);
-
-        while (true)
+        angle += speed * Time.deltaTime;
+        bool left = ViewRay(angle);
+        bool right = ViewRay(-angle);
+        if(right || left)
         {
-            yield return wait;
-            FielIFViewCheck();
+            IsPlayerInWiev = true;
+        }
+        else if(right && left)
+        {
+            IsPlayerInWiev = true;
+        }
+        /*else
+        {
+            IsPlayerInWiev = false;
+        }*/
+
+        UpdateVisionLines();
+    }
+    private bool ViewRay(float angleIn)
+    {
+        Vector3 pos = transform.position + heightOffset;
+        Vector3 rot = new Vector3(0, angleIn, 0);
+
+        if (Physics.Raycast(pos, Quaternion.Euler(rot) * Vector3.forward, out RaycastHit hit, radius, targetMask))
+        {
+            playerPos = Player.transform.position;
+            return true;
+        }
+
+        return false;
+    }
+
+    private void cancelIf()
+    {
+        if(Vector3.Distance(transform.position, playerPos) < wayPointTolerance)
+        {
+            IsPlayerInWiev = false;
+            playerPos = Vector3.zero;
         }
     }
 
-    private void FielIFViewCheck()
-    {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-
-        if (rangeChecks.Length != 0)
-        {
-            Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
-            look.position = transform.position;
-
-
-            look.rotation.SetLookRotation(target.position);
-            Debug.Log(look.rotation.y);
-            if (look.rotation.y < angle / 2)
-            {
-                Debug.Log("found");
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                {
-                    IsPlayerInWiev = true;
-                }
-                else
-                {
-                    IsPlayerInWiev = false;
-                }
-            }
-            else
-                StartCoroutine(stopFollow());
-        }
-        else if (IsPlayerInWiev)
-            StartCoroutine(stopFollow());
-    }
-
-    private IEnumerator stopFollow()
-    {
-        yield return new WaitForSeconds(followDelay);
-        IsPlayerInWiev = false;
-    }
     private IEnumerator stopPerquisition(float time)
     {
         yield return new WaitForSeconds(time);
@@ -190,11 +186,4 @@ public class guardMove : MonoBehaviour
         yield return new WaitForSeconds(collisinDebugTime);
         canTrack = true;
     }
-    private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
-    {
-        angleInDegrees += eulerY;
-
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
 }
