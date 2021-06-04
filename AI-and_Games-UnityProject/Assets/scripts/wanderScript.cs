@@ -5,13 +5,21 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class wanderScript : MonoBehaviour
 {
-    public float wonderAmount;
+    public float stopDistance;
     public float tolerance;
 
     private Vector3 start;
     private NavMeshAgent agent;
     private Vector3 nextPoint;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Prisoner pris = GetComponent<Prisoner>();
+        if (pris != null)
+        {
+            pris.range = stopDistance;
+        }
+    }
     void Start()
     {
         start = transform.position;

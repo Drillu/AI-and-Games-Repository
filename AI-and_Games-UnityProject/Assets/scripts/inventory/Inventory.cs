@@ -24,10 +24,10 @@ public class Inventory : MonoBehaviour
     // 0 -> minden sikerult
     // -1 -> hiba
     // 1..n -> ennyi darab nem fert be
-    public int AddItem(Item item, int amount 
+    public int AddItem(Item item, int amount
         = 1)
     {
-        foreach(var slot in slots)
+        foreach (var slot in slots)
         {
             if (slot.item.ID == item.ID && slot.amount < item.stackSize)
             {
@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
             if (amount == 0) break;
         }
 
-        while(slots.Count < slotCount && amount > 0)
+        while (slots.Count < slotCount && amount > 0)
         {
             var instance = Instantiate(slotUIPrefab, slotUIRoot, false);
             instance.GetComponent<Image>().sprite = item.itemIcon;
@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
         return amount;
     }
 
-    public void RemoveItem(Item item, int amount)
+    public int RemoveItem(Item item, int amount)
     {
         var slotsToUpdate = new List<InventorySlot>();
 
@@ -95,6 +95,12 @@ public class Inventory : MonoBehaviour
                 Destroy(slot.ui);
                 slots.Remove(slot);
             }
+
+            return 0;
+        }
+        else
+        {
+            return currentAmount;
         }
     }
 }

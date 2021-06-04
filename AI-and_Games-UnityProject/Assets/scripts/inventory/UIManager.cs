@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public Text infoBox; 
+    public Text infoBox;
 
     private void Awake()
     {
