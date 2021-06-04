@@ -72,7 +72,12 @@ public class guardMove : MonoBehaviour
             {
                 if (isPerquisitionTime)
                 {
-                    if (inventory.slots.Count == 0)
+                    if (inventory.slots.Count == 0 || inventory.isVisible == false)
+                    {
+                        perquisitionManager.instance.EndPerquisition();
+                        Debug.Log("Go on :)");
+                    }
+                    else if (inventory.slots.Count == 0 && inventory.isVisible == false)
                     {
                         perquisitionManager.instance.EndPerquisition();
                         Debug.Log("Go on :)");
