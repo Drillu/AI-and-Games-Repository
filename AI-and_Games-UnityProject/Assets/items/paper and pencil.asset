@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df02629de169bfd46af48732da8dfbf2, type: 3}
+  m_Name: paper and pencil
+  m_EditorClassIdentifier: 
+  _id: 4
+  itemName: paper and pencil
+  itemDesc: 
+  itemIcon: {fileID: 21300000, guid: e930c43a3238c8348a6107878a19f59c, type: 3}
+  stackSize: 100

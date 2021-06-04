@@ -127,12 +127,10 @@ public class guardMove : MonoBehaviour
         if(right || left)
         {
             IsPlayerInWiev = true;
-            Debug.Log("found");
         }
         else if(right && left)
         {
             IsPlayerInWiev = true;
-            Debug.Log("found");
         }
         /*else
         {
@@ -159,7 +157,6 @@ public class guardMove : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, playerPos) < wayPointTolerance)
         {
-            Debug.Log("lost");
             IsPlayerInWiev = false;
             playerPos = Vector3.zero;
         }

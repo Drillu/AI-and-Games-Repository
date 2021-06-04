@@ -10,10 +10,12 @@ public class Loot : MonoBehaviour
     public float radius;
     public LayerMask PlayerLayer;
     private bool looted;
-    
+    public KeyCode dialogKey;
+
     public void onLoot()
     {
-        if(looted == false)
+        UIManager.Instance.AddInfo("looted");
+        if (looted == false)
         {
             foreach (LootableItem i in items)
             {
@@ -43,7 +45,12 @@ public class Loot : MonoBehaviour
         Collider[] player = Physics.OverlapSphere(transform.position, radius, PlayerLayer);
         if (player.Length != 0)
         {
-            onLoot();
+            UIManager.Instance.AddInfo($"Press {dialogKey} to loot {gameObject.name}");
+            if (Input.GetKeyDown(dialogKey))
+            {
+                onLoot();
+            }
+            
         }
     }
 }

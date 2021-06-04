@@ -13,13 +13,26 @@ public class Inventory : MonoBehaviour
     public Transform slotUIRoot;
 
     public GameObject slotUIPrefab;
+    public bool isVisible = true;
+    public KeyCode showKey;
 
     private void OnValidate()
     {
         if (slotCount < 0)
             throw new ArgumentException("slotCount nem lehet kisebb, mint 0");
     }
-
+    private void Start()
+    {
+        isVisible = true;
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(showKey))
+        {
+            isVisible = !isVisible;
+        }
+        slotUIRoot.gameObject.SetActive(isVisible);
+    }
 
     // 0 -> minden sikerult
     // -1 -> hiba
