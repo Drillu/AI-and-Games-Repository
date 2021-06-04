@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public Animator transition;
     public float transTime;
 
+
     IEnumerator LoadLevel(int indexLevel)
     {
         transition.SetTrigger("Start");
@@ -24,5 +25,11 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("QUIT!");
+    }
+
+    public void ToMenu()
+    {
+        StartCoroutine(LoadLevel(0));
+        Time.timeScale = 1f;
     }
 }
