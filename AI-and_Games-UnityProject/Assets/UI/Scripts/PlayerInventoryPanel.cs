@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuSelectionScreen : ScreenBase
+public class PlayerInventoryPanel : MonoBehaviour
 {
-    public override void Initialize()
+    public void Initialize()
     {
+
     }
 }
