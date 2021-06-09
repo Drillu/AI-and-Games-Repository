@@ -17,9 +17,9 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Mouse.current.rightButton.isPressed)
+		if (InputManager.Instance.IsMouseRightButtonDown)
 		{
-			Ray r = Camera.main.ScreenPointToRay(Mouse.current.position.ReadDefaultValue());
+			Ray r = Camera.main.ScreenPointToRay(InputManager.Instance.MousePosition);
 			if (Physics.Raycast(r, out RaycastHit raycastHit))
 			{
 				navagentMover.MoveToPosition(raycastHit.point);

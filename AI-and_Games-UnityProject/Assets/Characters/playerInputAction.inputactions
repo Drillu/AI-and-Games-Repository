@@ -17,7 +17,15 @@
                     "name": "Look",
                     "type": "Value",
                     "id": "3333448b-f36b-4c89-a338-079e904441ec",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "ee211598-09c7-4f5f-ae87-844aa4151a16",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -35,9 +43,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "AD",
-                    "id": "b5ddb4e2-5740-4fbb-bc2f-10a40cac5db0",
-                    "path": "1DAxis",
+                    "name": "2D Vector",
+                    "id": "6f17559b-78f8-4c75-8f47-5d7cb8c2b8de",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -46,8 +54,30 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "84ec0f42-4a81-4d4f-9761-cd23124ce31c",
+                    "name": "up",
+                    "id": "67984f04-c432-4284-b99a-2d29481e87ef",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "52c6fc22-7468-4f02-a081-7fd1b2c02106",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "4e1f9233-4445-4b06-954d-c7baf01727b2",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -57,8 +87,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "3e171f88-8739-4422-9651-15ef6886d5a9",
+                    "name": "right",
+                    "id": "01c15e7c-7fc8-4410-9b69-4818d0bc8966",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -66,6 +96,17 @@
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3503b7fc-524f-4609-976a-de2f378135a9",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
