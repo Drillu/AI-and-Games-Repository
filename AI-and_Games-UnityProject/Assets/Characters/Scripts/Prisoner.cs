@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Prisoner : MonoBehaviour
 {
-   public Inventory prosonerInventory = new Inventory();
-   public Inventory holdsForPlayerInventory = new Inventory();
+	public string Speach = "";
+	public string Name = "";
+	public Inventory prosonerInventory = new Inventory();
+	public Inventory holdsForPlayerInventory = new Inventory();
+
+
 }

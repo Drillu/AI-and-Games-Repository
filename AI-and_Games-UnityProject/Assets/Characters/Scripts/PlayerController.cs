@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour
 			Ray r = Camera.main.ScreenPointToRay(InputManager.Instance.MousePosition);
 			if (Physics.Raycast(r, out RaycastHit raycastHit))
 			{
+				Prisoner p = raycastHit.transform.GetComponent<Prisoner>();
+				if (p)
+				{
+					UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
+					UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, p.name, p.Speach);
+				}
 				navagentMover.MoveToPosition(raycastHit.point);
 			}
 		}
