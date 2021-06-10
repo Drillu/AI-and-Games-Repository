@@ -31,6 +31,12 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
+	private void Start() {
+		foreach (ScreenBase screen in screens)
+		{
+			screen.Initialize();
+		}
+	}
 	private void InitializeScreens()
 	{
 		screens = GetComponentsInChildren<ScreenBase>();

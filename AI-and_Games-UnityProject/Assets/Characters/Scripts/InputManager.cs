@@ -52,7 +52,10 @@ private void LateUpdate() {
 
 	public void OnCancelButtonDown(InputAction.CallbackContext ctx)
 	{
-		IsCancelButtonPressed = ctx.performed;
+		IsCancelButtonPressed = ctx.canceled;
+		if(ctx.canceled){
+			Debug.Log("ESC pressed");
+		}
 	}
 
 }
