@@ -2655,14 +2655,14 @@ GameObject:
   - component: {fileID: 322738676}
   - component: {fileID: 322738675}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!64 &322738675
-MeshCollider:
+--- !u!65 &322738675
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2671,10 +2671,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &322738676
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3754,6 +3753,7 @@ MonoBehaviour:
       amount: 0
   holdsForPlayerInventory:
     inventoryItems: []
+  talkRange: 3
 --- !u!1 &500107978 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 853313c256263e346992ce1c01d07edb, type: 3}
@@ -8188,6 +8188,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3256578539532981285, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256578539532981285, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256578539532981465, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094493240909917060, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
+      propertyPath: talkRadius
+      value: 3.54
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
 --- !u!1001 &977024762
@@ -11513,6 +11529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
+    - target: {fileID: 6085354010184687944, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11560,6 +11580,10 @@ PrefabInstance:
     - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Name
       value: Prisoner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604161974869099341, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}

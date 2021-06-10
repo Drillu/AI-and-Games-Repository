@@ -7,6 +7,7 @@ public class DialoguePanel : MonoBehaviour
 	[SerializeField] Image icon;
 	[SerializeField] TMPro.TextMeshProUGUI characterName;
 	[SerializeField] TMPro.TextMeshProUGUI dialogueText;
+	[SerializeField] UIConfigs uiConfigs;
 
 	Coroutine setTextCR;
 	public void Initialize()
@@ -45,8 +46,13 @@ public class DialoguePanel : MonoBehaviour
 	{
 		icon.sprite = iconSprite;
 		characterName.text = charName;
-		dialogueText.text = text;
-		yield return new WaitForEndOfFrame();
+		dialogueText.text = string.Empty;
+		foreach (char c in text)
+		{
+			dialogueText.text += c;
+			yield return new WaitForSeconds(1f / uiConfigs.dialogueSpeedCPS);
+		}
+		setTextCR = null;
 	}
 
 
