@@ -120,7 +120,7 @@
                     "name": "",
                     "id": "bebdd3f3-33cc-4e5a-a73b-b98f37cdb89b",
                     "path": "<Keyboard>/escape",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Cancel",

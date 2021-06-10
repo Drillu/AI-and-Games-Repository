@@ -31,6 +31,7 @@ public class HudScreen : ScreenBase
 		{
 			if (InputManager.Instance.IsCancelButtonPressed)
 			{
+				Debug.Log("ESCPressed");
 				if (currentActivePanel == PanelType.Dialogue)
 				{
 					DialoguePanel.OnCancelPressed();

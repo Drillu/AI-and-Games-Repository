@@ -14,6 +14,7 @@ public class DialoguePanel : HudScreenPanel
 
 	public void OnCancelPressed()
 	{
+		Debug.Log("Cancel dialogue");
 		if (currentText != null)
 		{
 			if (setTextCR != null)
@@ -25,15 +26,25 @@ public class DialoguePanel : HudScreenPanel
 		}
 		else
 		{
-
+			hudScreen.HideAllPanels();
 		}
 	}
+
 	public void SetDialogue(Sprite iconSprite, string charName, string text, bool animated = true)
 	{
 		currentText = text;
 		if (animated)
 		{
-			setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text));
+			if (setTextCR != null)
+			{
+				StopCoroutine(setTextCR);
+				setTextCR = null;
+				SetDialogueQuick(iconSprite, charName, text);
+			}
+			else
+			{
+				setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text));
+			}
 		}
 		else
 		{
