@@ -24,6 +24,9 @@ public class InputManager : MonoBehaviour
 		}
 	}
 
+private void LateUpdate() {
+	IsCancelButtonPressed = false;
+}
 	public void OnMouseMove(InputAction.CallbackContext ctx)
 	{
 		if (ctx.performed)
