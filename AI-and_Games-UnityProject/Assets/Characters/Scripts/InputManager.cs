@@ -24,9 +24,10 @@ public class InputManager : MonoBehaviour
 		}
 	}
 
-private void LateUpdate() {
-	IsCancelButtonPressed = false;
-}
+	private void LateUpdate()
+	{
+		IsCancelButtonPressed = false;
+	}
 	public void OnMouseMove(InputAction.CallbackContext ctx)
 	{
 		if (ctx.performed)
@@ -53,7 +54,8 @@ private void LateUpdate() {
 	public void OnCancelButtonDown(InputAction.CallbackContext ctx)
 	{
 		IsCancelButtonPressed = ctx.canceled;
-		if(ctx.canceled){
+		if (ctx.canceled)
+		{
 			Debug.Log("ESC pressed");
 		}
 	}
