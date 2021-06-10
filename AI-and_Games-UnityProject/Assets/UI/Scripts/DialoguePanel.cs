@@ -2,21 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class DialoguePanel : MonoBehaviour
+public class DialoguePanel : HudScreenPanel
 {
 	[SerializeField] Image icon;
 	[SerializeField] TMPro.TextMeshProUGUI characterName;
 	[SerializeField] TMPro.TextMeshProUGUI dialogueText;
 	[SerializeField] UIConfigs uiConfigs;
 
+	private string currentText;
 	Coroutine setTextCR;
-	public void Initialize()
+
+	public void OnCancelPressed()
 	{
+		if (currentText != null)
+		{
+			if (setTextCR != null)
+			{
+				StopCoroutine(setTextCR);
+			}
+			dialogueText.text = currentText;
+			currentText = null;
+		}
+		else
+		{
 
+		}
 	}
-
 	public void SetDialogue(Sprite iconSprite, string charName, string text, bool animated = true)
 	{
+		currentText = text;
 		if (animated)
 		{
 			setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text));
@@ -35,6 +49,7 @@ public class DialoguePanel : MonoBehaviour
 		}
 		SetTMPText(characterName, charName);
 		SetTMPText(dialogueText, text);
+		currentText = null;
 	}
 
 	private void SetTMPText(TMPro.TextMeshProUGUI tmptext, string text)
@@ -53,6 +68,7 @@ public class DialoguePanel : MonoBehaviour
 			yield return new WaitForSeconds(1f / uiConfigs.dialogueSpeedCPS);
 		}
 		setTextCR = null;
+		currentText = null;
 	}
 
 

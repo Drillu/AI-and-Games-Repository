@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventoryPanel : MonoBehaviour
+public class PlayerInventoryPanel : HudScreenPanel
 {
-    public void Initialize()
-    {
+	public void OnCancelPressed()
+	{
 
-    }
+	}
 }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class TradePanel : MonoBehaviour
+public class TradePanel : HudScreenPanel
 {
-	public void Initialize()
+	public void OnCancelPressed()
 	{
 
 	}
