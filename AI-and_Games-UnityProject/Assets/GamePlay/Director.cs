@@ -22,6 +22,7 @@ public class Director : MonoBehaviour
 	{
 		// UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 		// UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
+		UIManager.Instance.Initialize();
 		UIManager.Instance.HideAllScreens();
 	}
 

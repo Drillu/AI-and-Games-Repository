@@ -19,10 +19,10 @@ public class HudScreen : ScreenBase
 	PanelType currentActivePanel;
 	public override void Initialize()
 	{
-		HideAllPanels();
 		DialoguePanel.Initialize(this);
 		TradePanel.Initialize(this);
 		PlayerInventoryPanel.Initialize(this);
+		HideAllPanels();
 	}
 
 	private void Update()

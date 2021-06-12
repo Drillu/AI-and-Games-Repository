@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	private void Start() {
+	public void Initialize() {
 		foreach (ScreenBase screen in screens)
 		{
 			screen.Initialize();
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
 	}
 	private void InitializeScreens()
 	{
-		screens = GetComponentsInChildren<ScreenBase>();
+		screens = GetComponentsInChildren<ScreenBase>(true);
 	}
 
 	public void SwitchToScreen(ScreenType screenType, bool hideOthers = true)
