@@ -45,6 +45,10 @@ public class HudScreen : ScreenBase
 					PlayerInventoryPanel.OnCancelPressed();
 				}
 			}
+			if (InputManager.Instance.IsShowInventoryButtonPressed)
+			{
+				InitializeAndShowPlayerInventoryPanel();
+			}
 		}
 	}
 
@@ -71,13 +75,14 @@ public class HudScreen : ScreenBase
 		currentActivePanel = PanelType.Trade;
 	}
 
-	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = true)
+	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = false)
 	{
 		if (hideOtherPanels)
 		{
 			TradePanel.gameObject.SetActive(false);
 			DialoguePanel.gameObject.SetActive(false);
 		}
+		PlayerInventoryPanel.Initialize();
 		PlayerInventoryPanel.gameObject.SetActive(true);
 		currentActivePanel = PanelType.PlayerInventory;
 	}

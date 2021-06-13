@@ -24,12 +24,18 @@ public class Director : MonoBehaviour
 		// UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
 		UIManager.Instance.Initialize();
 		UIManager.Instance.HideAllScreens();
+		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 	}
 
 	public void TalkToPrisoner(Prisoner p)
 	{
 		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, p.name, p.Speach);
+	}
+
+	public Inventorys.Inventory GetPlayerInventory()
+	{
+		return Player.Instance.GetInventory();
 	}
 
 }

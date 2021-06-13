@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using Inventorys;
 using UnityEngine;
 
-public class Prisoner : MonoBehaviour, IInteractable
+public class Prisoner : Agent, IInteractable
 {
 	public string Speach = "";
 	public string Name = "";
-	public Inventory prosonerInventory = new Inventory();
-	public Inventory holdsForPlayerInventory = new Inventory();
+	public Inventory inventory = new Inventory();
 	public float talkRange = 3f;
 	public float GetInteractRange()
 	{
 		return talkRange;
+	}
+
+	public override Inventory GetInventory()
+	{
+		return inventory;
 	}
 
 	public Vector3 GetPosition()

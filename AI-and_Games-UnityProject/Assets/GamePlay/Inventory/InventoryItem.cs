@@ -4,11 +4,13 @@ using UnityEngine;
 
 namespace Inventorys
 {
-    [System.Serializable]
+	[System.Serializable]
 	public class InventoryItem
 	{
 		public InventoryItemType type;
-		public int amount;
+		public string name = "";
+		public int amount = 0;
+		public bool isHoldForPlayer = false;
 		public Dictionary<InventoryItem, int> Recipe;
 		public InventoryItem()
 		{

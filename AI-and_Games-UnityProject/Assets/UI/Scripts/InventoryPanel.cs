@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class InventoryPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] Transform content;
+	[SerializeField] GameObject inventoryItemPrefab;
+	public void SetupInventoryPanel(Inventorys.Inventory inventory)
+	{
+		InventoryItemButton[] existingPrefabs = content.GetComponentsInChildren<InventoryItemButton>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		int i = 0;
+		for (; i < inventory.inventoryItems.Count; i++)
+		{
+			Inventorys.InventoryItem item = inventory.inventoryItems[i];
+			if (i < existingPrefabs.Length)
+			{
+				existingPrefabs[i].Initalize(item);
+				existingPrefabs[i].gameObject.SetActive(true);
+			}
+			else
+			{
+				GameObject newItemPrefab = Instantiate(inventoryItemPrefab, content);
+				newItemPrefab.GetComponent<InventoryItemButton>().Initalize(item);
+				newItemPrefab.SetActive(true);
+			}
+		}
+
+		for (; i < existingPrefabs.Length; i++)
+		{
+			existingPrefabs[i].gameObject.SetActive(false);
+		}
+	}
 }

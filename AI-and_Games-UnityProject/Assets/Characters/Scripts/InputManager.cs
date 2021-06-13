@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
 	public bool IsMouseRightButtonDown { get; private set; }
 	public bool IsMouseLeftButtonDown { get; private set; }
 	public bool IsCancelButtonPressed { get; private set; }
+	public bool IsShowInventoryButtonPressed { get; private set; }
 
 	private void Awake()
 	{
@@ -27,7 +28,9 @@ public class InputManager : MonoBehaviour
 	private void LateUpdate()
 	{
 		IsCancelButtonPressed = false;
+		IsShowInventoryButtonPressed = false;
 	}
+
 	public void OnMouseMove(InputAction.CallbackContext ctx)
 	{
 		if (ctx.performed)
@@ -58,6 +61,11 @@ public class InputManager : MonoBehaviour
 		{
 			Debug.Log("ESC pressed");
 		}
+	}
+
+	public void OnShowInventoryButtonPressed(InputAction.CallbackContext ctx)
+	{
+		IsShowInventoryButtonPressed = ctx.canceled;
 	}
 
 }
