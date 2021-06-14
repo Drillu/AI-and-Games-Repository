@@ -16,7 +16,7 @@ public class HudScreen : ScreenBase
 	[SerializeField] TradePanel TradePanel;
 	[SerializeField] PlayerInventoryPanel PlayerInventoryPanel;
 
-	PanelType currentActivePanel;
+	HudScreenPanel currentActivePanel;
 	public override void Initialize()
 	{
 		DialoguePanel.Initialize(this);
@@ -27,28 +27,20 @@ public class HudScreen : ScreenBase
 
 	private void Update()
 	{
-		if (isActiveAndEnabled)
+		if (IsCurrentActiveScreen)
 		{
-			if (InputManager.Instance.IsCancelButtonPressed)
-			{
-				Debug.Log("Cancel button pressed");
-				if (currentActivePanel == PanelType.Dialogue)
-				{
-					DialoguePanel.OnCancelPressed();
-				}
-				else if (currentActivePanel == PanelType.Trade)
-				{
-					TradePanel.OnCancelPressed();
-				}
-				else if (currentActivePanel == PanelType.PlayerInventory)
-				{
-					PlayerInventoryPanel.OnCancelPressed();
-				}
-			}
-			if (InputManager.Instance.IsShowInventoryButtonPressed)
-			{
-				InitializeAndShowPlayerInventoryPanel();
-			}
+			ListenToInput();
+		}
+	}
+
+	private void ListenToInput()
+	{
+		if(currentActivePanel.ListenToInput()){
+			
+		}
+		if (InputManager.Instance.IsShowInventoryButtonPressed)
+		{
+			InitializeAndShowPlayerInventoryPanel();
 		}
 	}
 
@@ -61,7 +53,7 @@ public class HudScreen : ScreenBase
 		}
 		DialoguePanel.gameObject.SetActive(true);
 		DialoguePanel.SetDialogue(icon, charname, text);
-		currentActivePanel = PanelType.Dialogue;
+		currentActivePanel = DialoguePanel;
 	}
 
 	public void InitializeAndShowTradePanel(bool hideOtherPanels = true)
@@ -72,7 +64,7 @@ public class HudScreen : ScreenBase
 			PlayerInventoryPanel.gameObject.SetActive(false);
 		}
 		TradePanel.gameObject.SetActive(true);
-		currentActivePanel = PanelType.Trade;
+		currentActivePanel = TradePanel;
 	}
 
 	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = false)
@@ -84,7 +76,7 @@ public class HudScreen : ScreenBase
 		}
 		PlayerInventoryPanel.Initialize();
 		PlayerInventoryPanel.gameObject.SetActive(true);
-		currentActivePanel = PanelType.PlayerInventory;
+		currentActivePanel = PlayerInventoryPanel;
 	}
 
 	public void HideAllPanels()

@@ -82,5 +82,8 @@ public class DialoguePanel : HudScreenPanel
 		currentText = null;
 	}
 
-
+	public override bool ListenToInput()
+	{
+		throw new System.NotImplementedException();
+	}
 }

@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &361835839911352194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3945541242410839605}
+  m_Layer: 5
+  m_Name: Screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3945541242410839605
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361835839911352194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8787373326931955228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182360074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,7 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce0c0536cfb8c849ac40ec4e58abd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScreenRoot: {fileID: 361835839911352194}
   screenType: 2
+  IsCurrentActiveScreen: 0
 --- !u!1001 &2513281553132564536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,5 +150,10 @@ PrefabInstance:
 --- !u!1 &8463856075463513086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6311038415555716038, guid: e61ac2fa03a6c5140b34879776ca5c0e, type: 3}
+  m_PrefabInstance: {fileID: 2513281553132564536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8787373326931955228 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6562867507819429412, guid: e61ac2fa03a6c5140b34879776ca5c0e, type: 3}
   m_PrefabInstance: {fileID: 2513281553132564536}
   m_PrefabAsset: {fileID: 0}

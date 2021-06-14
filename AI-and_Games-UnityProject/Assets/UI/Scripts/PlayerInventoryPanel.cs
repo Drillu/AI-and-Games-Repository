@@ -10,8 +10,19 @@ public class PlayerInventoryPanel : HudScreenPanel
 		inventoryPanel.SetupInventoryPanel(Director.Instance.GetPlayerInventory());
 		inventoryPanel.gameObject.SetActive(true);
 	}
+
+	public override bool ListenToInput()
+	{
+		if (InputManager.Instance.IsCancelButtonPressed)
+		{
+			OnCancelPressed();
+			return false;
+		}
+		return true;
+	}
+
 	public void OnCancelPressed()
 	{
-
+		gameObject.SetActive(false);
 	}
 }
