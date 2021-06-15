@@ -33,6 +33,7 @@ public class DialoguePanel : HudScreenPanel
 				StopCoroutine(setTextCR);
 			}
 			dialogueText.text = currentText;
+			setTextCR = null;
 			currentText = null;
 			return true;
 		}

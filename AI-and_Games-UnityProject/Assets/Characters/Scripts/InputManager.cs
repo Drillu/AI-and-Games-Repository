@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
 	{
 		IsCancelButtonPressed = false;
 		IsShowInventoryButtonPressed = false;
+		IsMouseLeftButtonDown = false;
+		IsMouseRightButtonDown = false;
 	}
 
 	public void OnMouseMove(InputAction.CallbackContext ctx)
@@ -41,12 +43,12 @@ public class InputManager : MonoBehaviour
 
 	public void OnMouseRightButtonClicked(InputAction.CallbackContext ctx)
 	{
-		IsMouseRightButtonDown = ctx.performed;
+		IsMouseRightButtonDown = ctx.canceled;
 	}
 
 	public void OnMouseLeftButtonClicked(InputAction.CallbackContext ctx)
 	{
-		IsMouseLeftButtonDown = ctx.performed;
+		IsMouseLeftButtonDown = ctx.canceled;
 	}
 
 	public void OnMouseScrolled(InputAction.CallbackContext ctx)

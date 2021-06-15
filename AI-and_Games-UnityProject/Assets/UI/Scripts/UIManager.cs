@@ -46,11 +46,16 @@ public class UIManager : MonoBehaviour
 
 	public void SwitchToScreen(ScreenType screenType, bool hideOthers = true)
 	{
+		if (hideOthers)
+		{
+			currentActiveScreens.Clear();
+		}
 		foreach (ScreenBase screen in screens)
 		{
 			if (screen.screenType == screenType)
 			{
 				screen.gameObject.SetActive(true);
+				currentActiveScreens.Enqueue(screen);
 			}
 			else
 			{
@@ -87,7 +92,11 @@ public class UIManager : MonoBehaviour
 		// no screen active, we can listen to input and initialize screens correspondingly
 		if (currentActiveScreens.Count <= 0)
 		{
-
+			if (InputManager.Instance.IsShowInventoryButtonPressed)
+			{
+				SwitchToScreen(ScreenType.HudScreen);
+				GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
+			}
 		}
 		else
 		{

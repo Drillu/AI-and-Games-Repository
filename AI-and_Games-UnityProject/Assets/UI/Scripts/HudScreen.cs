@@ -35,16 +35,16 @@ public class HudScreen : ScreenBase
 
 	public override bool ListenToInput()
 	{
+		if (currentActivePanels.Count <= 0)
+		{
+			return false;
+		}
 		HudScreenPanel currentPanel = currentActivePanels.Peek();
 		if (!currentPanel.ListenToInput())
 		{
 			currentActivePanels.Dequeue();
 		}
 		return currentActivePanels.Count > 0;
-		// if (InputManager.Instance.IsShowInventoryButtonPressed)
-		// {
-		// 	InitializeAndShowPlayerInventoryPanel();
-		// }
 	}
 
 	public void HudScreenPanelActionDone()
