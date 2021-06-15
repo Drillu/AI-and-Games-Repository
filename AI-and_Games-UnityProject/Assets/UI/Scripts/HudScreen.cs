@@ -16,7 +16,7 @@ public class HudScreen : ScreenBase
 	[SerializeField] TradePanel TradePanel;
 	[SerializeField] PlayerInventoryPanel PlayerInventoryPanel;
 
-	HudScreenPanel currentActivePanel;
+	Queue<HudScreenPanel> currentActivePanels = new Queue<HudScreenPanel>();
 	public override void Initialize()
 	{
 		DialoguePanel.Initialize(this);
@@ -33,14 +33,26 @@ public class HudScreen : ScreenBase
 		}
 	}
 
-	private void ListenToInput()
+	public override bool ListenToInput()
 	{
-		if(currentActivePanel.ListenToInput()){
-			
-		}
-		if (InputManager.Instance.IsShowInventoryButtonPressed)
+		HudScreenPanel currentPanel = currentActivePanels.Peek();
+		if (!currentPanel.ListenToInput())
 		{
-			InitializeAndShowPlayerInventoryPanel();
+			currentActivePanels.Dequeue();
+		}
+		return currentActivePanels.Count > 0;
+		// if (InputManager.Instance.IsShowInventoryButtonPressed)
+		// {
+		// 	InitializeAndShowPlayerInventoryPanel();
+		// }
+	}
+
+	public void HudScreenPanelActionDone()
+	{
+		currentActivePanels.Dequeue();
+		if (currentActivePanels.Count <= 0)
+		{
+			// Hide Hud Screen
 		}
 	}
 
@@ -50,10 +62,11 @@ public class HudScreen : ScreenBase
 		{
 			TradePanel.gameObject.SetActive(false);
 			PlayerInventoryPanel.gameObject.SetActive(false);
+			currentActivePanels.Clear();
 		}
 		DialoguePanel.gameObject.SetActive(true);
 		DialoguePanel.SetDialogue(icon, charname, text);
-		currentActivePanel = DialoguePanel;
+		currentActivePanels.Enqueue(DialoguePanel);
 	}
 
 	public void InitializeAndShowTradePanel(bool hideOtherPanels = true)
@@ -62,9 +75,10 @@ public class HudScreen : ScreenBase
 		{
 			DialoguePanel.gameObject.SetActive(false);
 			PlayerInventoryPanel.gameObject.SetActive(false);
+			currentActivePanels.Clear();
 		}
 		TradePanel.gameObject.SetActive(true);
-		currentActivePanel = TradePanel;
+		currentActivePanels.Enqueue(TradePanel);
 	}
 
 	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = false)
@@ -73,10 +87,11 @@ public class HudScreen : ScreenBase
 		{
 			TradePanel.gameObject.SetActive(false);
 			DialoguePanel.gameObject.SetActive(false);
+			currentActivePanels.Clear();
 		}
 		PlayerInventoryPanel.Initialize();
 		PlayerInventoryPanel.gameObject.SetActive(true);
-		currentActivePanel = PlayerInventoryPanel;
+		currentActivePanels.Enqueue(PlayerInventoryPanel);
 	}
 
 	public void HideAllPanels()

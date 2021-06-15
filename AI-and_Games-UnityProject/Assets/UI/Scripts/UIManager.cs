@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 
 	public static UIManager Instance { get; set; }
 	private ScreenBase[] screens;
+	Queue<ScreenBase> currentActiveScreens = new Queue<ScreenBase>();
 	private void Awake()
 	{
 		if (Instance && Instance != this)
@@ -31,7 +32,8 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	public void Initialize() {
+	public void Initialize()
+	{
 		foreach (ScreenBase screen in screens)
 		{
 			screen.Initialize();
@@ -77,6 +79,23 @@ public class UIManager : MonoBehaviour
 		foreach (ScreenBase screen in screens)
 		{
 			screen.gameObject.SetActive(false);
+		}
+	}
+
+	private void Update()
+	{
+		// no screen active, we can listen to input and initialize screens correspondingly
+		if (currentActiveScreens.Count <= 0)
+		{
+
+		}
+		else
+		{
+			ScreenBase currentActiveScreen = currentActiveScreens.Peek();
+			if (!currentActiveScreen.ListenToInput())
+			{
+				currentActiveScreens.Dequeue();
+			}
 		}
 	}
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public abstract class ScreenBase : MonoBehaviour
 {
-    [SerializeField] GameObject ScreenRoot;
+	[SerializeField] GameObject ScreenRoot;
 	public UIManager.ScreenType screenType;
 	public abstract void Initialize();
+	public abstract bool ListenToInput();
 	public virtual void Hide()
 	{
 		ScreenRoot.SetActive(false);

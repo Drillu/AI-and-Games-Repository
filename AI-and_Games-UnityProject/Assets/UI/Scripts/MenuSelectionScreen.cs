@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class MenuSelectionScreen : ScreenBase
 {
-    public override void Initialize()
-    {
-    }
+	public override void Initialize()
+	{
+	}
+
+	public override bool ListenToInput()
+	{
+		return false;
+	}
 }

@@ -12,7 +12,18 @@ public class DialoguePanel : HudScreenPanel
 	private string currentText;
 	Coroutine setTextCR;
 
-	public void OnCancelPressed()
+	public override bool ListenToInput()
+	{
+		if (InputManager.Instance.IsCancelButtonPressed)
+		{
+			return OnCancelPressed();
+		}
+		else
+		{
+			return true;
+		}
+	}
+	private bool OnCancelPressed()
 	{
 		Debug.Log("Cancel dialogue");
 		if (currentText != null)
@@ -23,10 +34,12 @@ public class DialoguePanel : HudScreenPanel
 			}
 			dialogueText.text = currentText;
 			currentText = null;
+			return true;
 		}
 		else
 		{
-			hudScreen.HideAllPanels();
+			gameObject.SetActive(false);
+			return false;
 		}
 	}
 
@@ -82,8 +95,4 @@ public class DialoguePanel : HudScreenPanel
 		currentText = null;
 	}
 
-	public override bool ListenToInput()
-	{
-		throw new System.NotImplementedException();
-	}
 }
