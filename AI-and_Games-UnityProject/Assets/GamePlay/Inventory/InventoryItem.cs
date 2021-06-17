@@ -5,18 +5,43 @@ using UnityEngine;
 namespace Inventorys
 {
 	[System.Serializable]
+	public class RecipeItem
+	{
+		public InventoryItemType type;
+		public int amount;
+	}
+
+	[System.Serializable]
 	public class InventoryItem
 	{
 		public InventoryItemType type;
-		public string name = "";
+		public string name
+		{
+			get
+			{
+				string result = this.type.ToString();
+				int len = result.Length;
+				for (int i = 0; i < len; i++)
+				{
+					char c = result[i];
+					if (char.IsUpper(c))
+					{
+						result = result.Insert(i, " ");
+						i++;
+					}
+				}
+				return result;
+			}
+		}
 		public int amount = 0;
 		public bool isHoldForPlayer = false;
-		public Dictionary<InventoryItem, int> Recipe;
+
+		public List<RecipeItem> Recipe;
 		public InventoryItem()
 		{
 			type = InventoryItemType.Default;
 			amount = 1;
-			Recipe = new Dictionary<InventoryItem, int>();
+			Recipe = new List<RecipeItem>();
 		}
 		public InventoryItem(InventoryItem other)
 		{
@@ -27,10 +52,11 @@ namespace Inventorys
 
 		public bool CanTrade(Inventory inventory)
 		{
-			foreach (InventoryItem item in Recipe.Keys)
+			foreach (RecipeItem item in Recipe)
 			{
-				InventoryItem recepiItem = inventory.inventoryItems.Find(e => e.type == item.type);
-				if (recepiItem == null || recepiItem.amount < Recipe[item])
+				InventoryItemType t = item.type;
+				InventoryItem recepiItem = inventory.inventoryItems.Find(e => e.type == t);
+				if (recepiItem == null || recepiItem.amount < item.amount)
 				{
 					return false;
 				}

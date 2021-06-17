@@ -31,6 +31,7 @@ public class Director : MonoBehaviour
 	{
 		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, p.name, p.Speach);
+		UIManager.Instance.GetScreenComponent<HudScreen>().currentInteractingObject = p;
 	}
 
 	public Inventorys.Inventory GetPlayerInventory()
@@ -38,4 +39,8 @@ public class Director : MonoBehaviour
 		return Player.Instance.GetInventory();
 	}
 
+	public void SetPlayerMovementControl(bool canAct)
+	{
+		Player.Instance.gameObject.GetComponent<PlayerController>().CanAct = canAct;
+	}
 }

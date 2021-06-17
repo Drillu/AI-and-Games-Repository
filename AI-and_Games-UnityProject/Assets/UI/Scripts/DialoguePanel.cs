@@ -7,6 +7,7 @@ public class DialoguePanel : HudScreenPanel
 	[SerializeField] Image icon;
 	[SerializeField] TMPro.TextMeshProUGUI characterName;
 	[SerializeField] TMPro.TextMeshProUGUI dialogueText;
+	[SerializeField] GameObject Options;
 	[SerializeField] UIConfigs uiConfigs;
 
 	private string currentText;
@@ -35,6 +36,7 @@ public class DialoguePanel : HudScreenPanel
 			dialogueText.text = currentText;
 			setTextCR = null;
 			currentText = null;
+			Options.SetActive(true);
 			return true;
 		}
 		else
@@ -43,6 +45,7 @@ public class DialoguePanel : HudScreenPanel
 			return false;
 		}
 	}
+
 
 	public void SetDialogue(Sprite iconSprite, string charName, string text, bool animated = true)
 	{
@@ -72,9 +75,15 @@ public class DialoguePanel : HudScreenPanel
 		{
 			icon.sprite = iconSprite;
 		}
+		if (setTextCR != null)
+		{
+			StopCoroutine(setTextCR);
+			setTextCR = null;
+		}
+		currentText = null;
 		SetTMPText(characterName, charName);
 		SetTMPText(dialogueText, text);
-		currentText = null;
+		Options.SetActive(true);
 	}
 
 	private void SetTMPText(TMPro.TextMeshProUGUI tmptext, string text)
@@ -84,6 +93,7 @@ public class DialoguePanel : HudScreenPanel
 
 	private IEnumerator SetDialogueCR(Sprite iconSprite, string charName, string text)
 	{
+		Options.SetActive(false);
 		icon.sprite = iconSprite;
 		characterName.text = charName;
 		dialogueText.text = string.Empty;
@@ -92,6 +102,7 @@ public class DialoguePanel : HudScreenPanel
 			dialogueText.text += c;
 			yield return new WaitForSeconds(1f / uiConfigs.dialogueSpeedCPS);
 		}
+		Options.SetActive(true);
 		setTextCR = null;
 		currentText = null;
 	}

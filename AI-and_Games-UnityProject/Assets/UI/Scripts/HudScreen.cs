@@ -15,8 +15,8 @@ public class HudScreen : ScreenBase
 	[SerializeField] DialoguePanel DialoguePanel;
 	[SerializeField] TradePanel TradePanel;
 	[SerializeField] PlayerInventoryPanel PlayerInventoryPanel;
-
-	Queue<HudScreenPanel> currentActivePanels = new Queue<HudScreenPanel>();
+	public IInteractable currentInteractingObject;
+	Stack<HudScreenPanel> currentActivePanels = new Stack<HudScreenPanel>();
 	public override void Initialize()
 	{
 		DialoguePanel.Initialize(this);
@@ -42,14 +42,14 @@ public class HudScreen : ScreenBase
 		HudScreenPanel currentPanel = currentActivePanels.Peek();
 		if (!currentPanel.ListenToInput())
 		{
-			currentActivePanels.Dequeue();
+			currentActivePanels.Pop();
 		}
 		return currentActivePanels.Count > 0;
 	}
 
 	public void HudScreenPanelActionDone()
 	{
-		currentActivePanels.Dequeue();
+		currentActivePanels.Pop();
 		if (currentActivePanels.Count <= 0)
 		{
 			// Hide Hud Screen
@@ -66,7 +66,7 @@ public class HudScreen : ScreenBase
 		}
 		DialoguePanel.gameObject.SetActive(true);
 		DialoguePanel.SetDialogue(icon, charname, text);
-		currentActivePanels.Enqueue(DialoguePanel);
+		currentActivePanels.Push(DialoguePanel);
 	}
 
 	public void InitializeAndShowTradePanel(bool hideOtherPanels = true)
@@ -77,8 +77,9 @@ public class HudScreen : ScreenBase
 			PlayerInventoryPanel.gameObject.SetActive(false);
 			currentActivePanels.Clear();
 		}
+		TradePanel.SetupTradePanel((currentInteractingObject as Prisoner).inventory, Director.Instance.GetPlayerInventory());
 		TradePanel.gameObject.SetActive(true);
-		currentActivePanels.Enqueue(TradePanel);
+		currentActivePanels.Push(TradePanel);
 	}
 
 	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = false)
@@ -91,7 +92,7 @@ public class HudScreen : ScreenBase
 		}
 		PlayerInventoryPanel.Initialize();
 		PlayerInventoryPanel.gameObject.SetActive(true);
-		currentActivePanels.Enqueue(PlayerInventoryPanel);
+		currentActivePanels.Push(PlayerInventoryPanel);
 	}
 
 	public void HideAllPanels()
@@ -99,5 +100,17 @@ public class HudScreen : ScreenBase
 		TradePanel.gameObject.SetActive(false);
 		DialoguePanel.gameObject.SetActive(false);
 		PlayerInventoryPanel.gameObject.SetActive(false);
+	}
+
+	public void OnTradeButtonClicked()
+	{
+		InitializeAndShowTradePanel();
+	}
+
+	public void OnByebyeButtonClicked()
+	{
+		currentActivePanels.Pop().gameObject.SetActive(false);
+		currentActivePanels.Clear();
+		UIManager.Instance.QuitCurrentScreen();
 	}
 }

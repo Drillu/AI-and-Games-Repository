@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 
 	public static UIManager Instance { get; set; }
 	private ScreenBase[] screens;
-	Queue<ScreenBase> currentActiveScreens = new Queue<ScreenBase>();
+	Stack<ScreenBase> currentActiveScreens = new Stack<ScreenBase>();
 	private void Awake()
 	{
 		if (Instance && Instance != this)
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
 			if (screen.screenType == screenType)
 			{
 				screen.gameObject.SetActive(true);
-				currentActiveScreens.Enqueue(screen);
+				currentActiveScreens.Push(screen);
 			}
 			else
 			{
@@ -103,8 +103,14 @@ public class UIManager : MonoBehaviour
 			ScreenBase currentActiveScreen = currentActiveScreens.Peek();
 			if (!currentActiveScreen.ListenToInput())
 			{
-				currentActiveScreens.Dequeue();
+				currentActiveScreens.Pop();
 			}
+		}
+	}
+	public void QuitCurrentScreen()
+	{
+		if(currentActiveScreens.Count > 0){
+			currentActiveScreens.Pop();
 		}
 	}
 }

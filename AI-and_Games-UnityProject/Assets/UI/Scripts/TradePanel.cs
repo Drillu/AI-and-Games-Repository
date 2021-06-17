@@ -8,7 +8,7 @@ public class TradePanel : HudScreenPanel
 
 	public override bool ListenToInput()
 	{
-		throw new System.NotImplementedException();
+		return true;
 	}
 
 	public void OnCancelPressed()
@@ -16,8 +16,11 @@ public class TradePanel : HudScreenPanel
 
 	}
 
-	public void SetupTradePanel(Inventory fisrt, Inventory second)
+	public void SetupTradePanel(Inventory first, Inventory second)
 	{
-		
+		firstInventoryPanel.SetupInventoryPanel(first);
+		firstInventoryPanel.gameObject.SetActive(true);
+		secondInventoryPanel.SetupInventoryPanel(second);
+		secondInventoryPanel.gameObject.SetActive(true);
 	}
 }

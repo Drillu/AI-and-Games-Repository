@@ -6,7 +6,14 @@ namespace Inventorys
 {
 	public enum InventoryItemType
 	{
-		Default
+		Default,
+		Soap,
+		Toothpaste,
+		Book,
+		ToiletPaper,
+		Apple,
+		ScrewDriver,
+		Spoon
 	}
 	[System.Serializable]
 	public class Inventory
@@ -16,6 +23,7 @@ namespace Inventorys
 		{
 			inventoryItems = new List<InventoryItem>();
 		}
+		
 
 		public void TradeForItemInOtherInventory(InventoryItem targetItem, Inventory otherInventory)
 		{
@@ -24,9 +32,9 @@ namespace Inventorys
 				if (targetItem.CanTrade(this))
 				{
 					// reduce recipe
-					foreach (var item in targetItem.Recipe.Keys)
+					foreach (RecipeItem item in targetItem.Recipe)
 					{
-						inventoryItems.Find(e => e.type == item.type).amount -= targetItem.Recipe[item];
+						inventoryItems.Find(e => e.type == item.type).amount -= item.amount;
 					}
 					// remove item from other inventory
 					otherInventory.RemoveItem(targetItem);
