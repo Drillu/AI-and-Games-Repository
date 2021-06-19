@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using Inventorys;
 using UnityEngine;
@@ -40,6 +41,7 @@ public class TradePanel : HudScreenPanel
 		if (item.CanTrade(playerInventory))
 		{
 			playerInventory.TradeForItemInOtherInventory(item, inventory);
+			item.isHoldForPlayer = false;
 			panel.SetupInventoryPanel(inventory, OnPrisonerItemHovered, OnPrisonerItemClicked);
 			secondInventoryPanel.SetupInventoryPanel(playerInventory, OnPlayerItemHovered, OnPlayerItemClicked);
 		}
@@ -50,10 +52,14 @@ public class TradePanel : HudScreenPanel
 	}
 	public void OnPlayerItemHovered(Inventory inventory, InventoryItem item, InventoryPanel panel)
 	{
-		panel.SetItemDescription(ConstructPlayerItemDescription(item));
+		panel.SetItemDescription(ConstructPlayerItemDescription(item)+"Should I let him hold this item for me temporarily..?");
 	}
 	public void OnPlayerItemClicked(Inventory inventory, InventoryItem item, InventoryPanel panel)
 	{
+		inventory.RemoveItem(item);
+		prisonerInventory.AddItem(item);
+		List<RecipeItem> r = item.Recipe;
+		// item.Recipe = 
 	}
 
 

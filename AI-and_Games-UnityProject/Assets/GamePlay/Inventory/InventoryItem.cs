@@ -71,6 +71,10 @@ namespace Inventorys
 
 		public bool CanTrade(Inventory inventory)
 		{
+			if (Recipe == null || Recipe.Count <= 0)
+			{
+				return true;
+			}
 			foreach (RecipeItem item in Recipe)
 			{
 				InventoryItemType t = item.type;
