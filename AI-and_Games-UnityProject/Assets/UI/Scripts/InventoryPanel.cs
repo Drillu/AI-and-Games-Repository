@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Inventorys;
 using UnityEngine;
 
 public class InventoryPanel : MonoBehaviour
 {
 	[SerializeField] Transform content;
 	[SerializeField] GameObject inventoryItemPrefab;
-	public void SetupInventoryPanel(Inventorys.Inventory inventory)
+	[SerializeField] TMPro.TextMeshProUGUI recipeText;
+	public void SetupInventoryPanel(Inventorys.Inventory inventory, Func<Inventory, InventoryItem, Action<InventoryItem>> OnInventoryItemHovered = null, Func<Inventory, InventoryItem, Action<InventoryItem>> OnInventoryItemClicked = null)
 	{
 		InventoryItemButton[] existingPrefabs = content.GetComponentsInChildren<InventoryItemButton>();
 
@@ -22,7 +23,7 @@ public class InventoryPanel : MonoBehaviour
 			else
 			{
 				GameObject newItemPrefab = Instantiate(inventoryItemPrefab, content);
-				newItemPrefab.GetComponent<InventoryItemButton>().Initalize(item);
+				newItemPrefab.GetComponent<InventoryItemButton>().Initalize(item, OnInventoryItemHovered?.Invoke(inventory, item), OnInventoryItemClicked?.Invoke(inventory, item));
 				newItemPrefab.SetActive(true);
 			}
 		}

@@ -89,6 +89,7 @@ public class UIManager : MonoBehaviour
 
 	private void Update()
 	{
+		Director.Instance.IsInteractingWithUI = currentActiveScreens.Count > 0;
 		// no screen active, we can listen to input and initialize screens correspondingly
 		if (currentActiveScreens.Count <= 0)
 		{
@@ -109,7 +110,8 @@ public class UIManager : MonoBehaviour
 	}
 	public void QuitCurrentScreen()
 	{
-		if(currentActiveScreens.Count > 0){
+		if (currentActiveScreens.Count > 0)
+		{
 			currentActiveScreens.Pop();
 		}
 	}

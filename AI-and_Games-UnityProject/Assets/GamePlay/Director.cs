@@ -5,6 +5,7 @@ using UnityEngine;
 public class Director : MonoBehaviour
 {
 	public static Director Instance { get; set; }
+	public bool IsInteractingWithUI { get; set; }
 	private void Awake()
 	{
 		if (Instance && Instance != this)
@@ -37,10 +38,5 @@ public class Director : MonoBehaviour
 	public Inventorys.Inventory GetPlayerInventory()
 	{
 		return Player.Instance.GetInventory();
-	}
-
-	public void SetPlayerMovementControl(bool canAct)
-	{
-		Player.Instance.gameObject.GetComponent<PlayerController>().CanAct = canAct;
 	}
 }

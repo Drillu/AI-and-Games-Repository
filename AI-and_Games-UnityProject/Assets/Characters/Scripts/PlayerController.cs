@@ -10,12 +10,11 @@ public class PlayerController : MonoBehaviour
 	private IInteractable interactTarget = null;
 	private NavagentMover _navagentMover;
 	private NavagentMover navagentMover { get { if (!_navagentMover) { _navagentMover = GetComponent<NavagentMover>(); } return _navagentMover; } }
-	public bool CanAct = true;
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (CanAct)
+		if (Director.Instance && !Director.Instance.IsInteractingWithUI)
 		{
 			CheckUserInput();
 			CheckInteractable();

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
+
 [RequireComponent(typeof(Image))]
 public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -16,11 +18,14 @@ public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointer
 	[SerializeField] TMPro.TextMeshProUGUI itemNameText;
 	[SerializeField] TMPro.TextMeshProUGUI itemQuantityText;
 	Image backgroundImg;
-
+	Inventorys.InventoryItem myItem;
+	Action<Inventorys.InventoryItem> OnItemHovered;
+	Action<Inventorys.InventoryItem> OnItemClicked;
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		Debug.Log("Mouse Entered Inventory Item button");
 		backgroundImg.color = hoverColor;
+		OnItemHovered?.Invoke(myItem);
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
@@ -34,8 +39,13 @@ public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointer
 		backgroundImg = GetComponent<Image>();
 	}
 
-	public void Initalize(Inventorys.InventoryItem item)
+	public void Initalize(Inventorys.InventoryItem item, Action<Inventorys.InventoryItem> onItemHovered = null, Action<Inventorys.InventoryItem> onItemClicked = null)
 	{
+		myItem = item;
+
+		OnItemHovered = onItemHovered;
+		OnItemClicked = onItemClicked;
+
 		if (item.isHoldForPlayer)
 		{
 			itemNameText.color = HoldForPlayerItemTextColor;
@@ -49,5 +59,10 @@ public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointer
 
 		itemNameText.text = item.name;
 		itemQuantityText.text = item.amount.ToString();
+	}
+
+	public void OnItemButtonClicked()
+	{
+		OnItemClicked?.Invoke(myItem);
 	}
 }
