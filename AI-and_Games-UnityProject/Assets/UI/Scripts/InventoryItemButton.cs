@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Inventorys;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -18,14 +17,13 @@ public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointer
 	[SerializeField] TMPro.TextMeshProUGUI itemNameText;
 	[SerializeField] TMPro.TextMeshProUGUI itemQuantityText;
 	Image backgroundImg;
-	Inventorys.InventoryItem myItem;
-	Action<Inventorys.InventoryItem> OnItemHovered;
-	Action<Inventorys.InventoryItem> OnItemClicked;
+	Action OnItemHovered;
+	Action OnItemClicked;
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		Debug.Log("Mouse Entered Inventory Item button");
 		backgroundImg.color = hoverColor;
-		OnItemHovered?.Invoke(myItem);
+		OnItemHovered?.Invoke();
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
@@ -39,10 +37,8 @@ public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointer
 		backgroundImg = GetComponent<Image>();
 	}
 
-	public void Initalize(Inventorys.InventoryItem item, Action<Inventorys.InventoryItem> onItemHovered = null, Action<Inventorys.InventoryItem> onItemClicked = null)
+	public void Initalize(InventoryItem item, Action onItemHovered = null, Action onItemClicked = null)
 	{
-		myItem = item;
-
 		OnItemHovered = onItemHovered;
 		OnItemClicked = onItemClicked;
 
@@ -63,6 +59,6 @@ public class InventoryItemButton : MonoBehaviour, IPointerEnterHandler, IPointer
 
 	public void OnItemButtonClicked()
 	{
-		OnItemClicked?.Invoke(myItem);
+		OnItemClicked?.Invoke();
 	}
 }

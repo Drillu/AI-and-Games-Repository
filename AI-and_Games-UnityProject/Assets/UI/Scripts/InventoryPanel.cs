@@ -6,8 +6,10 @@ public class InventoryPanel : MonoBehaviour
 {
 	[SerializeField] Transform content;
 	[SerializeField] GameObject inventoryItemPrefab;
-	[SerializeField] TMPro.TextMeshProUGUI recipeText;
-	public void SetupInventoryPanel(Inventorys.Inventory inventory, Func<Inventory, InventoryItem, Action<InventoryItem>> OnInventoryItemHovered = null, Func<Inventory, InventoryItem, Action<InventoryItem>> OnInventoryItemClicked = null)
+	[SerializeField] TMPro.TextMeshProUGUI itemDescriptionTmp;
+	public void SetupInventoryPanel(Inventorys.Inventory inventory,
+	Action<Inventory, InventoryItem, InventoryPanel> OnInventoryItemHovered = null,
+	Action<Inventory, InventoryItem, InventoryPanel> OnInventoryItemClicked = null)
 	{
 		InventoryItemButton[] existingPrefabs = content.GetComponentsInChildren<InventoryItemButton>();
 
@@ -17,13 +19,18 @@ public class InventoryPanel : MonoBehaviour
 			Inventorys.InventoryItem item = inventory.inventoryItems[i];
 			if (i < existingPrefabs.Length)
 			{
-				existingPrefabs[i].Initalize(item);
+				existingPrefabs[i].Initalize(item,
+				() => { OnInventoryItemHovered?.Invoke(inventory, item, this); },
+				() => OnInventoryItemClicked?.Invoke(inventory, item, this));
 				existingPrefabs[i].gameObject.SetActive(true);
 			}
 			else
 			{
 				GameObject newItemPrefab = Instantiate(inventoryItemPrefab, content);
-				newItemPrefab.GetComponent<InventoryItemButton>().Initalize(item, OnInventoryItemHovered?.Invoke(inventory, item), OnInventoryItemClicked?.Invoke(inventory, item));
+				InventoryItemButton itemButton = newItemPrefab.GetComponent<InventoryItemButton>();
+				itemButton.Initalize(item,
+				() => { OnInventoryItemHovered?.Invoke(inventory, item, this); },
+				() => OnInventoryItemClicked?.Invoke(inventory, item, this));
 				newItemPrefab.SetActive(true);
 			}
 		}
@@ -32,5 +39,13 @@ public class InventoryPanel : MonoBehaviour
 		{
 			existingPrefabs[i].gameObject.SetActive(false);
 		}
+	}
+
+	public void UpdatePanel(){
+
+	}
+	public void SetItemDescription(string desc)
+	{
+		itemDescriptionTmp.text = desc;
 	}
 }

@@ -9,6 +9,24 @@ namespace Inventorys
 	{
 		public InventoryItemType type;
 		public int amount;
+		public string name
+		{
+			get
+			{
+				string result = this.type.ToString();
+				int len = result.Length;
+				for (int i = 0; i < len; i++)
+				{
+					char c = result[i];
+					if (char.IsUpper(c))
+					{
+						result = result.Insert(i, " ");
+						i++;
+					}
+				}
+				return result;
+			}
+		}
 	}
 
 	[System.Serializable]
@@ -33,6 +51,7 @@ namespace Inventorys
 				return result;
 			}
 		}
+		public string description;
 		public int amount = 0;
 		public bool isHoldForPlayer = false;
 

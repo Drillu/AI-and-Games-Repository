@@ -39,7 +39,7 @@ namespace Inventorys
 					// remove item from other inventory
 					otherInventory.RemoveItem(targetItem);
 					// add item to this inventory
-					inventoryItems.Add(targetItem);
+					AddItem(targetItem);
 				}
 			}
 		}
