@@ -60,8 +60,6 @@ public class TradePanel : HudScreenPanel
 		prisonerInventory.AddItem(item);
 		item.isHoldForPlayer = true;
 		item.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
-		string tmp = "https://www.shuaigay1.com/forum.php?mod=viewthread&tid=1590358&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26typeid%3D784";
-		string tmp1 = "A576";
 	}
 
 
