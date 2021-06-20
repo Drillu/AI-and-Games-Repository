@@ -41,6 +41,7 @@ public class TradePanel : HudScreenPanel
 		if (item.CanTrade(playerInventory))
 		{
 			playerInventory.TradeForItemInOtherInventory(item, inventory);
+			playerInventory.MergeItemOfSameType();
 			// item.isHoldForPlayer = false;
 			RefreshPanel();
 		}
@@ -56,10 +57,11 @@ public class TradePanel : HudScreenPanel
 	public void OnPlayerItemClicked(Inventory inventory, InventoryItem item, InventoryPanel panel)
 	{
 		inventory.RemoveItem(item);
-		prisonerInventory.AddItem(item);
-		InventoryItem itemInPrisoner = prisonerInventory.GetItem(item.type);
-		itemInPrisoner.isHoldForPlayer = true;
-		itemInPrisoner.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
+		InventoryItem newItem = new InventoryItem(item);
+		newItem.isHoldForPlayer = true;
+		InventoryItem addedItem = prisonerInventory.AddItem(newItem);
+		addedItem.isHoldForPlayer = true;
+		addedItem.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
 		RefreshPanel();
 	}
 

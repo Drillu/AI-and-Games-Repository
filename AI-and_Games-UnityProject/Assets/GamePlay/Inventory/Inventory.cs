@@ -49,16 +49,19 @@ namespace Inventorys
 			return inventoryItems.Find(e => e.type == item.type) != null;
 		}
 
-		public void AddItem(InventoryItem item)
+		public InventoryItem AddItem(InventoryItem item)
 		{
-			InventoryItem itm = inventoryItems.Find(e => e.type == item.type);
+			InventoryItem itm = inventoryItems.Find(e => e.type == item.type && e.isHoldForPlayer == item.isHoldForPlayer);
 			if (itm != null)
 			{
 				itm.amount += 1;
+				return itm;
 			}
 			else
 			{
-				inventoryItems.Add(new InventoryItem(item));
+				InventoryItem newItem = new InventoryItem(item);
+				inventoryItems.Add(newItem);
+				return newItem;
 			}
 		}
 
@@ -66,14 +69,36 @@ namespace Inventorys
 		{
 			return inventoryItems.Find(e => e.type == itemType);
 		}
+
 		public void RemoveItem(InventoryItem item)
 		{
-			InventoryItem itm = inventoryItems.Find(e => e.type == item.type);
+			InventoryItem itm = inventoryItems.Find(e => e.type == item.type && e.isHoldForPlayer == item.isHoldForPlayer);
 			itm.amount -= 1;
 			if (itm.amount <= 0)
 			{
 				inventoryItems.Remove(itm);
 			}
+		}
+
+		public void MergeItemOfSameType()
+		{
+			Dictionary<InventoryItemType, int> typeIndex = new Dictionary<InventoryItemType, int>();
+			for (int i = 0; i < inventoryItems.Count; i++)
+			{
+				InventoryItem item = inventoryItems[i];
+				if (typeIndex.ContainsKey(item.type))
+				{
+					inventoryItems[typeIndex[item.type]].amount += item.amount;
+					item.amount = 0;
+				}
+				else
+				{
+					typeIndex[item.type] = i;
+				}
+				item.isHoldForPlayer = false;
+			}
+
+			inventoryItems = inventoryItems.FindAll(e => e.amount > 0);
 		}
 	}
 }
