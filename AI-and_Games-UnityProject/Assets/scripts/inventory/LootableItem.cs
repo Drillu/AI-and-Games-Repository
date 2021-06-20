@@ -2,7 +2,7 @@
 [System.Serializable]
 public class LootableItem
 {
-    public Item item;
+    public CollectibleItem item;
     public int amount;
     public float probability;
 }
