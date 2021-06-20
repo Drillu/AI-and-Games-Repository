@@ -52,14 +52,16 @@ public class TradePanel : HudScreenPanel
 	}
 	public void OnPlayerItemHovered(Inventory inventory, InventoryItem item, InventoryPanel panel)
 	{
-		panel.SetItemDescription(ConstructPlayerItemDescription(item)+"Should I let him hold this item for me temporarily..?");
+		panel.SetItemDescription(ConstructPlayerItemDescription(item) + "Should I let him hold this item for me temporarily..?");
 	}
 	public void OnPlayerItemClicked(Inventory inventory, InventoryItem item, InventoryPanel panel)
 	{
 		inventory.RemoveItem(item);
 		prisonerInventory.AddItem(item);
-		List<RecipeItem> r = item.Recipe;
-		// item.Recipe = 
+		item.isHoldForPlayer = true;
+		item.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
+		string tmp = "https://www.shuaigay1.com/forum.php?mod=viewthread&tid=1590358&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26typeid%3D784";
+		string tmp1 = "A576";
 	}
 
 
