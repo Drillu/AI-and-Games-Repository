@@ -14,8 +14,9 @@ public abstract class HudScreenPanel : MonoBehaviour
 /// <summary>
 /// 
 /// </summary>
-/// <returns>true: Panel still active after react to input operation
-/// 		 false: Panel become inactive after react to input operation			
+/// <returns>
+/// true: Panel still active after react to input operation
+/// false: Panel become inactive after react to input operation
 /// </returns>
 	public abstract bool ListenToInput();
 }

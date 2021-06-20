@@ -47,6 +47,18 @@ public class HudScreen : ScreenBase
 		return currentActivePanels.Count > 0;
 	}
 
+	public void CurrentPanelCancelled(HudScreenPanel currentPanel)
+	{
+		if (currentPanel == currentActivePanels.Peek())
+		{
+			currentActivePanels.Pop();
+			if (currentActivePanels.Count <= 0)
+			{
+				UIManager.Instance.QuitCurrentScreen(this);
+			}
+		}
+	}
+
 	public void HudScreenPanelActionDone()
 	{
 		currentActivePanels.Pop();
@@ -111,6 +123,6 @@ public class HudScreen : ScreenBase
 	{
 		currentActivePanels.Pop().gameObject.SetActive(false);
 		currentActivePanels.Clear();
-		UIManager.Instance.QuitCurrentScreen();
+		UIManager.Instance.QuitCurrentScreen(this);
 	}
 }

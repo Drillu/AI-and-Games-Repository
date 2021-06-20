@@ -14,12 +14,22 @@ public class TradePanel : HudScreenPanel
 
 	public override bool ListenToInput()
 	{
-		return true;
+		if (InputManager.Instance.IsCancelButtonPressed)
+		{
+			OnCancelPressed();
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	public void OnCancelPressed()
 	{
-
+		prisonerInventory = null;
+		playerInventory = null;
+		gameObject.SetActive(false);
 	}
 
 	public void SetupTradePanel(Inventory first, Inventory second)
@@ -42,7 +52,6 @@ public class TradePanel : HudScreenPanel
 		{
 			playerInventory.TradeForItemInOtherInventory(item, inventory);
 			playerInventory.MergeItemOfSameType();
-			// item.isHoldForPlayer = false;
 			RefreshPanel();
 		}
 		else

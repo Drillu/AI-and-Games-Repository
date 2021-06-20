@@ -1051,24 +1051,29 @@ MonoBehaviour:
   inventory:
     inventoryItems:
     - type: 1
-      amount: 1
+      description: 
+      amount: 100
       isHoldForPlayer: 0
       Recipe: []
     - type: 2
-      amount: 3
+      description: 
+      amount: 300
       isHoldForPlayer: 0
       Recipe: []
     - type: 4
-      amount: 4
+      description: 
+      amount: 400
       isHoldForPlayer: 0
       Recipe: []
     - type: 3
-      amount: 3
+      description: 
+      amount: 300
       isHoldForPlayer: 0
       Recipe: []
     - type: 5
-      amount: 3
-      isHoldForPlayer: 1
+      description: 
+      amount: 300
+      isHoldForPlayer: 0
       Recipe: []
 --- !u!1 &116188078 stripped
 GameObject:
@@ -3886,6 +3891,7 @@ MonoBehaviour:
   inventory:
     inventoryItems:
     - type: 1
+      description: 
       amount: 100
       isHoldForPlayer: 0
       Recipe:
@@ -3894,10 +3900,12 @@ MonoBehaviour:
       - type: 4
         amount: 2
     - type: 3
+      description: 
       amount: 1
       isHoldForPlayer: 0
       Recipe: []
     - type: 4
+      description: 
       amount: 2
       isHoldForPlayer: 1
       Recipe: []
@@ -16983,7 +16991,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.7125, y: 1}
+    m_SensorSize: {x: 2.1657033, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

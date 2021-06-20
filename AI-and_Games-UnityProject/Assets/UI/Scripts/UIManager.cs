@@ -108,9 +108,9 @@ public class UIManager : MonoBehaviour
 			}
 		}
 	}
-	public void QuitCurrentScreen()
+	public void QuitCurrentScreen(ScreenBase currentScreen)
 	{
-		if (currentActiveScreens.Count > 0)
+		if (currentActiveScreens.Peek() == currentScreen)
 		{
 			currentActiveScreens.Pop();
 		}
