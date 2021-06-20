@@ -41,9 +41,8 @@ public class TradePanel : HudScreenPanel
 		if (item.CanTrade(playerInventory))
 		{
 			playerInventory.TradeForItemInOtherInventory(item, inventory);
-			item.isHoldForPlayer = false;
-			panel.SetupInventoryPanel(inventory, OnPrisonerItemHovered, OnPrisonerItemClicked);
-			secondInventoryPanel.SetupInventoryPanel(playerInventory, OnPlayerItemHovered, OnPlayerItemClicked);
+			// item.isHoldForPlayer = false;
+			RefreshPanel();
 		}
 		else
 		{
@@ -58,19 +57,25 @@ public class TradePanel : HudScreenPanel
 	{
 		inventory.RemoveItem(item);
 		prisonerInventory.AddItem(item);
-		item.isHoldForPlayer = true;
-		item.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
+		InventoryItem itemInPrisoner = prisonerInventory.GetItem(item.type);
+		itemInPrisoner.isHoldForPlayer = true;
+		itemInPrisoner.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
+		RefreshPanel();
 	}
 
+	void RefreshPanel()
+	{
+		firstInventoryPanel.SetupInventoryPanel(prisonerInventory, OnPrisonerItemHovered, OnPrisonerItemClicked);
+		secondInventoryPanel.SetupInventoryPanel(playerInventory, OnPlayerItemHovered, OnPlayerItemClicked);
+	}
 
 	public string ConstructPrisonerItemDescription(InventoryItem item)
 	{
+
 		if (item.Recipe != null && item.Recipe.Count > 0)
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.Append("You wanna trade ");
-			sb.Append(item.name);
-			sb.Append(" with ");
+			sb.Append(item.isHoldForPlayer ? "You waanna get it back with " : $"You wanna trade {item.name} with ");
 			for (int i1 = 0; i1 < item.Recipe.Count; i1++)
 			{
 				RecipeItem i = item.Recipe[i1];

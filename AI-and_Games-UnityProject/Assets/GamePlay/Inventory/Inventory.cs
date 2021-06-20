@@ -23,7 +23,7 @@ namespace Inventorys
 		{
 			inventoryItems = new List<InventoryItem>();
 		}
-		
+
 
 		public void TradeForItemInOtherInventory(InventoryItem targetItem, Inventory otherInventory)
 		{
@@ -62,6 +62,10 @@ namespace Inventorys
 			}
 		}
 
+		public InventoryItem GetItem(InventoryItemType itemType)
+		{
+			return inventoryItems.Find(e => e.type == itemType);
+		}
 		public void RemoveItem(InventoryItem item)
 		{
 			InventoryItem itm = inventoryItems.Find(e => e.type == item.type);
