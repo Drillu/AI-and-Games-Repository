@@ -13,7 +13,9 @@ namespace Inventorys
 		ToiletPaper,
 		Apple,
 		ScrewDriver,
-		Spoon
+		Spoon,
+		ChewingGum,
+		PaperAndPencil
 	}
 	[System.Serializable]
 	public class Inventory
