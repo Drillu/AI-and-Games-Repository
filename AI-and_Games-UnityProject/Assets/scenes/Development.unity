@@ -1050,28 +1050,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory:
     inventoryItems:
-    - type: 1
-      description: 
+    - item: {fileID: 0}
       amount: 100
       isHoldForPlayer: 0
       Recipe: []
-    - type: 2
-      description: 
+    - item: {fileID: 0}
       amount: 300
       isHoldForPlayer: 0
       Recipe: []
-    - type: 4
-      description: 
+    - item: {fileID: 0}
       amount: 400
       isHoldForPlayer: 0
       Recipe: []
-    - type: 3
-      description: 
+    - item: {fileID: 0}
       amount: 300
       isHoldForPlayer: 0
       Recipe: []
-    - type: 5
-      description: 
+    - item: {fileID: 0}
       amount: 300
       isHoldForPlayer: 0
       Recipe: []
@@ -3951,8 +3946,7 @@ MonoBehaviour:
   Name: dug
   inventory:
     inventoryItems:
-    - type: 1
-      description: 
+    - item: {fileID: 11400000, guid: 8e62eb36d0d8f034f83611cf7cd2e485, type: 2}
       amount: 100
       isHoldForPlayer: 0
       Recipe:
@@ -3960,13 +3954,11 @@ MonoBehaviour:
         amount: 1
       - type: 4
         amount: 2
-    - type: 3
-      description: 
+    - item: {fileID: 11400000, guid: d3745786878cf444cb74321d42401e37, type: 2}
       amount: 1
       isHoldForPlayer: 0
       Recipe: []
-    - type: 4
-      description: 
+    - item: {fileID: 11400000, guid: d151325748a01094e8037ccc34b7a528, type: 2}
       amount: 2
       isHoldForPlayer: 1
       Recipe: []
@@ -9712,12 +9704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7348d905c1857749afc879731d478c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleItem:
-    type: 0
-    description: 
-    amount: 1
-    isHoldForPlayer: 0
-    Recipe: []
+  collectibleItem: {fileID: 0}
   interactRange: 0
 --- !u!1 &1126278317 stripped
 GameObject:
@@ -12967,12 +12954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7348d905c1857749afc879731d478c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleItem:
-    type: 0
-    description: 
-    amount: 1
-    isHoldForPlayer: 0
-    Recipe: []
+  collectibleItem: {fileID: 0}
   interactRange: 0
 --- !u!1 &1617183638
 GameObject:
@@ -17100,7 +17082,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.7996657, y: 1}
+    m_SensorSize: {x: 2.1657033, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
