@@ -32,7 +32,7 @@ namespace Inventorys
 	[System.Serializable]
 	public class InventoryItem
 	{
-		CollectibleItem item;
+		public CollectibleItem item;
 		public InventoryItemType type { get { return item.type; } }
 		public string name { get { return item.ItemName; } }
 		public string description { get { return item.description; } }
