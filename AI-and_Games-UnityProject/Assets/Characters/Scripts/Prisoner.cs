@@ -26,6 +26,7 @@ public class Prisoner : Agent, IInteractable
 
 	public void Interact(GameObject initiater)
 	{
+		AudioManager.Instance.PlaySFX(Director.Instance.audioDataBase.GetRandomChatSFXClip());
 		Director.Instance.TalkToPrisoner(this);
 	}
 	private void OnDrawGizmos()

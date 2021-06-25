@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc32b6acdcc44e94694f97c57ee4de86, type: 3}
+  m_Name: AudioDatabase
+  m_EditorClassIdentifier: 
+  intro: {fileID: 8300000, guid: b065da9efd234c84b99ae496d433a24d, type: 3}
+  suspension: {fileID: 8300000, guid: 6bc9fd8668b81894abad95adade0c65c, type: 3}
+  action: {fileID: 8300000, guid: c4ce67d4dcc0ca548aa723618be27488, type: 3}
+  chatClips:
+  - {fileID: 8300000, guid: 0b431a0eca12d4943b09da3a5863d9c1, type: 3}
+  - {fileID: 8300000, guid: ec6cf15ee276da7439181b0620bfd083, type: 3}
+  - {fileID: 8300000, guid: 3597f7d61d7fd4b4196ec000420c315c, type: 3}
+  - {fileID: 8300000, guid: 8e3b6e0ac8cce384fa5d2ec1b86d33f2, type: 3}
+  - {fileID: 8300000, guid: cee5a8dac43256943ab9c0b4d80a39af, type: 3}
+  - {fileID: 8300000, guid: cf36b9451664ffd4b94b0c187e0a7d16, type: 3}
+  - {fileID: 8300000, guid: 784583f60ffcf9a4599314497dc61f3e, type: 3}
+  - {fileID: 8300000, guid: 9cbd1fb436247684699073523690a7c2, type: 3}
+  - {fileID: 8300000, guid: c0f3356ef59308e4ca5d85024e5c4198, type: 3}
+  - {fileID: 8300000, guid: bef125de8cdfa6f4a81b7e5a6e8ff249, type: 3}
+  - {fileID: 8300000, guid: fddd2e1e900c78d4094ffc16e64595bd, type: 3}
+  - {fileID: 8300000, guid: ac8a546ff3c292548b40525ff64f37df, type: 3}
+  - {fileID: 8300000, guid: c3b92a27aa6face4c9018e9e49fab6ec, type: 3}
+  - {fileID: 8300000, guid: 1aaccd81d4b3c4941897eb8b29edf38a, type: 3}
+  - {fileID: 8300000, guid: 69c926bb37de8c64e998f48ef1b375be, type: 3}
+  - {fileID: 8300000, guid: 82ae29a669ad75d4eb78be88aa4b5b45, type: 3}
+  - {fileID: 8300000, guid: 3ae0d3c3f7f6a3c4391f4820cb809bb7, type: 3}
+  - {fileID: 8300000, guid: 0ac5c3f469e500e49a63beaf7cdf75c1, type: 3}
+  - {fileID: 8300000, guid: 599842e3f61ba1c4d85cfd473d6ed9f9, type: 3}
+  - {fileID: 8300000, guid: 34192c436ceda1a4cbc67aef9c065120, type: 3}
+  - {fileID: 8300000, guid: 65bbee72674e6eb47aa045dc155bc57f, type: 3}
+  - {fileID: 8300000, guid: 4662211d2b889d3479a1f77f4088d3be, type: 3}
+  - {fileID: 8300000, guid: aab9852292027c842a653584979bc129, type: 3}
+  - {fileID: 8300000, guid: 54b3b0c0f9c396a46b7d32d058bd11fe, type: 3}
+  - {fileID: 8300000, guid: e0156405ab25d6e43ab29597d49fe730, type: 3}
+  collectObjectClip: {fileID: 8300000, guid: 294e105e2c6650f4ba18318b861bad2b, type: 3}
+  alarmClip: {fileID: 8300000, guid: 034b4bcc1161b29439d84b3641318c82, type: 3}
+  uiHover: {fileID: 8300000, guid: 8f61fcda0c0df724085bf79a56893e35, type: 3}
+  uiConfirm: {fileID: 8300000, guid: f46437a0503e8dd4e830db972e4d1a6e, type: 3}

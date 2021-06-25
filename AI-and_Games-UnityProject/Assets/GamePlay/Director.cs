@@ -5,7 +5,11 @@ using UnityEngine;
 public class Director : MonoBehaviour
 {
 	public static Director Instance { get; set; }
+	[Header("Audio")]
+	[SerializeField] GameObject audioManagerPrefab;
+	[SerializeField] public AudioDataBase audioDataBase;
 	public bool IsInteractingWithUI { get; set; }
+
 	private void Awake()
 	{
 		if (Instance && Instance != this)
@@ -21,6 +25,10 @@ public class Director : MonoBehaviour
 
 	private void Start()
 	{
+		LoadManagers();
+		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Primary, audioDataBase.suspension);
+		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Secondary, audioDataBase.action);
+		AudioManager.Instance.SetMusicLayerTrackVolumn(AudioManager.MusicLayer.Secondary, 0);
 		// UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 		// UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
 		UIManager.Instance.Initialize();
@@ -38,5 +46,13 @@ public class Director : MonoBehaviour
 	public Inventorys.Inventory GetPlayerInventory()
 	{
 		return Player.Instance.GetInventory();
+	}
+
+	private void LoadManagers()
+	{
+		if (!AudioManager.Instance)
+		{
+			Instantiate(audioManagerPrefab);
+		}
 	}
 }
