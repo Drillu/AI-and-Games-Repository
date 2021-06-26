@@ -18,10 +18,17 @@ public class Collectible : MonoBehaviour, IInteractable
 
 	public void Interact(GameObject initiater)
 	{
-		if (initiater.GetComponent<Player>())
+		Player player = initiater.GetComponent<Player>();
+		if (player)
 		{
 			Debug.Log("Player found me!");
+			Inventory playerInventory = player.GetInventory();
+			InventoryItem item = new InventoryItem();
+			item.item = collectibleItem;
+			item.isHoldForPlayer = false;
+			playerInventory.AddItem(item);
 			AudioManager.Instance.PlaySFX(Director.Instance.audioDataBase.collectObjectClip);
+			gameObject.SetActive(false);
 		}
 	}
 

@@ -47,6 +47,7 @@ namespace Inventorys
 		}
 		public InventoryItem(InventoryItem other)
 		{
+			item = other.item;
 			amount = 1;
 			Recipe = other.Recipe;
 		}

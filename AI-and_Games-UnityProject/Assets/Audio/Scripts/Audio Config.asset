@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43aeffa74ae96c049a96a8fbc670d805, type: 3}
   m_Name: Audio Config
   m_EditorClassIdentifier: 
-  masterVolume: 1
+  masterVolume: 0.174
   musicTracskVolume: 1
-  primaryLayerMusicTrackVolumn: 1
-  secondaryLayerMusicTrackVolumn: 0
   sfxTrackVolume: 1
   musicFadeTransitionDuration: 2
+  primaryLayerMusicTrackVolumn: 1
+  secondaryLayerMusicTrackVolumn: 0

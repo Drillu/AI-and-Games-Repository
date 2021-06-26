@@ -1050,23 +1050,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory:
     inventoryItems:
-    - item: {fileID: 0}
-      amount: 100
-      isHoldForPlayer: 0
-      Recipe: []
-    - item: {fileID: 0}
+    - item: {fileID: 11400000, guid: 8e62eb36d0d8f034f83611cf7cd2e485, type: 2}
       amount: 300
       isHoldForPlayer: 0
       Recipe: []
-    - item: {fileID: 0}
-      amount: 400
-      isHoldForPlayer: 0
-      Recipe: []
-    - item: {fileID: 0}
-      amount: 300
-      isHoldForPlayer: 0
-      Recipe: []
-    - item: {fileID: 0}
+    - item: {fileID: 11400000, guid: 8c7b6251eae90484e94b8420c3d4011a, type: 2}
       amount: 300
       isHoldForPlayer: 0
       Recipe: []
@@ -17244,7 +17232,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.9585764, y: 1}
+    m_SensorSize: {x: 2.1657033, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
