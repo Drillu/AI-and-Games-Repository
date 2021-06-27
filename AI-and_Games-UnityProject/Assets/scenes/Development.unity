@@ -4420,7 +4420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538721923}
   m_LocalRotation: {x: -0.47274178, y: -0.21132089, z: 0.06489705, w: -0.85302234}
-  m_LocalPosition: {x: -11.966552, y: 33.357872, z: -22.818695}
+  m_LocalPosition: {x: -11.92102, y: 33.362366, z: -22.839985}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5971,6 +5971,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5053704302909372489, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7107396614941728302, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6009,6 +6013,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7131775912194280780, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982167217793437153, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083616296499747631, guid: c28316046265df047b90b88e52471dce, type: 3}
@@ -14993,16 +15001,16 @@ MonoBehaviour:
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.5
+  m_ScreenX: 0.4991103
   m_ScreenY: 0.5
   m_CameraDistance: 40
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0.2
+  m_DeadZoneHeight: 0.2
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
+  m_SoftZoneWidth: 0.454
+  m_SoftZoneHeight: 0.433
+  m_BiasX: -0.000000117332
   m_BiasY: 0
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
@@ -17099,7 +17107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141337184}
   m_LocalRotation: {x: -0.47274178, y: -0.21132089, z: 0.06489705, w: -0.85302234}
-  m_LocalPosition: {x: -11.966552, y: 33.357872, z: -22.818695}
+  m_LocalPosition: {x: -11.92102, y: 33.362366, z: -22.839985}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1918526217}
@@ -17135,7 +17143,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.9585764, y: 1}
+    m_SensorSize: {x: 1.948007, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

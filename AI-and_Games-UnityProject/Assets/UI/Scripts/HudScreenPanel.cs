@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class HudScreenPanel : MonoBehaviour
 {
 	protected HudScreen hudScreen;
-	protected HudScreen.PanelType panelType;
 	public virtual void Initialize(HudScreen hud)
 	{
 		hudScreen = hud;

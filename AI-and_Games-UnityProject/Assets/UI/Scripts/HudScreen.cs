@@ -4,24 +4,13 @@ using UnityEngine;
 
 public class HudScreen : ScreenBase
 {
-	public enum PanelType
-	{
-		None,
-		Dialogue,
-		Trade,
-		PlayerInventory
-	}
 
-	[SerializeField] DialoguePanel DialoguePanel;
-	[SerializeField] TradePanel TradePanel;
-	[SerializeField] PlayerInventoryPanel PlayerInventoryPanel;
+	[SerializeField] List<HudScreenPanel> hudScreenPanels;
 	public IInteractable currentInteractingObject;
 	Stack<HudScreenPanel> currentActivePanels = new Stack<HudScreenPanel>();
 	public override void Initialize()
 	{
-		DialoguePanel.Initialize(this);
-		TradePanel.Initialize(this);
-		PlayerInventoryPanel.Initialize(this);
+		hudScreenPanels.ForEach(panel => panel.Initialize(this));
 		HideAllPanels();
 	}
 
@@ -59,59 +48,33 @@ public class HudScreen : ScreenBase
 		}
 	}
 
-	public void HudScreenPanelActionDone()
-	{
-		currentActivePanels.Pop();
-		if (currentActivePanels.Count <= 0)
-		{
-			// Hide Hud Screen
-		}
-	}
 
 	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, string text, bool hideOtherPanels = true)
 	{
-		if (hideOtherPanels)
-		{
-			TradePanel.gameObject.SetActive(false);
-			PlayerInventoryPanel.gameObject.SetActive(false);
-			currentActivePanels.Clear();
-		}
-		DialoguePanel.gameObject.SetActive(true);
-		DialoguePanel.SetDialogue(icon, charname, text);
-		currentActivePanels.Push(DialoguePanel);
+		DialoguePanel panel = SwitchToPanel<DialoguePanel>();
+		panel.SetDialogue(icon, charname, text);
 	}
 
 	public void InitializeAndShowTradePanel(bool hideOtherPanels = true)
 	{
-		if (hideOtherPanels)
-		{
-			DialoguePanel.gameObject.SetActive(false);
-			PlayerInventoryPanel.gameObject.SetActive(false);
-			currentActivePanels.Clear();
-		}
-		TradePanel.SetupTradePanel((currentInteractingObject as Prisoner).inventory, Director.Instance.GetPlayerInventory());
-		TradePanel.gameObject.SetActive(true);
-		currentActivePanels.Push(TradePanel);
+		TradePanel panel = SwitchToPanel<TradePanel>();
+		panel.SetupTradePanel((currentInteractingObject as Prisoner).inventory, Director.Instance.GetPlayerInventory());
 	}
 
 	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = false)
 	{
-		if (hideOtherPanels)
-		{
-			TradePanel.gameObject.SetActive(false);
-			DialoguePanel.gameObject.SetActive(false);
-			currentActivePanels.Clear();
-		}
-		PlayerInventoryPanel.Initialize();
-		PlayerInventoryPanel.gameObject.SetActive(true);
-		currentActivePanels.Push(PlayerInventoryPanel);
+		PlayerInventoryPanel panel = SwitchToPanel<PlayerInventoryPanel>();
+		panel.Initialize();
 	}
 
+	public void InitializeAndShowCollectItemPanel(CollectibleItem item)
+	{
+		CollectItemPanel panel = SwitchToPanel<CollectItemPanel>();
+		panel.InitializeAndShow(item.ItemName);
+	}
 	public void HideAllPanels()
 	{
-		TradePanel.gameObject.SetActive(false);
-		DialoguePanel.gameObject.SetActive(false);
-		PlayerInventoryPanel.gameObject.SetActive(false);
+		hudScreenPanels.ForEach(panel => panel.gameObject.SetActive(false));
 	}
 
 	public void OnTradeButtonClicked()
@@ -124,5 +87,30 @@ public class HudScreen : ScreenBase
 		currentActivePanels.Pop().gameObject.SetActive(false);
 		currentActivePanels.Clear();
 		UIManager.Instance.QuitCurrentScreen(this);
+	}
+	private T SwitchToPanel<T>(bool hideOthers = true) where T : HudScreenPanel
+	{
+		T result = null;
+		foreach (HudScreenPanel panel in hudScreenPanels)
+		{
+			if (panel is T)
+			{
+				panel.gameObject.SetActive(true);
+				if (hideOthers)
+				{
+					currentActivePanels.Clear();
+				}
+				currentActivePanels.Push(panel);
+				result = panel as T;
+			}
+			else
+			{
+				if (hideOthers)
+				{
+					panel.gameObject.SetActive(false);
+				}
+			}
+		}
+		return result;
 	}
 }
