@@ -6,6 +6,11 @@ public class Collectible : MonoBehaviour, IInteractable
 {
 	public CollectibleItem collectibleItem;
 	[SerializeField] public float interactRange;
+	private System.Action<Collectible> OnItemPickedUp;
+	public void Initialize(System.Action<Collectible> onPickedup)
+	{
+		OnItemPickedUp = onPickedup;
+	}
 	public float GetInteractRange()
 	{
 		return interactRange;
@@ -28,9 +33,10 @@ public class Collectible : MonoBehaviour, IInteractable
 			item.isHoldForPlayer = false;
 			playerInventory.AddItem(item);
 			AudioManager.Instance.PlaySFX(Director.Instance.audioDataBase.collectObjectClip);
-			// gameObject.SetActive(false);
 			UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 			UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowCollectItemPanel(collectibleItem);
+			OnItemPickedUp?.Invoke(this);
+			Destroy(gameObject);
 		}
 	}
 
