@@ -16,7 +16,6 @@ public class CollectibleSpawner : MonoBehaviour
 	[SerializeField] float minRespawnInterval;
 	[SerializeField] int amountToSpawn;
 
-	private bool isSpawnedPickedup;
 
 	private void Awake()
 	{
@@ -28,12 +27,13 @@ public class CollectibleSpawner : MonoBehaviour
 		Collectible item = Instantiate(spawnee, GetRandomSpawnPoint().position, Quaternion.identity);
 		item.transform.parent = this.transform;
 		item.Initialize(OnSpawneePickedUp);
-		isSpawnedPickedup = false;
 	}
 	private void OnSpawneePickedUp(Collectible obj)
 	{
-		isSpawnedPickedup = true;
-		StartCoroutine(RespawnCR());
+		if (respawnable)
+		{
+			StartCoroutine(RespawnCR());
+		}
 	}
 
 	IEnumerator RespawnCR()
