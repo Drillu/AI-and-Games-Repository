@@ -19,7 +19,7 @@ public class Prisoner : Agent, IInteractable
 		return inventory;
 	}
 
-	public Vector3 GetPosition()
+	public Vector3 GetInteractCenter()
 	{
 		return transform.position;
 	}

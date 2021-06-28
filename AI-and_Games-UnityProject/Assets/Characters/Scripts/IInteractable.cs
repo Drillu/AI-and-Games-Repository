@@ -6,5 +6,5 @@ public interface IInteractable
 {
 	void Interact(GameObject initiater);
 	float GetInteractRange();
-	Vector3 GetPosition();
+	Vector3 GetInteractCenter();
 }

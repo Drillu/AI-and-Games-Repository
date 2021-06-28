@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!208 &7201207908402439684
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8557605386933072103}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &5733489421597557605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,11 +114,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
---- !u!1 &8557605386933072103 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1936357575814365112, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
-  m_PrefabInstance: {fileID: 7790640451703295839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8557605386933072100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}

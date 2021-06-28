@@ -2,23 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Inventorys;
+using UnityEditor;
+
 public class Collectible : MonoBehaviour, IInteractable
 {
 	public CollectibleItem collectibleItem;
 	[SerializeField] public float interactRange;
+	[SerializeField] public Transform interactCenter;
 	private System.Action<Collectible> OnItemPickedUp;
+
 	public void Initialize(System.Action<Collectible> onPickedup)
 	{
 		OnItemPickedUp = onPickedup;
+	}
+
+	public void SetInteractRange(float newRange)
+	{
+		interactRange = newRange;
+	}
+
+	public void SetInteractCenter(Transform newCenter)
+	{
+		interactCenter = newCenter;
 	}
 	public float GetInteractRange()
 	{
 		return interactRange;
 	}
 
-	public Vector3 GetPosition()
+	public Vector3 GetInteractCenter()
 	{
-		return transform.position;
+		return interactCenter.position;
 	}
 
 	public void Interact(GameObject initiater)
@@ -42,7 +56,11 @@ public class Collectible : MonoBehaviour, IInteractable
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.cyan;
-		Gizmos.DrawWireSphere(transform.position, interactRange);
+		if (interactCenter)
+		{
+			Gizmos.color = Color.cyan;
+			Gizmos.DrawWireSphere(interactCenter.position, interactRange);
+		}
 	}
+
 }

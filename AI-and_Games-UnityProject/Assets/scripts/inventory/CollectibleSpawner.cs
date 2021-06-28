@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
+	float minLimit = 10;
+	float maxLimit = 600;
 	[SerializeField] Collectible spawnee;
-	[SerializeField] Transform spawnPosition;
+	[SerializeField] List<Transform> spawnPoints;
+	[SerializeField] [Range(0, 20)] float interactRange;
+
+	[Header("Spawner Config")]
 	[SerializeField] bool respawnable;
-	[SerializeField] float respawnInterval;
+	[SerializeField] float minRespawnInterval;
 	[SerializeField] int amountToSpawn;
 
 	private bool isSpawnedPickedup;
@@ -20,7 +25,7 @@ public class CollectibleSpawner : MonoBehaviour
 
 	private void Spawn()
 	{
-		Collectible item = Instantiate(spawnee, spawnPosition.position, Quaternion.identity);
+		Collectible item = Instantiate(spawnee, GetRandomSpawnPoint().position, Quaternion.identity);
 		item.transform.parent = this.transform;
 		item.Initialize(OnSpawneePickedUp);
 		isSpawnedPickedup = false;
@@ -39,6 +44,20 @@ public class CollectibleSpawner : MonoBehaviour
 
 	float GetNextRespawnTimer()
 	{
-		return respawnInterval;
+		return minRespawnInterval;
 	}
+	Transform GetRandomSpawnPoint()
+	{
+		return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)];
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.cyan;
+		foreach (Transform spawnPoint in spawnPoints)
+		{
+			Gizmos.DrawWireSphere(spawnPoint.position, interactRange);
+		}
+	}
+
 }

@@ -67,13 +67,13 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				navagentMover.MoveToPosition(interactTarget.GetPosition());
+				navagentMover.MoveToPosition(interactTarget.GetInteractCenter());
 			}
 		}
 	}
 	private bool IsInInteractRadius(IInteractable go)
 	{
-		return Vector3.Distance(transform.position, go.GetPosition()) <= go.GetInteractRange();
+		return Vector3.Distance(transform.position, go.GetInteractCenter()) <= go.GetInteractRange();
 	}
 
 	private static void TalkToPrisoner(Prisoner p)
