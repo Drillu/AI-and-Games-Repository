@@ -286,6 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8731792841487351741}
   - component: {fileID: 1615789311756587901}
+  - component: {fileID: 3637743409318275359}
   m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
@@ -324,13 +325,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdec08419322b2847a38e4fcc614da70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnee: {fileID: 0}
+  spawnee: {fileID: 4920269947324736760, guid: 1b69fd7a13cb3564faa5d5145eea699f, type: 3}
   spawnPoints:
   - {fileID: 8742058055574730519}
   interactRange: 2.9
+  interactThroughSpawner: 1
   respawnable: 0
-  minRespawnInterval: 0
+  minRespawnInterval: 10
   amountToSpawn: 0
+--- !u!65 &3637743409318275359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243381717098210567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.759595, y: 5.728365, z: 1.3780557}
+  m_Center: {x: 0.033661522, y: 2.9442372, z: 0.2692956}
 --- !u!1 &8693526286191212645
 GameObject:
   m_ObjectHideFlags: 0
