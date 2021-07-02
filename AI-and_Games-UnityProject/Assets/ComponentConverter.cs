@@ -7,11 +7,11 @@ public class ComponentConverter : MonoBehaviour
 	[MenuItem("Converter/Convert Kitchen Table")]
 	public static void ConvertTable()
 	{
-		GameObject kitchen = GameObject.Find("Kitchenn");
+		GameObject kitchen = GameObject.Find("Kitchen");
 		GameObject newTable = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/GamePlay/SceneObjects/Table.prefab");
 		foreach (Transform table in kitchen.transform)
 		{
-			if (table.name.StartsWith("Table"))
+			if (table.name.Trim().ToLower().StartsWith("table") && !table.GetComponent<CollectibleSpawner>())
 			{
 				GameObject ntable = (GameObject)PrefabUtility.InstantiatePrefab(newTable, kitchen.transform);
 				ntable.transform.position = table.position;

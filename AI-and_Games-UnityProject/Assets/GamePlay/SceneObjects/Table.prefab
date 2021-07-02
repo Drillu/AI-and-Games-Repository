@@ -244,7 +244,7 @@ MonoBehaviour:
   spawnee: {fileID: -1967079776885395935, guid: 8b62592731e80cf47b76c3b45e71a018, type: 3}
   spawnPoints:
   - {fileID: 7089137242527504519}
-  interactRange: 3.57
+  interactRange: 7.19
   interactThroughSpawner: 1
   respawnable: 0
   minRespawnInterval: 0
