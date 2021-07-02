@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
+
 public class ComponentConverter : MonoBehaviour
 {
 	[MenuItem("Converter/Convert Kitchen Table")]
@@ -18,6 +20,19 @@ public class ComponentConverter : MonoBehaviour
 				ntable.transform.rotation = table.rotation;
 				DestroyImmediate(table.gameObject);
 			}
+		}
+	}
+	[MenuItem("Converter/Convert Library")]
+	public static void ConvertLibrary()
+	{
+		List<GameObject> libraries = GameObject.FindObjectsOfType<GameObject>().ToList().FindAll(go => go.name.Trim().ToLower().StartsWith("library"));
+		GameObject newlib = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/GamePlay/Collectibles/Library.prefab");
+		foreach (GameObject lib in libraries)
+		{
+			GameObject nlib = (GameObject)PrefabUtility.InstantiatePrefab(newlib, lib.transform.parent);
+			nlib.transform.position = lib.transform.position;
+			nlib.transform.rotation = lib.transform.rotation;
+			DestroyImmediate(lib);
 		}
 	}
 }
