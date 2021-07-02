@@ -9,14 +9,14 @@ public class ComponentConverter : MonoBehaviour
 	{
 		GameObject kitchen = GameObject.Find("Kitchenn");
 		GameObject newTable = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/GamePlay/SceneObjects/Table.prefab");
-		foreach (GameObject table in kitchen.transform)
+		foreach (Transform table in kitchen.transform)
 		{
 			if (table.name.StartsWith("Table"))
 			{
 				GameObject ntable = (GameObject)PrefabUtility.InstantiatePrefab(newTable, kitchen.transform);
-				ntable.transform.position = table.transform.position;
-				ntable.transform.rotation = table.transform.rotation;
-				DestroyImmediate(table);
+				ntable.transform.position = table.position;
+				ntable.transform.rotation = table.rotation;
+				DestroyImmediate(table.gameObject);
 			}
 		}
 	}
