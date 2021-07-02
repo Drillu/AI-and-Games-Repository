@@ -14,8 +14,12 @@ public class CollectItemPanel : HudScreenPanel
 			InputManager.Instance.IsMouseLeftButtonDown ||
 			InputManager.Instance.IsMouseLeftButtonDown)
 		{
-			isTimelineCancelled = true;
-			PlayTimeline(false);
+			if (!isTimelineCancelled)
+			{
+				isTimelineCancelled = true;
+				timeline.Stop();
+				PlayTimeline(false);
+			}
 			return false;
 		}
 		else
@@ -41,6 +45,7 @@ public class CollectItemPanel : HudScreenPanel
 		yield return new WaitForSeconds(2f);
 		if (!isTimelineCancelled)
 		{
+			isTimelineCancelled = true;
 			PlayTimeline(false);
 			hudScreen.CurrentPanelCancelled(this);
 		}

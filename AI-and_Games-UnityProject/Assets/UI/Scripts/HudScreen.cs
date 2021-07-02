@@ -67,10 +67,10 @@ public class HudScreen : ScreenBase
 		panel.Initialize();
 	}
 
-	public void InitializeAndShowCollectItemPanel(CollectibleItem item)
+	public void InitializeAndShowCollectItemPanel(string formatter, string item)
 	{
 		CollectItemPanel panel = SwitchToPanel<CollectItemPanel>();
-		panel.InitializeAndShow($"You found <color=green>{item.ItemName}</color>");
+		panel.InitializeAndShow(string.Format(formatter, $"<color=green>{item}</color>"));
 	}
 	public void HideAllPanels()
 	{

@@ -59,9 +59,12 @@ public class CollectibleSpawner : MonoBehaviour, IInteractable
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.cyan;
-		foreach (Transform spawnPoint in spawnPoints)
+		if (spawnPoints != null)
 		{
-			Gizmos.DrawWireSphere(spawnPoint.position, interactRange);
+			foreach (Transform spawnPoint in spawnPoints)
+			{
+				Gizmos.DrawWireSphere(spawnPoint.position, interactRange);
+			}
 		}
 	}
 

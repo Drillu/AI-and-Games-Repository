@@ -59,10 +59,6 @@ public class InputManager : MonoBehaviour
 	public void OnCancelButtonDown(InputAction.CallbackContext ctx)
 	{
 		IsCancelButtonPressed = ctx.canceled;
-		if (ctx.canceled)
-		{
-			Debug.Log("ESC pressed");
-		}
 	}
 
 	public void OnShowInventoryButtonPressed(InputAction.CallbackContext ctx)

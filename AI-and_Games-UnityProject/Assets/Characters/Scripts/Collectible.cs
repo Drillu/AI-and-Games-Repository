@@ -48,7 +48,8 @@ public class Collectible : MonoBehaviour, IInteractable
 			playerInventory.AddItem(item);
 			AudioManager.Instance.PlaySFX(Director.Instance.audioDataBase.collectObjectClip);
 			UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
-			UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowCollectItemPanel(collectibleItem);
+			string formatter = "You have found {0}.";
+			UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowCollectItemPanel(formatter, collectibleItem.name);
 			OnItemPickedUp?.Invoke(this);
 			Destroy(gameObject);
 		}
