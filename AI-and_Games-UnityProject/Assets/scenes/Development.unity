@@ -4175,7 +4175,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538721923}
-  m_LocalRotation: {x: 0.46697378, y: 0.042412054, z: -0.022430377, w: 0.8829686}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412005, z: -0.022430347, w: 0.88296866}
   m_LocalPosition: {x: -2.1277757, y: 32.6, z: -26.367796}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
@@ -4260,7 +4260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ed611bc4bde0948bea22b3c777e546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 106874675}
 --- !u!1 &539269735
 GameObject:
   m_ObjectHideFlags: 0
@@ -6534,6 +6533,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioManagerPrefab: {fileID: 493375345419338398, guid: e5fa709a0f4b7fb48a8a8e8f880c8e0b, type: 3}
   audioDataBase: {fileID: 11400000, guid: 867e84397eff82946bd0d611a6624fa6, type: 2}
+  prequisitionInterval: 30
+  prequisitionDuration: 30
+  prequisitionCounter: 0
+  isPrequisitioning: 0
 --- !u!4 &836156761
 Transform:
   m_ObjectHideFlags: 0
@@ -16099,7 +16102,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141337184}
-  m_LocalRotation: {x: 0.46697378, y: 0.042412054, z: -0.022430377, w: 0.8829686}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412005, z: -0.022430347, w: 0.88296866}
   m_LocalPosition: {x: -2.1277757, y: 32.6, z: -26.367796}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -16136,7 +16139,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.6360486, y: 1}
+    m_SensorSize: {x: 1.9326487, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

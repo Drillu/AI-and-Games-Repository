@@ -269,7 +269,7 @@ public class AudioManager : MonoBehaviour
 
 
 	// 
-	public void SetMusicLayerTrackVolumn(MusicLayer layer, float volume, bool UpdateConfigAsset = true)
+	public void SetMusicLayerTrackVolumn(MusicLayer layer, float volume, bool UpdateConfigAsset = false)
 	{
 		volume = Mathf.Clamp(volume, 0f, 1f);
 		if (UpdateConfigAsset)

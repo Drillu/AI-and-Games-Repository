@@ -17,4 +17,4 @@ MonoBehaviour:
   sfxTrackVolume: 1
   musicFadeTransitionDuration: 2
   primaryLayerMusicTrackVolumn: 1
-  secondaryLayerMusicTrackVolumn: 0
+  secondaryLayerMusicTrackVolumn: 0.648
