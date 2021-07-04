@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class HudScreen : ScreenBase
 {
+	[Header("Gadgets")]
+	[SerializeField] GameObject countDown;
+	[SerializeField] TMPro.TextMeshProUGUI countDownText;
 
+	[Header("Panels")]
 	[SerializeField] List<HudScreenPanel> hudScreenPanels;
-	public IInteractable currentInteractingObject;
+	public Inventorys.Inventory currentInteractingInventory;
 	Stack<HudScreenPanel> currentActivePanels = new Stack<HudScreenPanel>();
+
 	public override void Initialize()
 	{
 		hudScreenPanels.ForEach(panel => panel.Initialize(this));
@@ -55,10 +60,10 @@ public class HudScreen : ScreenBase
 		panel.SetDialogue(icon, charname, text);
 	}
 
-	public void InitializeAndShowTradePanel(bool hideOtherPanels = true)
+	public void InitializeAndShowTradePanel(Inventorys.Inventory firstInventory, Inventorys.Inventory secondInventory, bool hideOtherPanels = true)
 	{
 		TradePanel panel = SwitchToPanel<TradePanel>();
-		panel.SetupTradePanel((currentInteractingObject as Prisoner).inventory, Director.Instance.GetPlayerInventory());
+		panel.SetupTradePanel(firstInventory, secondInventory);
 	}
 
 	public void InitializeAndShowPlayerInventoryPanel(bool hideOtherPanels = false)
@@ -79,7 +84,7 @@ public class HudScreen : ScreenBase
 
 	public void OnTradeButtonClicked()
 	{
-		InitializeAndShowTradePanel();
+		InitializeAndShowTradePanel(currentInteractingInventory, Director.Instance.GetPlayerInventory());
 	}
 
 	public void OnByebyeButtonClicked()
@@ -112,5 +117,23 @@ public class HudScreen : ScreenBase
 			}
 		}
 		return result;
+	}
+
+	public void SetCountdownActive(bool active)
+	{
+		countDown.SetActive(active);
+	}
+	public void UpdateCountdownText(string countDown)
+	{
+		countDownText.text = countDown;
+	}
+	public void UpdateCountdownText(float countDown)
+	{
+		countDownText.text = string.Empty;
+		string[] counter = countDown.ToString("F2").Split('.');
+		countDownText.text += counter[0] + ".";
+		countDownText.text += $"<size=70%>{counter[1]}</size>";
+
+
 	}
 }

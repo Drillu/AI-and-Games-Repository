@@ -33,16 +33,18 @@ public class Director : MonoBehaviour
 	private void Start()
 	{
 		LoadManagers();
+		// audio
 		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Primary, audioDataBase.suspension);
 		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Secondary, audioDataBase.action);
 		AudioManager.Instance.SetMusicLayerTrackVolumn(AudioManager.MusicLayer.Secondary, 0);
-		// UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
-		// UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
+		// ui
 		UIManager.Instance.Initialize();
 		UIManager.Instance.HideAllScreens();
 		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
+		// requisition
 		GameEvents.OnPrequisitionStart.AddListener(StartPrequisition);
 		GameEvents.OnPrequisitionEnd.AddListener(EndPrequisition);
+		prequisitionCounter = prequisitionInterval;
 	}
 
 	private void Update()
@@ -67,6 +69,7 @@ public class Director : MonoBehaviour
 				GameEvents.OnPrequisitionEnd?.Invoke();
 			}
 		}
+		UIManager.Instance.GetScreenComponent<HudScreen>().UpdateCountdownText(prequisitionCounter);
 	}
 
 	private void StartPrequisition()
@@ -84,7 +87,7 @@ public class Director : MonoBehaviour
 	{
 		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, p.name, p.Speach);
-		UIManager.Instance.GetScreenComponent<HudScreen>().currentInteractingObject = p;
+		UIManager.Instance.GetScreenComponent<HudScreen>().currentInteractingInventory = p.GetInventory();
 	}
 
 	public Inventorys.Inventory GetPlayerInventory()
