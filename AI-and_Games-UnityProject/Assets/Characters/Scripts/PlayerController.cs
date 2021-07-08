@@ -23,29 +23,29 @@ public class PlayerController : MonoBehaviour
 
 	private void CheckUserInput()
 	{
-		Ray r = GetMouseRay();
-		bool hitSomething = Physics.Raycast(r, out RaycastHit raycastHit);
-		if (hitSomething)
+		if (InputManager.Instance.IsMouseRightButtonDown)
 		{
-			IInteractable interactable = raycastHit.transform.GetComponent<IInteractable>();
-			if (interactable != null)
+			Ray r = GetMouseRay();
+			bool hitSomething = Physics.Raycast(r, out RaycastHit raycastHit);
+			if (hitSomething)
 			{
-				PlayerMouseOverInteractable(interactable);
-			}
-			else
-			{
-				PlayerMouseOverNavigatableArea(raycastHit.point);
+				IInteractable interactable = raycastHit.transform.GetComponent<IInteractable>();
+				if (interactable != null)
+				{
+					PlayerMouseOverInteractable(interactable);
+				}
+				else
+				{
+					PlayerMouseOverNavigatableArea(raycastHit.point);
+				}
 			}
 		}
 	}
 
 	private void PlayerMouseOverNavigatableArea(Vector3 point)
 	{
-		if (InputManager.Instance.IsMouseRightButtonDown)
-		{
-			interactTarget = null;
-			navagentMover.MoveToPosition(point);
-		}
+		interactTarget = null;
+		navagentMover.MoveToPosition(point);
 	}
 
 	private void PlayerMouseOverInteractable(IInteractable interactable)

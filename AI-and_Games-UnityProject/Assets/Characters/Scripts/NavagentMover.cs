@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NavagentMover : MonoBehaviour
 {
+	[SerializeField] float moveSpeed;
 	private NavMeshAgent _navmeshAgent;
 	private NavMeshAgent navMeshAgent { get { if (!_navmeshAgent) { _navmeshAgent = GetComponent<NavMeshAgent>(); } return _navmeshAgent; } }
 
@@ -13,6 +14,7 @@ public class NavagentMover : MonoBehaviour
 	{
 		navMeshAgent.isStopped = false;
 		navMeshAgent.destination = position;
+		navMeshAgent.speed = moveSpeed;
 	}
 
 	public void StopMoving()

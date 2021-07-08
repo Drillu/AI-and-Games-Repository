@@ -21,11 +21,16 @@ namespace Inventorys
 	public class Inventory
 	{
 		public List<InventoryItem> inventoryItems;
+		public GameObject owner;
 		public Inventory()
 		{
 			inventoryItems = new List<InventoryItem>();
 		}
-
+		public Inventory(GameObject owner)
+		{
+			inventoryItems = new List<InventoryItem>();
+			this.owner = owner;
+		}
 
 		public void TradeForItemInOtherInventory(InventoryItem targetItem, Inventory otherInventory)
 		{

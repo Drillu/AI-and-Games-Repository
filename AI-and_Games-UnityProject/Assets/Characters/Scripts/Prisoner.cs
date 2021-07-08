@@ -9,6 +9,10 @@ public class Prisoner : Agent, IInteractable
 	public string Name = "";
 	public Inventory inventory = new Inventory();
 	public float talkRange = 3f;
+	private void Awake()
+	{
+		inventory.owner = this.gameObject;
+	}
 	public float GetInteractRange()
 	{
 		return talkRange;

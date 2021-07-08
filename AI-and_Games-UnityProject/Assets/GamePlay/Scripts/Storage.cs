@@ -7,6 +7,10 @@ public class Storage : MonoBehaviour, IInteractable
 {
 	[SerializeField] float interactRange;
 	Inventory inventory = new Inventory();
+	private void Awake()
+	{
+		inventory.owner = this.gameObject;
+	}
 	public Vector3 GetInteractCenter()
 	{
 		return transform.position;

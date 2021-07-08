@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using Inventorys;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TradePanel : HudScreenPanel
 {
+	[SerializeField] Image firstInventoryIcon;
 	[SerializeField] InventoryPanel firstInventoryPanel;
+	[SerializeField] Image secondInventoryIcon;
 	[SerializeField] InventoryPanel secondInventoryPanel;
 
-	Inventory prisonerInventory;
+	Inventory firstInventory;
 	Inventory playerInventory;
 
 	public override bool ListenToInput()
@@ -27,18 +30,25 @@ public class TradePanel : HudScreenPanel
 
 	public void OnCancelPressed()
 	{
-		prisonerInventory = null;
+		firstInventory = null;
 		playerInventory = null;
 		gameObject.SetActive(false);
 	}
 
 	public void SetupTradePanel(Inventory first, Inventory second)
 	{
-		prisonerInventory = first;
+		firstInventory = first;
 		playerInventory = second;
 
+		Sprite firstSprite = first.owner.GetComponent<IHasSpriteIcon>()?.GetIconSprite();
+		firstInventoryIcon.sprite = firstSprite;
+		firstInventoryIcon.gameObject.SetActive(firstSprite);
 		firstInventoryPanel.SetupInventoryPanel(first, OnPrisonerItemHovered, OnPrisonerItemClicked);
 		firstInventoryPanel.gameObject.SetActive(true);
+
+		Sprite secondSprite = second.owner.GetComponent<IHasSpriteIcon>()?.GetIconSprite();
+		secondInventoryIcon.sprite = secondSprite;
+		secondInventoryIcon.gameObject.SetActive(secondSprite);
 		secondInventoryPanel.SetupInventoryPanel(second, OnPlayerItemHovered, OnPlayerItemClicked);
 		secondInventoryPanel.gameObject.SetActive(true);
 	}
@@ -68,7 +78,7 @@ public class TradePanel : HudScreenPanel
 		inventory.RemoveItem(item);
 		InventoryItem newItem = new InventoryItem(item);
 		newItem.isHoldForPlayer = true;
-		InventoryItem addedItem = prisonerInventory.AddItem(newItem);
+		InventoryItem addedItem = firstInventory.AddItem(newItem);
 		addedItem.isHoldForPlayer = true;
 		addedItem.Recipe = Prisoner.GetPriceForHoldingItemForPlayer();
 		RefreshPanel();
@@ -76,7 +86,7 @@ public class TradePanel : HudScreenPanel
 
 	void RefreshPanel()
 	{
-		firstInventoryPanel.SetupInventoryPanel(prisonerInventory, OnPrisonerItemHovered, OnPrisonerItemClicked);
+		firstInventoryPanel.SetupInventoryPanel(firstInventory, OnPrisonerItemHovered, OnPrisonerItemClicked);
 		secondInventoryPanel.SetupInventoryPanel(playerInventory, OnPlayerItemHovered, OnPlayerItemClicked);
 	}
 

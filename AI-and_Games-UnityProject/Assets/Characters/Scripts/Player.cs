@@ -18,6 +18,7 @@ public class Player : Agent
 			Instance = this;
 			DontDestroyOnLoad(this.gameObject);
 		}
+		inventory.owner = this.gameObject;
 	}
 	public override Inventory GetInventory()
 	{

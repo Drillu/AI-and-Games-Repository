@@ -2083,6 +2083,9 @@ MonoBehaviour:
   - {fileID: 4378261733901385389}
   - {fileID: 6338216876684495069}
   - {fileID: 5415416763624966152}
+  currentInteractingInventory:
+    inventoryItems: []
+    owner: {fileID: 0}
 --- !u!1 &7221187183118085810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99092b08a418ec4cbad77ebf8bcf14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstInventoryIcon: {fileID: 4073077670388066680}
   firstInventoryPanel: {fileID: 8867776708563009293}
+  secondInventoryIcon: {fileID: 1576264081194258044}
   secondInventoryPanel: {fileID: 7847297380651414725}
 --- !u!114 &8661438551418054443
 MonoBehaviour:
