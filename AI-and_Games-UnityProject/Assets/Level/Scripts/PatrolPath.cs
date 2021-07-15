@@ -11,7 +11,10 @@ public class PatrolPath : MonoBehaviour
 		waypoints = GetComponentsInChildren<PatrolWaypoint>();
 	}
 
-
+	public PatrolWaypoint[] GetWaypoints()
+	{
+		return waypoints;
+	}
 
 
 	private void OnDrawGizmos()

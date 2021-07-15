@@ -9,9 +9,26 @@ public class Prisoner : Agent, IInteractable
 	public string Name = "";
 	public Inventory inventory = new Inventory();
 	public float talkRange = 3f;
+	AgentMovingBehavior Behavior;
+
+	[SerializeField] PatrolPath patrolPath;
 	private void Awake()
 	{
 		inventory.owner = this.gameObject;
+		if (!Behavior)
+		{
+			Behavior = gameObject.AddComponent<PatrolBehavior>();
+		}
+	}
+
+	private void Start() {
+		(Behavior as PatrolBehavior).SetPatrolPath(patrolPath);
+		(Behavior as PatrolBehavior).BeginPatrol();
+	}
+
+	private void Update() {
+		
+		(Behavior as PatrolBehavior).StartPatrol();
 	}
 	public float GetInteractRange()
 	{
