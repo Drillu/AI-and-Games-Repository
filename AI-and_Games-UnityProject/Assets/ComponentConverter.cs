@@ -22,6 +22,25 @@ public class ComponentConverter : MonoBehaviour
 			}
 		}
 	}
+
+	[MenuItem("Converter/Convert Cafeteria Table")]
+	public static void ConvertCafeteriaTable()
+	{
+		GameObject Cafeteria = GameObject.Find("Cafeteriaa");
+		GameObject newTable = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/GamePlay/SceneObjects/CafeteriaTable.prefab");
+		foreach (Transform table in Cafeteria.transform)
+		{
+			if (table.name.Trim().ToLower().StartsWith("cafeteria_table") && !table.GetComponent<CollectibleSpawner>())
+			{
+				GameObject ntable = (GameObject)PrefabUtility.InstantiatePrefab(newTable, Cafeteria.transform);
+				ntable.transform.position = table.position;
+				ntable.transform.rotation = table.rotation;
+				DestroyImmediate(table.gameObject);
+			}
+		}
+	}
+
+
 	[MenuItem("Converter/Convert Library")]
 	public static void ConvertLibrary()
 	{

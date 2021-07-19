@@ -6,6 +6,7 @@ public class PatrolPath : MonoBehaviour
 {
 	[SerializeField] float gizmosRadius = 0.5f;
 	private PatrolWaypoint[] waypoints;
+	public bool isPingpong;
 	private void Start()
 	{
 		waypoints = GetComponentsInChildren<PatrolWaypoint>();

@@ -21,15 +21,16 @@ public class Prisoner : Agent, IInteractable
 		}
 	}
 
-	private void Start() {
+	private void Start()
+	{
 		(Behavior as PatrolBehavior).SetPatrolPath(patrolPath);
-		(Behavior as PatrolBehavior).BeginPatrol();
 	}
 
-	private void Update() {
-		
-		(Behavior as PatrolBehavior).StartPatrol();
+	private void Update()
+	{
+		Behavior?.Act();
 	}
+
 	public float GetInteractRange()
 	{
 		return talkRange;

@@ -21,4 +21,9 @@ public class NavagentMover : MonoBehaviour
 	{
 		navMeshAgent.isStopped = true;
 	}
+
+	public void SetSpeed(float speed)
+	{
+		moveSpeed = speed;
+	}
 }

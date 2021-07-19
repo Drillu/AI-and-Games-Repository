@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PatrolBehavior : AgentMovingBehavior
@@ -25,22 +24,12 @@ public class PatrolBehavior : AgentMovingBehavior
 			return currentPatrolWaypoints[currentWaypointIndex];
 		}
 	}
-	[SerializeField] float tolerance = 1f;
 	int currentWaypointIndex;
 	bool isDweling;
 	float dwelingCounter;
 	public void SetPatrolPath(PatrolPath newPath)
 	{
 		patrolPath = newPath;
-	}
-
-	public void BeginPatrol()
-	{
-		InitializeVariables();
-	}
-
-	private void InitializeVariables()
-	{
 		if (patrolPath && patrolPath.GetWaypoints().Length > 0)
 		{
 			currentPatrolWaypoints = patrolPath.GetWaypoints();
@@ -62,9 +51,10 @@ public class PatrolBehavior : AgentMovingBehavior
 	{
 
 	}
-	public void StartPatrol()
+
+	public override void Act()
 	{
-		if (Vector3.Distance(transform.position, currentWaypoint.transform.position) > tolerance)
+		if (Vector3.Distance(transform.position, currentWaypoint.transform.position) > GetComponent<Agent>().GetNavTolerance())
 		{
 			navAgentMover.MoveToPosition(currentWaypoint.transform.position);
 		}
@@ -73,6 +63,18 @@ public class PatrolBehavior : AgentMovingBehavior
 			dwelingCounter += Time.deltaTime;
 			if (dwelingCounter >= currentWaypoint.dwellingTime)
 			{
+				if (currentWaypointIndex + 1 >= currentPatrolWaypoints.Length)
+				{
+					currentWaypointIndex = 0;
+					if (patrolPath.isPingpong)
+					{
+						currentPatrolWaypoints = currentPatrolWaypoints.Reverse().ToArray();
+					}
+				}
+				else
+				{
+					currentWaypointIndex++;
+				}
 				currentWaypointIndex = currentWaypointIndex + 1 >= currentPatrolWaypoints.Length ? 0 : currentWaypointIndex + 1;
 				dwelingCounter = 0;
 			}
