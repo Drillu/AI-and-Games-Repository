@@ -4077,8 +4077,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538721923}
-  m_LocalRotation: {x: 0.4669738, y: 0.042412035, z: -0.022430368, w: 0.8829686}
-  m_LocalPosition: {x: 42.962223, y: 32.6, z: 81.142204}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412046, z: -0.022430371, w: 0.8829686}
+  m_LocalPosition: {x: -6.7277756, y: 32.6, z: 75.80221}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7876,7 +7876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3256578537885602655, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.09
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 3256578537885602655, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7884,7 +7884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3256578537885602655, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 103.24
+      value: 97.9
       objectReference: {fileID: 0}
     - target: {fileID: 3256578537885602655, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16485,8 +16485,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141337184}
-  m_LocalRotation: {x: 0.4669738, y: 0.042412035, z: -0.022430368, w: 0.8829686}
-  m_LocalPosition: {x: 42.962223, y: 32.6, z: 81.142204}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412046, z: -0.022430371, w: 0.8829686}
+  m_LocalPosition: {x: -6.7277756, y: 32.6, z: 75.80221}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1918526217}
@@ -16522,7 +16522,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.9357798, y: 1}
+    m_SensorSize: {x: 1.5984849, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

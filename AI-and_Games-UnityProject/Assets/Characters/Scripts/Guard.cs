@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Inventorys;
@@ -10,8 +11,9 @@ public class Guard : Agent
 	[SerializeField] float giveupRange;
 
 	[SerializeField] PatrolPath patrolPath;
-	[SerializeField] float tolerance;
+	[SerializeField] LayerMask chasingTargetLayer;
 	AgentMovingBehavior Behavior;
+
 
 
 	// Start is called before the first frame update
@@ -19,12 +21,15 @@ public class Guard : Agent
 	{
 		GameEvents.OnPrequisitionStart.AddListener(OnPrequisitionStart);
 		GameEvents.OnPrequisitionEnd.AddListener(OnPrequisitionEnd);
-		if (!gameObject.GetComponent<PatrolBehavior>())
+		if (!gameObject.GetComponent<GuardPatrolBehaviour>())
 		{
-			Behavior = gameObject.AddComponent<PatrolBehavior>();
+			Behavior = gameObject.AddComponent<GuardPatrolBehaviour>();
 		}
 
-		(Behavior as PatrolBehavior).SetPatrolPath(patrolPath);
+		(Behavior as GuardPatrolBehaviour).SetPatrolPath(patrolPath);
+		(Behavior as GuardPatrolBehaviour).patrolSpeed = patrolSpeed;
+		(Behavior as GuardPatrolBehaviour).chasingRange = giveupRange;
+		(Behavior as GuardPatrolBehaviour).chasingTargetLayer = chasingTargetLayer;
 	}
 
 	private void OnDisable()
@@ -38,6 +43,19 @@ public class Guard : Agent
 	{
 		Behavior?.Act();
 	}
+
+	public void SwitchToPatrolBehaviour()
+	{
+		Behavior = gameObject.AddOrGetComponent<GuardPatrolBehaviour>();
+		(Behavior as GuardPatrolBehaviour).patrolSpeed = patrolSpeed;
+	}
+
+	public void SwitchToPrequisitionBehaviour(Agent player)
+	{
+		Behavior = gameObject.AddOrGetComponent<GuardPrequisitionBehaviour>();
+		(Behavior as GuardPrequisitionBehaviour).Initialize(player, giveupRange, chasingSpeed);
+	}
+
 
 	public void OnPrequisitionStart()
 	{

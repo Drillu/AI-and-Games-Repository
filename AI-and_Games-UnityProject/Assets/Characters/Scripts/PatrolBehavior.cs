@@ -16,6 +16,7 @@ public class PatrolBehavior : AgentMovingBehavior
 		}
 	}
 	[SerializeField] PatrolPath patrolPath;
+	public float patrolSpeed;
 	float dwelingCounter;
 	PatrolPathIterator patrolPathIterator;
 	public void SetPatrolPath(PatrolPath newPath)
@@ -41,6 +42,7 @@ public class PatrolBehavior : AgentMovingBehavior
 
 	public override void Act()
 	{
+		navAgentMover.SetSpeed(patrolSpeed);
 		if (Vector3.Distance(transform.position, GetCurrentTargetPatrolWaypoint().transform.position) > GetComponent<Agent>().GetNavTolerance())
 		{
 			navAgentMover.MoveToPosition(GetCurrentTargetPatrolWaypoint().transform.position);
@@ -50,19 +52,6 @@ public class PatrolBehavior : AgentMovingBehavior
 			dwelingCounter += Time.deltaTime;
 			if (dwelingCounter >= GetCurrentTargetPatrolWaypoint().dwellingTime)
 			{
-				// if (currentWaypointIndex + 1 >= currentPatrolWaypoints.Length)
-				// {
-				// 	currentWaypointIndex = 0;
-				// 	if (patrolPath.isPingpong)
-				// 	{
-				// 		currentPatrolWaypoints = currentPatrolWaypoints.Reverse().ToArray();
-				// 	}
-				// }
-				// else
-				// {
-				// 	currentWaypointIndex++;
-				// }
-				// currentWaypointIndex = currentWaypointIndex + 1 >= currentPatrolWaypoints.Length ? 0 : currentWaypointIndex + 1;
 				patrolPathIterator.MoveNext();
 				dwelingCounter = 0;
 			}

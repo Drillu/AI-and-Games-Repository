@@ -17,11 +17,12 @@ public class GuardPrequisitionBehaviour : AgentMovingBehavior
 		}
 	}
 	private Agent target;
-	public bool IsLost;
 
-	public void SetTarget(Agent target)
+	public void Initialize(Agent target, float giveupRange, float chasingSpeed)
 	{
 		this.target = target;
+		this.giveupRange = giveupRange;
+		this.chasingSpeed = chasingSpeed;
 	}
 
 	private bool IsTargetInChasingRange()
@@ -31,22 +32,14 @@ public class GuardPrequisitionBehaviour : AgentMovingBehavior
 
 	public override void Act()
 	{
-		if (target)
+		if (target && IsTargetInChasingRange())
 		{
-			if (IsTargetInChasingRange())
-			{
-				navAgentMover.SetSpeed(chasingSpeed);
-				navAgentMover.MoveToPosition(target.transform.position);
-				IsLost = false;
-			}
-			else
-			{
-				IsLost = true;
-			}
+			navAgentMover.SetSpeed(chasingSpeed);
+			navAgentMover.MoveToPosition(target.transform.position);
 		}
 		else
 		{
-			IsLost = true;
+			GetComponent<Guard>().SwitchToPatrolBehaviour();
 		}
 	}
 }
