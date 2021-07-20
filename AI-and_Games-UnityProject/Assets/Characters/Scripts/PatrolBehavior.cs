@@ -16,25 +16,12 @@ public class PatrolBehavior : AgentMovingBehavior
 		}
 	}
 	[SerializeField] PatrolPath patrolPath;
-	PatrolWaypoint[] currentPatrolWaypoints;
-	PatrolWaypoint currentWaypoint
-	{
-		get
-		{
-			return currentPatrolWaypoints[currentWaypointIndex];
-		}
-	}
-	int currentWaypointIndex;
-	bool isDweling;
 	float dwelingCounter;
+	PatrolPathIterator patrolPathIterator;
 	public void SetPatrolPath(PatrolPath newPath)
 	{
 		patrolPath = newPath;
-		if (patrolPath && patrolPath.GetWaypoints().Length > 0)
-		{
-			currentPatrolWaypoints = patrolPath.GetWaypoints();
-			currentWaypointIndex = 0;
-		}
+		patrolPathIterator = new PatrolPathIterator(patrolPath);
 	}
 
 	public void TerminatePatrol()
@@ -54,30 +41,36 @@ public class PatrolBehavior : AgentMovingBehavior
 
 	public override void Act()
 	{
-		if (Vector3.Distance(transform.position, currentWaypoint.transform.position) > GetComponent<Agent>().GetNavTolerance())
+		if (Vector3.Distance(transform.position, GetCurrentTargetPatrolWaypoint().transform.position) > GetComponent<Agent>().GetNavTolerance())
 		{
-			navAgentMover.MoveToPosition(currentWaypoint.transform.position);
+			navAgentMover.MoveToPosition(GetCurrentTargetPatrolWaypoint().transform.position);
 		}
 		else
 		{
 			dwelingCounter += Time.deltaTime;
-			if (dwelingCounter >= currentWaypoint.dwellingTime)
+			if (dwelingCounter >= GetCurrentTargetPatrolWaypoint().dwellingTime)
 			{
-				if (currentWaypointIndex + 1 >= currentPatrolWaypoints.Length)
-				{
-					currentWaypointIndex = 0;
-					if (patrolPath.isPingpong)
-					{
-						currentPatrolWaypoints = currentPatrolWaypoints.Reverse().ToArray();
-					}
-				}
-				else
-				{
-					currentWaypointIndex++;
-				}
-				currentWaypointIndex = currentWaypointIndex + 1 >= currentPatrolWaypoints.Length ? 0 : currentWaypointIndex + 1;
+				// if (currentWaypointIndex + 1 >= currentPatrolWaypoints.Length)
+				// {
+				// 	currentWaypointIndex = 0;
+				// 	if (patrolPath.isPingpong)
+				// 	{
+				// 		currentPatrolWaypoints = currentPatrolWaypoints.Reverse().ToArray();
+				// 	}
+				// }
+				// else
+				// {
+				// 	currentWaypointIndex++;
+				// }
+				// currentWaypointIndex = currentWaypointIndex + 1 >= currentPatrolWaypoints.Length ? 0 : currentWaypointIndex + 1;
+				patrolPathIterator.MoveNext();
 				dwelingCounter = 0;
 			}
 		}
+	}
+
+	private PatrolWaypoint GetCurrentTargetPatrolWaypoint()
+	{
+		return patrolPathIterator.Current;
 	}
 }

@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,8 +23,20 @@ public class PatrolPathIterator : IEnumerator<PatrolWaypoint>
 
 	public bool MoveNext()
 	{
-		if(currentIndex == 0){
+		PatrolWaypoint[] waypoints = patrolPath.GetWaypoints();
+		if (currentIndex == 0)
+		{
 			isReverting = false;
+			currentIndex = Mathf.Min(waypoints.Length, currentIndex + 1);
+		}
+		else if (currentIndex == waypoints.Length - 1)
+		{
+			isReverting = true;
+			currentIndex = Mathf.Max(0, currentIndex - 1);
+		}
+		else
+		{
+			currentIndex = isReverting ? currentIndex - 1 : currentIndex + 1;
 		}
 		return true;
 	}
