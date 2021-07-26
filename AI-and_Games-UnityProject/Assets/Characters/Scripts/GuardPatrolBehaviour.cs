@@ -7,10 +7,13 @@ public class GuardPatrolBehaviour : PatrolBehavior
 	public override void Act()
 	{
 		base.Act();
-		Agent player = PlayerInChasingRange();
-		if (player)
+		if (Director.Instance.isPrequisitioning)
 		{
-			GetComponent<Guard>().SwitchToPrequisitionBehaviour(player);
+			Agent player = PlayerInChasingRange();
+			if (player)
+			{
+				GetComponent<Guard>().SwitchToPrequisitionBehaviour(player);
+			}
 		}
 	}
 

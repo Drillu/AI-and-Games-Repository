@@ -54,10 +54,10 @@ public class HudScreen : ScreenBase
 	}
 
 
-	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, string text, bool hideOtherPanels = true)
+	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, string text, bool hideOtherPanels = true, bool isTrading = false)
 	{
 		DialoguePanel panel = SwitchToPanel<DialoguePanel>();
-		panel.SetDialogue(icon, charname, text);
+		panel.SetDialogue(icon, charname, text, isTrading);
 	}
 
 	public void InitializeAndShowTradePanel(Inventorys.Inventory firstInventory, Inventorys.Inventory secondInventory, bool hideOtherPanels = true)
@@ -123,17 +123,13 @@ public class HudScreen : ScreenBase
 	{
 		countDown.SetActive(active);
 	}
-	public void UpdateCountdownText(string countDown)
-	{
-		countDownText.text = countDown;
-	}
+
 	public void UpdateCountdownText(float countDown)
 	{
+		countDownText.color = Director.Instance.isPrequisitioning ? Color.red : Color.green;
 		countDownText.text = string.Empty;
 		string[] counter = countDown.ToString("F2").Split('.');
 		countDownText.text += counter[0] + ".";
 		countDownText.text += $"<size=70%>{counter[1]}</size>";
-
-
 	}
 }

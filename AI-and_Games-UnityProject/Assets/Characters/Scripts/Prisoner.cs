@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class Prisoner : Agent, IInteractable
 {
+	[Header("Config")]
+	public float talkRange = 3f;
+	public float patrolSpeed;
+	[SerializeField] PatrolPath patrolPath;
+	public bool panicOnPrequisition;
+	[Header("Speach")]
 	public string Speach = "";
 	public string Name = "";
+	[Header("Inventory")]
 	public Inventory inventory = new Inventory();
-	public float talkRange = 3f;
 	AgentMovingBehavior Behavior;
-
-	[SerializeField] PatrolPath patrolPath;
 	private void Awake()
 	{
 		inventory.owner = this.gameObject;
-		if (!Behavior)
+		if(!Behavior)
 		{
 			Behavior = gameObject.AddComponent<PatrolBehavior>();
 		}
@@ -24,6 +28,7 @@ public class Prisoner : Agent, IInteractable
 	private void Start()
 	{
 		(Behavior as PatrolBehavior).SetPatrolPath(patrolPath);
+		(Behavior as PatrolBehavior).patrolSpeed = patrolSpeed;
 	}
 
 	private void Update()
@@ -62,10 +67,10 @@ public class Prisoner : Agent, IInteractable
 		int no = Random.Range(1, 3);
 		List<RecipeItem> result = new List<RecipeItem>();
 		RecipeItem r;
-		for (int i = 0; i < no; i++)
+		for(int i = 0; i < no; i++)
 		{
 			int itemI = Random.Range(0, 5);
-			switch (itemI)
+			switch(itemI)
 			{
 				case 1:
 					r = new RecipeItem();
@@ -98,7 +103,7 @@ public class Prisoner : Agent, IInteractable
 		return result;
 		void AddItemToResult(RecipeItem item)
 		{
-			if (result.Find(e => e.type == item.type) != null)
+			if(result.Find(e => e.type == item.type) != null)
 			{
 				result.Find(e => e.type == item.type).amount++;
 			}

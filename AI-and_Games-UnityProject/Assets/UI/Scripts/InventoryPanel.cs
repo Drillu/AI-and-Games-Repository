@@ -41,9 +41,6 @@ public class InventoryPanel : MonoBehaviour
 		}
 	}
 
-	public void UpdatePanel(){
-
-	}
 	public void SetItemDescription(string desc)
 	{
 		itemDescriptionTmp.text = desc;

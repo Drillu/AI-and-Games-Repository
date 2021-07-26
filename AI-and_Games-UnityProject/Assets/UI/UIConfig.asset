@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec18ccaeaca72d342bb4f13f06693359, type: 3}
   m_Name: UIConfig
   m_EditorClassIdentifier: 
-  dialogueSpeedCPS: 10
+  dialogueSpeedCPS: 30

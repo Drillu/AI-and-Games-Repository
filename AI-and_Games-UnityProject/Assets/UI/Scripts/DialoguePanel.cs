@@ -15,7 +15,7 @@ public class DialoguePanel : HudScreenPanel
 
 	public override bool ListenToInput()
 	{
-		if (InputManager.Instance.IsCancelButtonPressed)
+		if (InputManager.Instance.IsCancelButtonPressed || InputManager.Instance.IsMouseLeftButtonDown || InputManager.Instance.IsMouseRightButtonDown)
 		{
 			return OnCancelPressed();
 		}
@@ -47,7 +47,7 @@ public class DialoguePanel : HudScreenPanel
 	}
 
 
-	public void SetDialogue(Sprite iconSprite, string charName, string text, bool animated = true)
+	public void SetDialogue(Sprite iconSprite, string charName, string text, bool animated = true, bool isTrading = false)
 	{
 		currentText = text;
 		if (animated)
@@ -60,16 +60,16 @@ public class DialoguePanel : HudScreenPanel
 			}
 			else
 			{
-				setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text));
+				setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text, isTrading));
 			}
 		}
 		else
 		{
-			SetDialogueQuick(iconSprite, charName, text);
+			SetDialogueQuick(iconSprite, charName, text, isTrading);
 		}
 	}
 
-	private void SetDialogueQuick(Sprite iconSprite, string charName, string text)
+	private void SetDialogueQuick(Sprite iconSprite, string charName, string text, bool isTrading = false)
 	{
 		if (iconSprite)
 		{
@@ -83,7 +83,7 @@ public class DialoguePanel : HudScreenPanel
 		currentText = null;
 		SetTMPText(characterName, charName);
 		SetTMPText(dialogueText, text);
-		Options.SetActive(true);
+		Options.SetActive(isTrading);
 	}
 
 	private void SetTMPText(TMPro.TextMeshProUGUI tmptext, string text)
@@ -91,18 +91,23 @@ public class DialoguePanel : HudScreenPanel
 		tmptext.text = string.IsNullOrEmpty(text) ? string.Empty : text;
 	}
 
-	private IEnumerator SetDialogueCR(Sprite iconSprite, string charName, string text)
+	private IEnumerator SetDialogueCR(Sprite iconSprite, string charName, string text, bool isTrading = false)
 	{
 		Options.SetActive(false);
+
+		icon.gameObject.SetActive(iconSprite);
 		icon.sprite = iconSprite;
+
 		characterName.text = charName;
+		characterName.gameObject.SetActive(!string.IsNullOrEmpty(charName));
+
 		dialogueText.text = string.Empty;
 		foreach (char c in text)
 		{
 			dialogueText.text += c;
 			yield return new WaitForSeconds(1f / uiConfigs.dialogueSpeedCPS);
 		}
-		Options.SetActive(true);
+		Options.SetActive(isTrading);
 		setTextCR = null;
 		currentText = null;
 	}

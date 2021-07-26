@@ -55,6 +55,11 @@ namespace Inventorys
 		{
 			return inventoryItems.Find(e => e.type == item.type) != null;
 		}
+		
+		public bool ContainsItem(InventoryItemType itemType)
+		{
+			return inventoryItems.Find(e => e.type == itemType) != null;
+		}
 
 		public InventoryItem AddItem(InventoryItem item)
 		{

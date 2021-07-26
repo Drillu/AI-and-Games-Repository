@@ -86,7 +86,7 @@ public class Director : MonoBehaviour
 	public void TalkToPrisoner(Prisoner p)
 	{
 		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
-		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, p.name, p.Speach);
+		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, p.name, p.Speach, isTrading: true);
 		UIManager.Instance.GetScreenComponent<HudScreen>().currentInteractingInventory = p.GetInventory();
 	}
 
@@ -106,5 +106,14 @@ public class Director : MonoBehaviour
 		{
 			Instantiate(audioManagerPrefab);
 		}
+	}
+	public void GuardCaughtPlayer()
+	{
+		Debug.Log($"<color=red>Guard caught player during prequisition!</color>");
+		Time.timeScale = 0;
+	}
+	public void PlayerExit(Exit exit)
+	{
+
 	}
 }

@@ -53,7 +53,11 @@ public class InputManager : MonoBehaviour
 
 	public void OnMouseScrolled(InputAction.CallbackContext ctx)
 	{
-
+		if (ctx.performed)
+		{
+			// float scroll = ctx.ReadValue<float>();
+			// Debug.Log($"<color=blue> mouse scrolled: {scroll}</color>");
+		}
 	}
 
 	public void OnCancelButtonDown(InputAction.CallbackContext ctx)

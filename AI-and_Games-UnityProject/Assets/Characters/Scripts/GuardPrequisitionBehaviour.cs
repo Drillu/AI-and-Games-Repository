@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GuardPrequisitionBehaviour : AgentMovingBehavior
@@ -17,12 +18,13 @@ public class GuardPrequisitionBehaviour : AgentMovingBehavior
 		}
 	}
 	private Agent target;
-
-	public void Initialize(Agent target, float giveupRange, float chasingSpeed)
+	float caughtRange;
+	public void Initialize(Agent target, float giveupRange, float chasingSpeed, float caughtRange)
 	{
 		this.target = target;
 		this.giveupRange = giveupRange;
 		this.chasingSpeed = chasingSpeed;
+		this.caughtRange = caughtRange;
 	}
 
 	private bool IsTargetInChasingRange()
@@ -32,14 +34,30 @@ public class GuardPrequisitionBehaviour : AgentMovingBehavior
 
 	public override void Act()
 	{
-		if (target && IsTargetInChasingRange())
+		if (Director.Instance.isPrequisitioning)
 		{
-			navAgentMover.SetSpeed(chasingSpeed);
-			navAgentMover.MoveToPosition(target.transform.position);
+			if (target && IsInCaughtRange())
+			{
+				GetComponent<Guard>().CaughtPlayer();
+			}
+			else if (target && IsTargetInChasingRange())
+			{
+				navAgentMover.SetSpeed(chasingSpeed);
+				navAgentMover.MoveToPosition(target.transform.position);
+			}
+			else
+			{
+				GetComponent<Guard>().SwitchToPatrolBehaviour();
+			}
 		}
 		else
 		{
 			GetComponent<Guard>().SwitchToPatrolBehaviour();
 		}
+	}
+
+	private bool IsInCaughtRange()
+	{
+		return Vector3.Distance(target.transform.position, transform.position) <= caughtRange;
 	}
 }

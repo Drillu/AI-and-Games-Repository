@@ -13,7 +13,7 @@ public class PlayerInventoryPanel : HudScreenPanel
 
 	public override bool ListenToInput()
 	{
-		if (InputManager.Instance.IsCancelButtonPressed)
+		if (InputManager.Instance.IsCancelButtonPressed || InputManager.Instance.IsShowInventoryButtonPressed)
 		{
 			OnCancelPressed();
 			return false;

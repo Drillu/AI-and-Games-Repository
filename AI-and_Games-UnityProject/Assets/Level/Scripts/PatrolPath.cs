@@ -19,7 +19,7 @@ public class PatrolPath : MonoBehaviour
 	}
 
 
-	private void OnDrawGizmos()
+	private void OnDrawGizmosSelected()
 	{
 		PatrolWaypoint[] gizmosWaypoints = GetComponentsInChildren<PatrolWaypoint>();
 		for (int i = 0; i < gizmosWaypoints.Length; i++)
@@ -28,7 +28,10 @@ public class PatrolPath : MonoBehaviour
 			Gizmos.DrawSphere(gizmosWaypoints[i].transform.position, gizmosRadius);
 
 			int next = i == gizmosWaypoints.Length - 1 ? 0 : i + 1;
-			Gizmos.DrawLine(gizmosWaypoints[i].transform.position, gizmosWaypoints[next].transform.position);
+			if (i != gizmosWaypoints.Length - 1 || !isPingpong)
+			{
+				Gizmos.DrawLine(gizmosWaypoints[i].transform.position, gizmosWaypoints[next].transform.position);
+			}
 		}
 	}
 }

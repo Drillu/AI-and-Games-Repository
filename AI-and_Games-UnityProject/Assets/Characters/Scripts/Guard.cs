@@ -9,11 +9,12 @@ public class Guard : Agent
 	[SerializeField] float patrolSpeed;
 	[SerializeField] float chasingSpeed;
 	[SerializeField] float giveupRange;
+	[SerializeField] float caughtPlayerRange;
 
 	[SerializeField] PatrolPath patrolPath;
 	[SerializeField] LayerMask chasingTargetLayer;
 	AgentMovingBehavior Behavior;
-
+	private bool isPrequisitioning;
 
 
 	// Start is called before the first frame update
@@ -53,28 +54,29 @@ public class Guard : Agent
 	public void SwitchToPrequisitionBehaviour(Agent player)
 	{
 		Behavior = gameObject.AddOrGetComponent<GuardPrequisitionBehaviour>();
-		(Behavior as GuardPrequisitionBehaviour).Initialize(player, giveupRange, chasingSpeed);
+		(Behavior as GuardPrequisitionBehaviour).Initialize(player, giveupRange, chasingSpeed, caughtPlayerRange);
 	}
 
 
 	public void OnPrequisitionStart()
 	{
-
 	}
 	public void OnPrequisitionEnd()
 	{
-
 	}
 
-	private void StartPrequisition()
+	public void CaughtPlayer()
 	{
-
+		Director.Instance.GuardCaughtPlayer();
 	}
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.cyan;
 		Gizmos.DrawWireSphere(transform.position, giveupRange);
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, caughtPlayerRange);
 	}
+	
 	public override Inventory GetInventory()
 	{
 		return null;
