@@ -114,6 +114,6 @@ public class Director : MonoBehaviour
 	}
 	public void PlayerExit(Exit exit)
 	{
-
+		Debug.Log($"Player exits the exit {exit.name}");
 	}
 }

@@ -28,7 +28,7 @@ public class Storage : MonoBehaviour, IInteractable
 		{
 			UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
 			HudScreen hud = UIManager.Instance.GetScreenComponent<HudScreen>();
-			hud.InitializeAndShowTradePanel(inventory, player.GetInventory());
+			hud.InitializeAndShowTradePanel(inventory, player.GetInventory(), target: TradePanel.TradeTarget.Chest);
 		}
 	}
 }

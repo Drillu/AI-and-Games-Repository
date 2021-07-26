@@ -39,6 +39,7 @@ public class InventoryPanel : MonoBehaviour
 		{
 			existingPrefabs[i].gameObject.SetActive(false);
 		}
+		SetItemDescription(string.Empty);
 	}
 
 	public void SetItemDescription(string desc)

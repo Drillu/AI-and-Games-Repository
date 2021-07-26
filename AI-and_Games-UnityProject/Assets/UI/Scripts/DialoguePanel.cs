@@ -12,10 +12,11 @@ public class DialoguePanel : HudScreenPanel
 
 	private string currentText;
 	Coroutine setTextCR;
-
+	private bool isTrading;
 	public override bool ListenToInput()
 	{
-		if (InputManager.Instance.IsCancelButtonPressed || InputManager.Instance.IsMouseLeftButtonDown || InputManager.Instance.IsMouseRightButtonDown)
+		// if (InputManager.Instance.IsCancelButtonPressed || InputManager.Instance.IsMouseLeftButtonDown || InputManager.Instance.IsMouseRightButtonDown)
+		if (InputManager.Instance.IsCancelButtonPressed)
 		{
 			return OnCancelPressed();
 		}
@@ -36,7 +37,7 @@ public class DialoguePanel : HudScreenPanel
 			dialogueText.text = currentText;
 			setTextCR = null;
 			currentText = null;
-			Options.SetActive(true);
+			Options.SetActive(isTrading);
 			return true;
 		}
 		else
@@ -50,6 +51,7 @@ public class DialoguePanel : HudScreenPanel
 	public void SetDialogue(Sprite iconSprite, string charName, string text, bool animated = true, bool isTrading = false)
 	{
 		currentText = text;
+		this.isTrading = isTrading;
 		if (animated)
 		{
 			if (setTextCR != null)
@@ -60,26 +62,26 @@ public class DialoguePanel : HudScreenPanel
 			}
 			else
 			{
-				setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text, isTrading));
+				setTextCR = StartCoroutine(SetDialogueCR(iconSprite, charName, text));
 			}
 		}
 		else
 		{
-			SetDialogueQuick(iconSprite, charName, text, isTrading);
+			SetDialogueQuick(iconSprite, charName, text);
 		}
 	}
 
-	private void SetDialogueQuick(Sprite iconSprite, string charName, string text, bool isTrading = false)
+	private void SetDialogueQuick(Sprite iconSprite, string charName, string text)
 	{
-		if (iconSprite)
-		{
-			icon.sprite = iconSprite;
-		}
+		icon.sprite = iconSprite;
+		icon.gameObject.SetActive(iconSprite);
+
 		if (setTextCR != null)
 		{
 			StopCoroutine(setTextCR);
 			setTextCR = null;
 		}
+
 		currentText = null;
 		SetTMPText(characterName, charName);
 		SetTMPText(dialogueText, text);
@@ -88,18 +90,18 @@ public class DialoguePanel : HudScreenPanel
 
 	private void SetTMPText(TMPro.TextMeshProUGUI tmptext, string text)
 	{
+		tmptext.gameObject.SetActive(!string.IsNullOrEmpty(text));
 		tmptext.text = string.IsNullOrEmpty(text) ? string.Empty : text;
 	}
 
-	private IEnumerator SetDialogueCR(Sprite iconSprite, string charName, string text, bool isTrading = false)
+	private IEnumerator SetDialogueCR(Sprite iconSprite, string charName, string text)
 	{
 		Options.SetActive(false);
 
-		icon.gameObject.SetActive(iconSprite);
 		icon.sprite = iconSprite;
+		icon.gameObject.SetActive(iconSprite);
 
-		characterName.text = charName;
-		characterName.gameObject.SetActive(!string.IsNullOrEmpty(charName));
+		SetTMPText(characterName, charName);
 
 		dialogueText.text = string.Empty;
 		foreach (char c in text)
@@ -107,9 +109,9 @@ public class DialoguePanel : HudScreenPanel
 			dialogueText.text += c;
 			yield return new WaitForSeconds(1f / uiConfigs.dialogueSpeedCPS);
 		}
+
 		Options.SetActive(isTrading);
 		setTextCR = null;
 		currentText = null;
 	}
-
 }
