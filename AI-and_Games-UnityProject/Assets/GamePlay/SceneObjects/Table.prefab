@@ -285,7 +285,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9218579011041478414}
-  - component: {fileID: 8579362168856972251}
   - component: {fileID: 5213456630769564009}
   m_Layer: 0
   m_Name: Table
@@ -312,26 +311,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8579362168856972251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8405168707442023860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdec08419322b2847a38e4fcc614da70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnee: {fileID: -1967079776885395935, guid: 8b62592731e80cf47b76c3b45e71a018, type: 3}
-  spawnPoints:
-  - {fileID: 7089137242527504519}
-  interactRange: 7.19
-  interactThroughSpawner: 1
-  respawnable: 0
-  minRespawnInterval: 0
-  amountToSpawn: 0
 --- !u!65 &5213456630769564009
 BoxCollider:
   m_ObjectHideFlags: 0

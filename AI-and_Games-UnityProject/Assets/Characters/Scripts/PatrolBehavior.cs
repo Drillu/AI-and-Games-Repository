@@ -42,18 +42,26 @@ public class PatrolBehavior : AgentMovingBehavior
 
 	public override void Act()
 	{
-		navAgentMover.SetSpeed(patrolSpeed);
-		if (Vector3.Distance(transform.position, GetCurrentTargetPatrolWaypoint().transform.position) > GetComponent<Agent>().GetNavTolerance())
+		if (Director.Instance.IsInteractingWithUI)
 		{
-			navAgentMover.MoveToPosition(GetCurrentTargetPatrolWaypoint().transform.position);
+			navAgentMover.StopMoving();
 		}
 		else
 		{
-			dwelingCounter += Time.deltaTime;
-			if (dwelingCounter >= GetCurrentTargetPatrolWaypoint().dwellingTime)
+			navAgentMover.StartMoving();
+			navAgentMover.SetSpeed(patrolSpeed);
+			if (Vector3.Distance(transform.position, GetCurrentTargetPatrolWaypoint().transform.position) > GetComponent<Agent>().GetNavTolerance())
 			{
-				patrolPathIterator.MoveNext();
-				dwelingCounter = 0;
+				navAgentMover.MoveToPosition(GetCurrentTargetPatrolWaypoint().transform.position);
+			}
+			else
+			{
+				dwelingCounter += Time.deltaTime;
+				if (dwelingCounter >= GetCurrentTargetPatrolWaypoint().dwellingTime)
+				{
+					patrolPathIterator.MoveNext();
+					dwelingCounter = 0;
+				}
 			}
 		}
 	}

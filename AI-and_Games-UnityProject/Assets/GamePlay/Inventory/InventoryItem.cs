@@ -27,6 +27,11 @@ namespace Inventorys
 				return result;
 			}
 		}
+		public RecipeItem(InventoryItemType type, int amount)
+		{
+			this.type = type;
+			this.amount = amount;
+		}
 	}
 
 	[System.Serializable]

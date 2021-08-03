@@ -59,3 +59,35 @@ Click on escapes with request object to evade from prison.
 
 That's what i was thinking about for the tutorial, feel free to change it
 for the vents can we have a permanent overlay so the player always knows where to escape?
+
+# Plan
+5 items
+- Soap
+- Toothpaste
+- Book
+- Toilet Paper
+- Apple
+- spoon
+
+2 ScrewDriver - 2 prisoner
+
+1 2 screwDriver ->
+   * 1 spoon - prisoner specific
+
+1 2 screwDriver ->
+   * 1 Toilet Paper - prisoner specific
+
+
+3 prisioners left
+  1 -> 2 Toilet Paper - requires 1 Soap and 2 apples
+  1 -> 2 spoon -> requires 1 toothpaste and 2 apples
+  
+  1 -> 4 apple =  2 books each
+	    1 soap = 4 books
+	    1 toothpaste = 4 books
+
+in the scene
+ 2 toothpaste
+ 2 soap
+ 16 books
+ 8 apples

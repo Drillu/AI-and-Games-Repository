@@ -111,7 +111,7 @@ public class TradePanel : HudScreenPanel
 		inventory.RemoveItem(item);
 		InventoryItem newItem = new InventoryItem(item);
 		InventoryItem addedItem = firstInventory.AddItem(newItem);
-
+		
 		bool isTradingWithPrisoner = currentTradeTarget == TradeTarget.Prisoner;
 		newItem.isHoldForPlayer = isTradingWithPrisoner;
 		addedItem.isHoldForPlayer = isTradingWithPrisoner;

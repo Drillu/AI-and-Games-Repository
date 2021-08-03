@@ -173,7 +173,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6146288608497978098}
-  - component: {fileID: 9054225084326283191}
   - component: {fileID: 6694026035313650760}
   m_Layer: 0
   m_Name: WC
@@ -199,26 +198,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &9054225084326283191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6775613139145527368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdec08419322b2847a38e4fcc614da70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnee: {fileID: 3819649110478653748, guid: b2efae5a62b2d49428f714e0ea758adb, type: 3}
-  spawnPoints:
-  - {fileID: 6146288608497978098}
-  interactRange: 4.5
-  interactThroughSpawner: 1
-  respawnable: 0
-  minRespawnInterval: 0
-  amountToSpawn: 0
 --- !u!65 &6694026035313650760
 BoxCollider:
   m_ObjectHideFlags: 0

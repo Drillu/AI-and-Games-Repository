@@ -11,8 +11,9 @@ public class Exit : MonoBehaviour, IInteractable
 		public int amount;
 	}
 	[SerializeField] List<ExitItem> exitItems;
-	[SerializeField] string exitTipText;
+	[SerializeField] List<string> exitTipText;
 	public float interactRange;
+	public bool unlocked;
 	public void CanExit()
 	{
 
@@ -31,17 +32,28 @@ public class Exit : MonoBehaviour, IInteractable
 	public void Interact(GameObject initiater)
 	{
 		Player player = initiater.GetComponent<Player>();
-		if (player)
+		if (unlocked)
+		{
+			if (name.Equals("ToiletExit"))
+			{
+				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, Director.Instance.playerUnlockToiletDialogue);
+			}
+			else
+			{
+				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, Director.Instance.playerUnlockPipeDialogue);
+			}
+		}
+		else if (player)
 		{
 			bool canExit = PlayerCanExit(player);
 			if (canExit)
 			{
 				Director.Instance.PlayerExit(this);
+				unlocked = true;
 			}
 			else
 			{
-				UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
-				UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, null, exitTipText);
+				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, exitTipText);
 			}
 		}
 	}

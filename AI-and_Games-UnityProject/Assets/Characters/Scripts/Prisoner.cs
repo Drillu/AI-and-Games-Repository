@@ -11,7 +11,7 @@ public class Prisoner : Agent, IInteractable
 	[SerializeField] PatrolPath patrolPath;
 	public bool panicOnPrequisition;
 	[Header("Speach")]
-	public string Speach = "";
+	public List<string> Speach;
 	public string Name = "";
 	[Header("Inventory")]
 	public Inventory inventory = new Inventory();
@@ -56,6 +56,11 @@ public class Prisoner : Agent, IInteractable
 		AudioManager.Instance.PlaySFX(Director.Instance.audioDataBase.GetRandomChatSFXClip());
 		Director.Instance.TalkToPrisoner(this);
 	}
+
+	public void AssignInventory(Inventory newInventory){
+		inventory = newInventory;
+	}
+
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.cyan;
@@ -66,40 +71,41 @@ public class Prisoner : Agent, IInteractable
 	{
 		int no = Random.Range(1, 3);
 		List<RecipeItem> result = new List<RecipeItem>();
-		RecipeItem r;
-		for(int i = 0; i < no; i++)
-		{
-			int itemI = Random.Range(0, 5);
-			switch(itemI)
-			{
-				case 1:
-					r = new RecipeItem();
-					r.type = InventoryItemType.Soap;
-					r.amount = 1;
-					AddItemToResult(r);
-					break;
-				case 2:
-					r = new RecipeItem();
-					r.type = InventoryItemType.Toothpaste;
-					r.amount = 1;
-					AddItemToResult(r);
-					break;
-				case 3:
-					r = new RecipeItem();
-					r.type = InventoryItemType.ToiletPaper;
-					r.amount = 1;
-					AddItemToResult(r);
-					break;
-				case 4:
-					r = new RecipeItem();
-					r.type = InventoryItemType.Apple;
-					r.amount = 1;
-					AddItemToResult(r);
-					break;
-				default:
-					break;
-			}
-		}
+		result.Add(new RecipeItem(InventoryItemType.ChewingGum, 1));
+		// RecipeItem r;
+		// for(int i = 0; i < no; i++)
+		// {
+		// 	int itemI = Random.Range(0, 5);
+		// 	switch(itemI)
+		// 	{
+		// 		case 1:
+		// 			r = new RecipeItem();
+		// 			r.type = InventoryItemType.Soap;
+		// 			r.amount = 1;
+		// 			AddItemToResult(r);
+		// 			break;
+		// 		case 2:
+		// 			r = new RecipeItem();
+		// 			r.type = InventoryItemType.Toothpaste;
+		// 			r.amount = 1;
+		// 			AddItemToResult(r);
+		// 			break;
+		// 		case 3:
+		// 			r = new RecipeItem();
+		// 			r.type = InventoryItemType.ToiletPaper;
+		// 			r.amount = 1;
+		// 			AddItemToResult(r);
+		// 			break;
+		// 		case 4:
+		// 			r = new RecipeItem();
+		// 			r.type = InventoryItemType.Apple;
+		// 			r.amount = 1;
+		// 			AddItemToResult(r);
+		// 			break;
+		// 		default:
+		// 			break;
+		// 	}
+		// }
 		return result;
 		void AddItemToResult(RecipeItem item)
 		{

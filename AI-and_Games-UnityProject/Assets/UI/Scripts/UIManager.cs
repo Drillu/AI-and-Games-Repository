@@ -115,4 +115,10 @@ public class UIManager : MonoBehaviour
 			currentActiveScreens.Pop();
 		}
 	}
+
+	public void SwitchToHudAndShowDialogue(Sprite icon, string charname, List<string> texts, bool hideOtherPanels = true, bool isTrading = false)
+	{
+		SwitchToScreen(UIManager.ScreenType.HudScreen);
+		GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(icon, charname, texts, hideOtherPanels, isTrading);
+	}
 }

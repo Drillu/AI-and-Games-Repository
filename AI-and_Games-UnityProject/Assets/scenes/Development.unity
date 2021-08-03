@@ -1648,9 +1648,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: talkRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1982329856}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[0]
+      value: What
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1698,6 +1714,10 @@ PrefabInstance:
     - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Name
       value: Prisoner (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_TagString
+      value: Prisoner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -3020,9 +3040,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: talkRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1895477005}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[0]
+      value: Hi
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3070,6 +3106,10 @@ PrefabInstance:
     - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Name
       value: Prisoner (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_TagString
+      value: Prisoner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -3932,11 +3972,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 106.27275, y: 4.721601, z: 5.1924477}
   m_Center: {x: -45.539375, y: 1.8608005, z: 0.21277046}
---- !u!4 &507140401 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-  m_PrefabInstance: {fileID: 1247744926}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &508046372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4467,7 +4502,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538721923}
-  m_LocalRotation: {x: 0.4669738, y: 0.042412035, z: -0.022430368, w: 0.8829686}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412076, z: -0.02243039, w: 0.8829686}
   m_LocalPosition: {x: 48.432224, y: 32.6, z: 79.13221}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
@@ -7076,10 +7111,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc28a4010a3e7e4ca55aa3b50df0fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGO: {fileID: 0}
+  prisonerGO: {fileID: 0}
+  guardGO: {fileID: 0}
   audioManagerPrefab: {fileID: 493375345419338398, guid: e5fa709a0f4b7fb48a8a8e8f880c8e0b, type: 3}
   audioDataBase: {fileID: 11400000, guid: 867e84397eff82946bd0d611a6624fa6, type: 2}
-  prequisitionInterval: 5
+  prequisitionInterval: 120
   prequisitionDuration: 30
+  newGameDialogue:
+  - This damn prison... All I did was just leave a bug in the stupid program...
+  - But.. This is it! Today I'm gonna escape from this shity place!
+  - I already found I can sneak through the pipe underneath my toilet and all the
+    way out of this prison.
+  - All I need to do it's to find a screwdriver to remove this toilet and clear the
+    pipe. And I'LL BE FREE!!
+  - Let's go!
+  getCaughtDialogue:
+  - The damn guard took all my stuff...
+  - I must be more careful next time...
+  successfulEscapedDialogue:
+  - YES BABY!! YES!!
+  - Farewell dear prison! Time to make more BUGS!!
+  playerUnlockToiletDialogue:
+  - There is something blocking the pipe, seems in the ketchen.
+  - Let's go check it out...
+  playerUnlockPipeDialogue: []
   prequisitionCounter: 0
   isPrequisitioning: 0
 --- !u!4 &836156761
@@ -9970,7 +10026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6775613139145527368, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
       propertyPath: m_Name
-      value: WC 1
+      value: ToiletExit
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9054225084326283191, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
@@ -10000,11 +10056,11 @@ MonoBehaviour:
   exitItems:
   - item: {fileID: 11400000, guid: d3745786878cf444cb74321d42401e37, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 6f8208c079dbbb24fb2cdffc90db7511, type: 2}
-    amount: 1
-  exitTipText: This is a toliet, I'll need a screwdrier to uninstall it so I could
-    get into the pip
+  exitTipText:
+  - This seems to be an exit to the future...
+  - I'll need to find a screw driver to move this toilet away.
   interactRange: 4.63
+  unlocked: 0
 --- !u!1001 &1163246211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10066,6 +10122,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62815a51333bb054e930cc82f9415cde, type: 3}
+--- !u!1 &1167594562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167594563}
+  m_Layer: 0
+  m_Name: PlayerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1167594563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167594562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.56, y: 0, z: 101.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1385656188}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171615649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed34f62cd364c9d4b8f0aae20b41088b, type: 3}
@@ -10586,63 +10672,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1886f8d8ddee01c4ba9844d8f5e008e3, type: 3}
---- !u!1001 &1247744926
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1869329533}
-    m_Modifications:
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -34.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -119.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.70708185
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.006170631
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7070779
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.006170593
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6146288608497978098, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775613139145527368, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
-      propertyPath: m_Name
-      value: WC 8 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e6601d298ed87b4499f5b63a08bee510, type: 3}
 --- !u!114 &1248614461 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7597512442065348424, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
@@ -11794,9 +11823,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: talkRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1476321518}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[0]
+      value: Nah...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11844,6 +11889,10 @@ PrefabInstance:
     - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Name
       value: Prisoner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_TagString
+      value: Prisoner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -12065,6 +12114,7 @@ Transform:
   - {fileID: 57011745}
   - {fileID: 742609315}
   - {fileID: 1030393252}
+  - {fileID: 1167594563}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12524,9 +12574,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: talkRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 238108624}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[0]
+      value: Yeah..
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -12574,6 +12640,10 @@ PrefabInstance:
     - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Name
       value: Prisoner (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_TagString
+      value: Prisoner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -12672,9 +12742,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Name
+      value: Dug
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: talkRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 294723199}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[0]
+      value: Such a boring day.... I heard the cups will do a prequision once in
+        a while, and you can't hold any items if they caught you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[1]
+      value: why? They will take over everything you have!
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Height
       value: 1
@@ -12729,6 +12820,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Name
+      value: Prisoner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: m_TagString
       value: Prisoner
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -15450,7 +15545,6 @@ Transform:
   - {fileID: 1312834271}
   - {fileID: 878588736}
   - {fileID: 1298377562}
-  - {fileID: 507140401}
   m_Father: {fileID: 1128583951}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18322,7 +18416,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141337184}
-  m_LocalRotation: {x: 0.4669738, y: 0.042412035, z: -0.022430368, w: 0.8829686}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412076, z: -0.02243039, w: 0.8829686}
   m_LocalPosition: {x: 48.432224, y: 32.6, z: 79.13221}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:

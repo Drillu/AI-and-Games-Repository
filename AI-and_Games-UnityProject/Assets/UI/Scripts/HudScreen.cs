@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HudScreen : ScreenBase
@@ -54,10 +55,10 @@ public class HudScreen : ScreenBase
 	}
 
 
-	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, string text, bool hideOtherPanels = true, bool isTrading = false)
+	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, List<string> texts, bool hideOtherPanels = true, bool isTrading = false)
 	{
 		DialoguePanel panel = SwitchToPanel<DialoguePanel>();
-		panel.SetDialogue(icon, charname, text, isTrading: isTrading);
+		panel.InitializeAndStartDialogue(icon, charname, texts, isTrading: isTrading);
 	}
 
 	public void InitializeAndShowTradePanel(Inventorys.Inventory firstInventory, Inventorys.Inventory secondInventory, bool hideOtherPanels = true, TradePanel.TradeTarget target = TradePanel.TradeTarget.Prisoner)
