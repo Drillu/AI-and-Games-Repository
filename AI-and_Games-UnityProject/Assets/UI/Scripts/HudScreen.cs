@@ -55,10 +55,10 @@ public class HudScreen : ScreenBase
 	}
 
 
-	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, List<string> texts, bool hideOtherPanels = true, bool isTrading = false)
+	public void InitializeAndShowDialoguePanel(Sprite icon, string charname, List<string> texts, bool hideOtherPanels = true, bool isTrading = false, System.Action dialogueFinished = null)
 	{
 		DialoguePanel panel = SwitchToPanel<DialoguePanel>();
-		panel.InitializeAndStartDialogue(icon, charname, texts, isTrading: isTrading);
+		panel.InitializeAndStartDialogue(icon, charname, texts, isTrading: isTrading, dialogueFinished: dialogueFinished);
 	}
 
 	public void InitializeAndShowTradePanel(Inventorys.Inventory firstInventory, Inventorys.Inventory secondInventory, bool hideOtherPanels = true, TradePanel.TradeTarget target = TradePanel.TradeTarget.Prisoner)

@@ -45,6 +45,7 @@ public class PatrolBehavior : AgentMovingBehavior
 		if (Director.Instance.IsInteractingWithUI)
 		{
 			navAgentMover.StopMoving();
+			return;
 		}
 		else
 		{

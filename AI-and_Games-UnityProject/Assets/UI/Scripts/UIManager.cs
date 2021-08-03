@@ -116,9 +116,9 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	public void SwitchToHudAndShowDialogue(Sprite icon, string charname, List<string> texts, bool hideOtherPanels = true, bool isTrading = false)
+	public void SwitchToHudAndShowDialogue(Sprite icon, string charname, List<string> texts, bool hideOtherPanels = true, bool isTrading = false, Action dialogueFinished=null)
 	{
 		SwitchToScreen(UIManager.ScreenType.HudScreen);
-		GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(icon, charname, texts, hideOtherPanels, isTrading);
+		GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(icon, charname, texts, hideOtherPanels, isTrading, dialogueFinished);
 	}
 }

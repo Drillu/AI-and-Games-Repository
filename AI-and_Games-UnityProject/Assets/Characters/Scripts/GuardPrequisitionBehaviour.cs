@@ -34,7 +34,7 @@ public class GuardPrequisitionBehaviour : AgentMovingBehavior
 
 	public override void Act()
 	{
-		if (Director.Instance.isPrequisitioning)
+		if (Director.Instance.isPrequisitioning && !Director.Instance.IsInteractingWithUI)
 		{
 			if (target && IsInCaughtRange())
 			{

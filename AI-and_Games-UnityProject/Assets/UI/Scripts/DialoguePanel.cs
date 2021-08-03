@@ -10,6 +10,7 @@ public class DialoguePanel : HudScreenPanel
 	[SerializeField] TMPro.TextMeshProUGUI dialogueText;
 	[SerializeField] GameObject Options;
 	[SerializeField] UIConfigs uiConfigs;
+	System.Action dailogueFinishedCB;
 
 	private string currentText
 	{
@@ -63,18 +64,20 @@ public class DialoguePanel : HudScreenPanel
 		else
 		{
 			gameObject.SetActive(false);
+			dailogueFinishedCB?.Invoke();
 			return false;
 		}
 	}
 
 
-	public void InitializeAndStartDialogue(Sprite iconSprite, string charName, List<string> texts, bool animated = true, bool isTrading = false)
+	public void InitializeAndStartDialogue(Sprite iconSprite, string charName, List<string> texts, bool animated = true, bool isTrading = false, System.Action dialogueFinished = null)
 	{
-		if (texts == null && texts.Count <= 0)
+		if (texts == null || texts.Count <= 0)
 		{
 			Debug.Log("Given dialogue text list is null or empty.");
 			return;
 		}
+		dailogueFinishedCB = dialogueFinished;
 
 		currentTexts = texts;
 		currentTextIndex = 0;
@@ -91,16 +94,7 @@ public class DialoguePanel : HudScreenPanel
 	{
 		if (animated)
 		{
-			// if (setTextCR != null)
-			// {
-			// 	StopCoroutine(setTextCR);
-			// 	setTextCR = null;
-			// 	SetDialogueQuick(currentTexts[currentTextIndex]);
-			// }
-			// else
-			// {
 			setTextCR = StartCoroutine(SetDialogueCR(currentText));
-			// }
 		}
 		else
 		{

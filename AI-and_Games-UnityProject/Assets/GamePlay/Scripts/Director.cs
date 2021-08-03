@@ -26,6 +26,7 @@ public class Director : MonoBehaviour
 	[Header("Game Dialogues")]
 	[SerializeField] public List<string> newGameDialogue;
 	[SerializeField] public List<string> getCaughtDialogue;
+	[SerializeField] public List<string> getCaughtGuardDialogue;
 	[SerializeField] public List<string> successfulEscapedDialogue;
 	[SerializeField] public List<string> playerUnlockToiletDialogue;
 	[SerializeField] public List<string> playerUnlockPipeDialogue;
@@ -36,6 +37,7 @@ public class Director : MonoBehaviour
 	{
 		get; set;
 	}
+	bool isTalkingToGuard;
 	int noExitUnlocked;
 
 	private void Awake()
@@ -111,7 +113,7 @@ public class Director : MonoBehaviour
 		{
 			playerGO = Instantiate(playerGO);
 		}
-		playerGO.transform.position = playerSpawnPoint;
+		playerGO.GetComponent<Rigidbody>().MovePosition(playerSpawnPoint);
 	}
 
 	private void Update()
@@ -180,9 +182,16 @@ public class Director : MonoBehaviour
 
 	public void GuardCaughtPlayer()
 	{
-		Debug.Log($"<color=red>Guard caught player during prequisition!</color>");
-		FindPlayerAndResetPosition();
-		StartGetCaughtDialogue();
+		if (!isTalkingToGuard)
+		{
+			isTalkingToGuard = true;
+			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtGuardDialogue, dialogueFinished: () =>
+			{
+				FindPlayerAndResetPosition();
+				StartGetCaughtDialogue();
+				isTalkingToGuard = false;
+			});
+		}
 	}
 
 	public void PlayerExit(Exit exit)
