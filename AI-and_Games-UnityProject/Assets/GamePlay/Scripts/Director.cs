@@ -187,11 +187,17 @@ public class Director : MonoBehaviour
 			isTalkingToGuard = true;
 			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtGuardDialogue, dialogueFinished: () =>
 			{
-				FindPlayerAndResetPosition();
-				StartGetCaughtDialogue();
-				isTalkingToGuard = false;
+				StartCoroutine(GuardCaughtPlayerCR());
 			});
 		}
+	}
+
+	IEnumerator GuardCaughtPlayerCR()
+	{
+		FindPlayerAndResetPosition();
+		yield return new WaitForSeconds(1);
+		StartGetCaughtDialogue();
+		isTalkingToGuard = false;
 	}
 
 	public void PlayerExit(Exit exit)
@@ -231,7 +237,6 @@ public class Director : MonoBehaviour
 
 	public void StartGetCaughtDialogue()
 	{
-		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
-		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, null, getCaughtDialogue);
+		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtDialogue);
 	}
 }
