@@ -65,9 +65,9 @@ public class Guard : Agent
 	{
 	}
 
-	public void CaughtPlayer()
+	public void CaughtPlayer(Player player)
 	{
-		Director.Instance.GuardCaughtPlayer();
+		Director.Instance.GuardCaughtPlayer(player);
 	}
 	private void OnDrawGizmosSelected()
 	{
