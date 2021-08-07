@@ -27,12 +27,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 21300000, guid: 1fe3bdfb29df3024d9c724e7752d2b3b, type: 3}
   navTolerance: 2
-  talkRange: 3
+  talkRange: 5
   patrolSpeed: 5
   patrolPath: {fileID: 0}
   panicOnPrequisition: 0
-  Speach: hey hey hey hey hey hey hey hey hey hey hey hey how ya doing?
-  Name: dug
+  Speach:
+  - Such a boring day.... I heard the cups will do a prequision once in a while,
+    and you can't hold any items if they caught you.
+  - why? They will take over everything you have!
+  Name: Dug
   inventory:
     inventoryItems:
     - item: {fileID: 11400000, guid: 8e62eb36d0d8f034f83611cf7cd2e485, type: 2}
@@ -128,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prisoner
       objectReference: {fileID: 0}
+    - target: {fileID: 1936357575814365112, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
+      propertyPath: m_TagString
+      value: Prisoner
+      objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -146,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -47.3
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_LocalPosition.y
@@ -154,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 141.9
+      value: 59.4
       objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_LocalRotation.w
@@ -185,8 +192,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365117, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936357575814365117, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_Radius
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365117, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_ObstacleAvoidanceType

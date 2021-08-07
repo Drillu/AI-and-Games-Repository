@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class Director : MonoBehaviour
 {
@@ -12,10 +16,17 @@ public class Director : MonoBehaviour
 		get; set;
 	}
 
+	[Header("Scenes")]
+	[SerializeField] AssetReference gameSceneRef;
+	[SerializeField] AssetReference mainMenuSceneRef;
+	AsyncOperationHandle<SceneInstance> gameSceneHandler;
+	AsyncOperationHandle<SceneInstance> mainMenuHandler;
+
 	[Header("Prefabs")]
 	[SerializeField] GameObject playerGO;
 	[SerializeField] GameObject prisonerGO;
 	[SerializeField] GameObject guardGO;
+
 
 	[Header("Audio")]
 	[SerializeField] GameObject audioManagerPrefab;
@@ -30,7 +41,9 @@ public class Director : MonoBehaviour
 	[SerializeField] public List<string> successfulEscapedDialogue;
 	[SerializeField] public List<string> playerUnlockToiletDialogue;
 	[SerializeField] public List<string> playerUnlockPipeDialogue;
+	[SerializeField] public List<string> playerUnlockPipeAndToiletDialogue;
 
+	private bool isGaming;
 	public float prequisitionCounter;
 	public bool isPrequisitioning;
 	public bool IsInteractingWithUI
@@ -38,11 +51,13 @@ public class Director : MonoBehaviour
 		get; set;
 	}
 	bool isTalkingToGuard;
-	int noExitUnlocked;
+
+	bool toiletUnlocked = false;
+	bool pipeUnlocked = false;
 
 	private void Awake()
 	{
-		if (Instance && Instance != this)
+		if(Instance && Instance != this)
 		{
 			Destroy(this);
 		}
@@ -52,10 +67,28 @@ public class Director : MonoBehaviour
 			DontDestroyOnLoad(this);
 		}
 	}
-
-	private void Start()
+	private void Update()
 	{
-		StartGame();
+		if(isGaming)
+		{
+			UpdateCounter();
+		}
+	}
+
+	public void LoadGameScene()
+	{
+		gameSceneHandler = Addressables.LoadSceneAsync(gameSceneRef);
+		gameSceneHandler.Completed += (handler) =>
+		{
+			if(gameSceneHandler.Status == AsyncOperationStatus.Succeeded)
+			{
+				StartGame();
+			}
+			else
+			{
+				Debug.LogError("Addressables: Load Game Scene failed" + gameSceneHandler.OperationException.ToString());
+			}
+		};
 	}
 
 	private void StartGame()
@@ -73,19 +106,21 @@ public class Director : MonoBehaviour
 		GameEvents.OnPrequisitionStart.AddListener(StartPrequisition);
 		GameEvents.OnPrequisitionEnd.AddListener(EndPrequisition);
 		prequisitionCounter = prequisitionInterval;
-		noExitUnlocked = 0;
+
+		toiletUnlocked = false;
+		pipeUnlocked = false;
 		FindPlayerAndResetPosition();
 		SetupPrisoners();
-
+		isGaming = true;
 
 		void SetupPrisoners()
 		{
 			Prisoner[] prisoners = GameObject.FindGameObjectsWithTag("Prisoner").ToList().ConvertAll(e => e.GetComponent<Prisoner>()).ToArray();
 
 			List<Inventorys.Inventory> list = PrisonerInventorys.GetPrisonerInventory();
-			for (int i = 0; i < list.Count; i++)
+			for(int i = 0; i < list.Count; i++)
 			{
-				if (i < prisoners.Length)
+				if(i < prisoners.Length)
 				{
 					Inventorys.Inventory inventory = list[i];
 					prisoners[i].AssignInventory(inventory);
@@ -94,11 +129,12 @@ public class Director : MonoBehaviour
 			}
 		}
 	}
+
 	void FindPlayerAndResetPosition()
 	{
 		GameObject spawnPointGO = GameObject.Find("PlayerSpawnPoint");
 		Vector3 playerSpawnPoint;
-		if (spawnPointGO)
+		if(spawnPointGO)
 		{
 			playerSpawnPoint = spawnPointGO.transform.position;
 		}
@@ -109,27 +145,41 @@ public class Director : MonoBehaviour
 		}
 
 		GameObject playerGO = GameObject.FindWithTag("Player");
-		if (!playerGO)
+		if(!playerGO)
 		{
 			playerGO = Instantiate(playerGO);
 		}
-		playerGO.GetComponent<Rigidbody>().MovePosition(playerSpawnPoint);
+		playerGO.GetComponent<Rigidbody>().position = playerSpawnPoint;
 	}
 
-	private void Update()
+	private void PlayerSuccessTheGame()
 	{
-		UpdateCounter();
+		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, successfulEscapedDialogue);
+		GameEnd();
 	}
+
+	public void GameEnd()
+	{
+		isGaming = false;
+		GameEvents.OnPrequisitionStart.RemoveAllListeners();
+		GameEvents.OnPrequisitionEnd.RemoveAllListeners();
+		Addressables.UnloadSceneAsync(gameSceneHandler).Completed += (handler) =>
+		{
+			mainMenuHandler = Addressables.LoadSceneAsync(mainMenuSceneRef, LoadSceneMode.Single);
+		};
+	}
+
+
 
 	private void UpdateCounter()
 	{
-		if (!IsInteractingWithUI)
+		if(!IsInteractingWithUI)
 		{
 			prequisitionCounter -= Time.deltaTime;
-			if (prequisitionCounter <= 0)
+			if(prequisitionCounter <= 0)
 			{
 				isPrequisitioning = !isPrequisitioning;
-				if (isPrequisitioning)
+				if(isPrequisitioning)
 				{
 					prequisitionCounter = prequisitionDuration;
 					GameEvents.OnPrequisitionStart?.Invoke();
@@ -174,7 +224,7 @@ public class Director : MonoBehaviour
 
 	private void LoadManagers()
 	{
-		if (!AudioManager.Instance)
+		if(!AudioManager.Instance)
 		{
 			Instantiate(audioManagerPrefab);
 		}
@@ -182,7 +232,7 @@ public class Director : MonoBehaviour
 
 	public void GuardCaughtPlayer()
 	{
-		if (!isTalkingToGuard)
+		if(!isTalkingToGuard)
 		{
 			isTalkingToGuard = true;
 			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtGuardDialogue, dialogueFinished: () =>
@@ -202,31 +252,31 @@ public class Director : MonoBehaviour
 
 	public void PlayerExit(Exit exit)
 	{
-		noExitUnlocked++;
-		if (noExitUnlocked == 2)
+		if(exit.exitType == Exit.ExitType.Toilet)
 		{
-			PlayerSuccessTheGame();
+			toiletUnlocked = true;
+			if(pipeUnlocked)
+			{
+				PlayerSuccessTheGame();
+			}
+			else
+			{
+				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockToiletDialogue);
+			}
 		}
-		else if (exit.name.Equals("ToiletExit"))
+		else if(exit.exitType == Exit.ExitType.Pipe)
 		{
-			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockToiletDialogue);
-		}
-		else
-		{
-			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockPipeDialogue);
-		}
-	}
+			pipeUnlocked = true;
+			if(toiletUnlocked)
+			{
+				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockPipeAndToiletDialogue);
+			}
+			else
+			{
+				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockPipeDialogue);
+			}
 
-	public void GameEnd()
-	{
-		GameEvents.OnPrequisitionStart.RemoveAllListeners();
-		GameEvents.OnPrequisitionEnd.RemoveAllListeners();
-	}
-
-	private void PlayerSuccessTheGame()
-	{
-		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, successfulEscapedDialogue);
-		GameEnd();
+		}
 	}
 
 	public void StartNewGameDialogue()
@@ -239,4 +289,5 @@ public class Director : MonoBehaviour
 	{
 		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtDialogue);
 	}
+
 }

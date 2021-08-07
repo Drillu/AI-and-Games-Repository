@@ -4,6 +4,12 @@ using UnityEngine;
 using Inventorys;
 public class Exit : MonoBehaviour, IInteractable
 {
+	public enum ExitType
+	{
+		Toilet,
+		Pipe
+	}
+
 	[System.Serializable]
 	public class ExitItem
 	{
@@ -14,10 +20,9 @@ public class Exit : MonoBehaviour, IInteractable
 	[SerializeField] List<string> exitTipText;
 	public float interactRange;
 	public bool unlocked;
-	public void CanExit()
-	{
 
-	}
+	public ExitType exitType;
+
 
 	public Vector3 GetInteractCenter()
 	{
@@ -32,9 +37,9 @@ public class Exit : MonoBehaviour, IInteractable
 	public void Interact(GameObject initiater)
 	{
 		Player player = initiater.GetComponent<Player>();
-		if (unlocked)
+		if(unlocked)
 		{
-			if (name.Equals("ToiletExit"))
+			if(exitType == ExitType.Toilet)
 			{
 				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, Director.Instance.playerUnlockToiletDialogue);
 			}
@@ -43,10 +48,10 @@ public class Exit : MonoBehaviour, IInteractable
 				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, Director.Instance.playerUnlockPipeDialogue);
 			}
 		}
-		else if (player)
+		else if(player)
 		{
 			bool canExit = PlayerCanExit(player);
-			if (canExit)
+			if(canExit)
 			{
 				Director.Instance.PlayerExit(this);
 				unlocked = true;
@@ -62,11 +67,11 @@ public class Exit : MonoBehaviour, IInteractable
 	{
 		Inventory playerInventory = player.GetInventory();
 		bool canExit = true;
-		foreach (ExitItem exitItem in exitItems)
+		foreach(ExitItem exitItem in exitItems)
 		{
-			if (playerInventory.ContainsItem(exitItem.item.type))
+			if(playerInventory.ContainsItem(exitItem.item.type))
 			{
-				if (playerInventory.GetItem(exitItem.item.type).amount < exitItem.amount)
+				if(playerInventory.GetItem(exitItem.item.type).amount < exitItem.amount)
 				{
 					canExit = false;
 					break;

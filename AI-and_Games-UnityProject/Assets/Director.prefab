@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3671889024397968884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3671889024397968890}
+  - component: {fileID: 3671889024397968891}
+  - component: {fileID: 3671889024397968889}
+  m_Layer: 0
+  m_Name: Director
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3671889024397968890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671889024397968884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3671889024397968891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671889024397968884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc28a4010a3e7e4ca55aa3b50df0fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGO: {fileID: 0}
+  prisonerGO: {fileID: 0}
+  guardGO: {fileID: 0}
+  audioManagerPrefab: {fileID: 493375345419338398, guid: e5fa709a0f4b7fb48a8a8e8f880c8e0b, type: 3}
+  audioDataBase: {fileID: 11400000, guid: 867e84397eff82946bd0d611a6624fa6, type: 2}
+  prequisitionInterval: 5
+  prequisitionDuration: 111
+  newGameDialogue:
+  - This damn prison... All I did was just leave a bug in the stupid program...
+  - But.. This is it! Today I'm gonna escape from this shity place!
+  - I already found I can sneak through the pipe underneath my toilet and all the
+    way out of this prison.
+  - All I need to do it's to find a screwdriver to remove this toilet and clear the
+    pipe. And I'LL BE FREE!!
+  - Let's go!
+  getCaughtDialogue:
+  - The damn guard took all my stuff...
+  - I must be more careful next time...
+  getCaughtGuardDialogue:
+  - What are you holding!!
+  - Don't you think you can trick me, punk! Now go back to you room!
+  successfulEscapedDialogue:
+  - YES BABY!! YES!!
+  - Farewell dear prison! Time to make more BUGS!!
+  playerUnlockToiletDialogue:
+  - There is something blocking the pipe, seems in the ketchen.
+  - Let's go check it out...
+  playerUnlockPipeDialogue:
+  - Great! Now the pipe is clear. Then I'll just sneak into the pipe under my toilet
+    then I'll be free!
+  playerUnlockPipeAndToiletDialogue: []
+  prequisitionCounter: 0
+  isPrequisitioning: 0
+--- !u!114 &3671889024397968889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671889024397968884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae2a7b706ac8e74e80e3f65fbfacbe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

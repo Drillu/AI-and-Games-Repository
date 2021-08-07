@@ -7081,94 +7081,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dwellingTime: 1
---- !u!1 &836156759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 836156761}
-  - component: {fileID: 836156760}
-  - component: {fileID: 836156762}
-  m_Layer: 0
-  m_Name: Director
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &836156760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836156759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc28a4010a3e7e4ca55aa3b50df0fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerGO: {fileID: 0}
-  prisonerGO: {fileID: 0}
-  guardGO: {fileID: 0}
-  audioManagerPrefab: {fileID: 493375345419338398, guid: e5fa709a0f4b7fb48a8a8e8f880c8e0b, type: 3}
-  audioDataBase: {fileID: 11400000, guid: 867e84397eff82946bd0d611a6624fa6, type: 2}
-  prequisitionInterval: 5
-  prequisitionDuration: 111
-  newGameDialogue:
-  - This damn prison... All I did was just leave a bug in the stupid program...
-  - But.. This is it! Today I'm gonna escape from this shity place!
-  - I already found I can sneak through the pipe underneath my toilet and all the
-    way out of this prison.
-  - All I need to do it's to find a screwdriver to remove this toilet and clear the
-    pipe. And I'LL BE FREE!!
-  - Let's go!
-  getCaughtDialogue:
-  - The damn guard took all my stuff...
-  - I must be more careful next time...
-  getCaughtGuardDialogue:
-  - What are you holding!!
-  - Don't you think you can trick me, punk! Now go back to you room!
-  successfulEscapedDialogue:
-  - YES BABY!! YES!!
-  - Farewell dear prison! Time to make more BUGS!!
-  playerUnlockToiletDialogue:
-  - There is something blocking the pipe, seems in the ketchen.
-  - Let's go check it out...
-  playerUnlockPipeDialogue:
-  - Great! Now the pipe is clear. Then I'll just sneak into the pipe under my toilet
-    then I'll be free!
-  prequisitionCounter: 0
-  isPrequisitioning: 0
---- !u!4 &836156761
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836156759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &836156762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836156759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae2a7b706ac8e74e80e3f65fbfacbe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &845553605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8677,14 +8589,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3256578539532981465, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3256578539532981465, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
-      propertyPath: m_Center.y
-      value: 0.000000091699455
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
 --- !u!1001 &993008389
@@ -10066,6 +9970,7 @@ MonoBehaviour:
   - I'll need to find a screw driver to move this toilet away.
   interactRange: 4.63
   unlocked: 0
+  exitType: 0
 --- !u!1001 &1163246211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10677,17 +10582,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1886f8d8ddee01c4ba9844d8f5e008e3, type: 3}
---- !u!114 &1248614461 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7597512442065348424, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-  m_PrefabInstance: {fileID: 112687850865319133}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dea8066ad6f4204a89bb29b2bb9e273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1250019742 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4255186633505938192, guid: 82aed35a99372bb4fb144e1d7d7e7d4a, type: 3}
@@ -11081,7 +10975,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1303090836
 PrefabInstance:
@@ -12747,38 +12641,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: Name
-      value: Dug
-      objectReference: {fileID: 0}
-    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: talkRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 294723199}
-    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: Speach.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: Speach.Array.data[0]
-      value: Such a boring day.... I heard the cups will do a prequision once in
-        a while, and you can't hold any items if they caught you.
-      objectReference: {fileID: 0}
-    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: Speach.Array.data[1]
-      value: why? They will take over everything you have!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12827,12 +12692,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prisoner
       objectReference: {fileID: 0}
-    - target: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
-      propertyPath: m_TagString
-      value: Prisoner
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8557605385552164706, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
 --- !u!4 &1443864560 stripped
 Transform:
@@ -14025,24 +13885,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &1648035839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3256578537885602652, guid: 8bc4459b5f594144d86f5bef59e249f7, type: 3}
-  m_PrefabInstance: {fileID: 975258441}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1648035845
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648035839}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.83692276, y: 0.5174322, z: 0.61086214}
-  m_Center: {x: -0.08153851, y: 0.24128371, z: 0.016505925}
 --- !u!1 &1659743256
 GameObject:
   m_ObjectHideFlags: 0
@@ -16417,10 +16259,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
-    - target: {fileID: 2696208472445981924, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
-      propertyPath: m_TagString
-      value: Guard
-      objectReference: {fileID: 0}
     - target: {fileID: 2696208472445981927, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -18484,7 +18322,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.928775, y: 1}
+    m_SensorSize: {x: 2.5123808, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18562,46 +18400,6 @@ PrefabInstance:
     - target: {fileID: 112687850558205046, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
-      value: 771c1463-2fdb-4c99-86ed-0276c0d1702e
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
-      value: Player/Zoom[/Mouse/scroll/y]
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1248614461}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMouseScrolled
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: InputManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 112687850558205047, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccccf9ea99e251947880a624ff05bfd5, type: 3}

@@ -33,6 +33,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 1936357575814365112, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
+      propertyPath: m_TagString
+      value: Guard
+      objectReference: {fileID: 0}
     - target: {fileID: 1936357575814365115, guid: 53aa43df2d4689e4ea568de6b348f848, type: 3}
       propertyPath: m_RootOrder
       value: 0
