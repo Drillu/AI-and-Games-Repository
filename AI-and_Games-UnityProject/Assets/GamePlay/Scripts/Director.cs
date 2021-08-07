@@ -230,23 +230,27 @@ public class Director : MonoBehaviour
 		}
 	}
 
-	public void GuardCaughtPlayer()
+	public void GuardCaughtPlayer(Player player)
 	{
 		if(!isTalkingToGuard)
 		{
 			isTalkingToGuard = true;
+			player.GetComponent<NavagentMover>().StopMoving();
+			player.GetComponent<NavagentMover>().ClearDestination();
 			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtGuardDialogue, dialogueFinished: () =>
 			{
-				StartCoroutine(GuardCaughtPlayerCR());
+				StartCoroutine(GuardCaughtPlayerCR(player));
 			});
 		}
 	}
 
-	IEnumerator GuardCaughtPlayerCR()
+	IEnumerator GuardCaughtPlayerCR(Player player)
 	{
+		player.GetComponent<NavagentMover>().SetEnableNavmeshagent(false);
 		FindPlayerAndResetPosition();
 		yield return new WaitForSeconds(1);
 		StartGetCaughtDialogue();
+		player.GetComponent<NavagentMover>().SetEnableNavmeshagent(true);
 		isTalkingToGuard = false;
 	}
 

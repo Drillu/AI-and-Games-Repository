@@ -38,7 +38,7 @@ public class GuardPrequisitionBehaviour : AgentMovingBehavior
 		{
 			if (target && IsInCaughtRange())
 			{
-				GetComponent<Guard>().CaughtPlayer();
+				GetComponent<Guard>().CaughtPlayer(target.GetComponent<Player>());
 			}
 			else if (target && IsTargetInChasingRange())
 			{

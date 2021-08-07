@@ -17,6 +17,16 @@ public class NavagentMover : MonoBehaviour
 		navMeshAgent.speed = moveSpeed;
 	}
 
+	public void ClearDestination()
+	{
+		navMeshAgent.ResetPath();
+	}
+
+	public void SetEnableNavmeshagent(bool enable)
+	{
+		navMeshAgent.enabled = enable;
+	}
+	
 	public void StopMoving()
 	{
 		navMeshAgent.isStopped = true;
