@@ -67,6 +67,7 @@ public class Guard : Agent
 
 	public void CaughtPlayer(Player player)
 	{
+		player.GetInventory().RemoveAllItems();
 		Director.Instance.GuardCaughtPlayer(player);
 	}
 	private void OnDrawGizmosSelected()

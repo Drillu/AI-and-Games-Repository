@@ -1455,9 +1455,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1056074711}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1038301346}
+        m_TargetAssemblyTypeName: Director, Assembly-CSharp
+        m_MethodName: QuitApp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1542,6 +1542,14 @@ PrefabInstance:
       propertyPath: prisonerGO
       value: 
       objectReference: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+    - target: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
+      propertyPath: prequisitionDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
+      propertyPath: prequisitionInterval
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
       propertyPath: gameSceneRef.m_AssetGUID
       value: 7de8edd5a23b1ce41a4710ed0287be75

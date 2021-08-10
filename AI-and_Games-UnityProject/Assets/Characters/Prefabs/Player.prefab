@@ -93,6 +93,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!65 &1648035845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256578537885602652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.83692276, y: 0.5174322, z: 0.61086214}
+  m_Center: {x: -0.08153851, y: 0.24128371, z: 0.016505925}
 --- !u!114 &106874676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3389253d7910a44bd902fcc968df16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 0}
+  iconSprite: {fileID: 21300000, guid: 7828efa6a1f97d44d820443fdd56de92, type: 3}
+  agentName: Mr.P
   navTolerance: 2
   inventory:
     inventoryItems:
@@ -130,19 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3c9635a9acfd4469823ec3d7a0111a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1648035845
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3256578537885602652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.83692276, y: 0.5174322, z: 0.61086214}
-  m_Center: {x: -0.08153851, y: 0.24128371, z: 0.016505925}
 --- !u!1001 &1850543122463812468
 PrefabInstance:
   m_ObjectHideFlags: 0

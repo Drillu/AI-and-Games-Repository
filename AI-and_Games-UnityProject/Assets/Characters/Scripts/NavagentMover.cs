@@ -41,4 +41,8 @@ public class NavagentMover : MonoBehaviour
 	{
 		moveSpeed = speed;
 	}
+	public void Warp(Vector3 position)
+	{
+		navMeshAgent.Warp(position);
+	}
 }

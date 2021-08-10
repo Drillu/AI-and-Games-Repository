@@ -34,12 +34,12 @@ namespace Inventorys
 
 		public void TradeForItemInOtherInventory(InventoryItem targetItem, Inventory otherInventory)
 		{
-			if (otherInventory.ContainsItem(targetItem))
+			if(otherInventory.ContainsItem(targetItem))
 			{
-				if (targetItem.CanTrade(this))
+				if(targetItem.CanTrade(this))
 				{
 					// reduce recipe
-					foreach (RecipeItem item in targetItem.Recipe)
+					foreach(RecipeItem item in targetItem.Recipe)
 					{
 						inventoryItems.Find(e => e.type == item.type).amount -= item.amount;
 					}
@@ -55,7 +55,7 @@ namespace Inventorys
 		{
 			return inventoryItems.Find(e => e.type == item.type) != null;
 		}
-		
+
 		public bool ContainsItem(InventoryItemType itemType)
 		{
 			return inventoryItems.Find(e => e.type == itemType) != null;
@@ -64,7 +64,7 @@ namespace Inventorys
 		public InventoryItem AddItem(InventoryItem item)
 		{
 			InventoryItem itm = inventoryItems.Find(e => e.type == item.type && e.isHoldForPlayer == item.isHoldForPlayer);
-			if (itm != null)
+			if(itm != null)
 			{
 				itm.amount += 1;
 				return itm;
@@ -86,19 +86,33 @@ namespace Inventorys
 		{
 			InventoryItem itm = inventoryItems.Find(e => e.type == item.type && e.isHoldForPlayer == item.isHoldForPlayer);
 			itm.amount -= 1;
-			if (itm.amount <= 0)
+			if(itm.amount <= 0)
+			{
+				inventoryItems.Remove(itm);
+			}
+		}
+		public void RemoveItem(InventoryItemType itemType)
+		{
+			InventoryItem itm = inventoryItems.Find(e => e.type == itemType);
+			itm.amount -= 1;
+			if(itm.amount <= 0)
 			{
 				inventoryItems.Remove(itm);
 			}
 		}
 
+		public void RemoveAllItems()
+		{
+			inventoryItems.Clear();
+		}
+
 		public void MergeItemOfSameType()
 		{
 			Dictionary<InventoryItemType, int> typeIndex = new Dictionary<InventoryItemType, int>();
-			for (int i = 0; i < inventoryItems.Count; i++)
+			for(int i = 0; i < inventoryItems.Count; i++)
 			{
 				InventoryItem item = inventoryItems[i];
-				if (typeIndex.ContainsKey(item.type))
+				if(typeIndex.ContainsKey(item.type))
 				{
 					inventoryItems[typeIndex[item.type]].amount += item.amount;
 					item.amount = 0;

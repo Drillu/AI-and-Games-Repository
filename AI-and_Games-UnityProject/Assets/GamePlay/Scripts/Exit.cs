@@ -84,6 +84,13 @@ public class Exit : MonoBehaviour, IInteractable
 			}
 		}
 
+		if(canExit)
+		{
+			foreach(ExitItem exitItem in exitItems)
+			{
+				player.GetInventory().RemoveItem(exitItem.item.type);
+			}
+		}
 		return canExit;
 	}
 

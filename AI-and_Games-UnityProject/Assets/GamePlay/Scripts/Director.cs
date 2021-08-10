@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.AI;
 
 public class Director : MonoBehaviour
 {
@@ -113,6 +114,9 @@ public class Director : MonoBehaviour
 		SetupPrisoners();
 		isGaming = true;
 
+		Agent player = GameObject.FindGameObjectWithTag("Player").GetComponent<Agent>();
+		UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), newGameDialogue);
+
 		void SetupPrisoners()
 		{
 			Prisoner[] prisoners = GameObject.FindGameObjectsWithTag("Prisoner").ToList().ConvertAll(e => e.GetComponent<Prisoner>()).ToArray();
@@ -149,7 +153,9 @@ public class Director : MonoBehaviour
 		{
 			playerGO = Instantiate(playerGO);
 		}
-		playerGO.GetComponent<Rigidbody>().position = playerSpawnPoint;
+		playerGO.GetComponent<NavagentMover>().StopMoving();
+		playerGO.GetComponent<NavagentMover>().ClearDestination();
+		playerGO.GetComponent<NavagentMover>().Warp(playerSpawnPoint);
 	}
 
 	private void PlayerSuccessTheGame()
@@ -169,6 +175,10 @@ public class Director : MonoBehaviour
 		};
 	}
 
+	public void QuitApp()
+	{
+		Application.Quit();
+	}
 
 
 	private void UpdateCounter()
@@ -246,11 +256,9 @@ public class Director : MonoBehaviour
 
 	IEnumerator GuardCaughtPlayerCR(Player player)
 	{
-		player.GetComponent<NavagentMover>().SetEnableNavmeshagent(false);
 		FindPlayerAndResetPosition();
 		yield return new WaitForSeconds(1);
 		StartGetCaughtDialogue();
-		player.GetComponent<NavagentMover>().SetEnableNavmeshagent(true);
 		isTalkingToGuard = false;
 	}
 
