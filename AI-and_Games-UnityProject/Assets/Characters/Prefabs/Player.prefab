@@ -144,6 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3c9635a9acfd4469823ec3d7a0111a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseRayLayerMask:
+    serializedVersion: 2
+    m_Bits: 251
 --- !u!1001 &1850543122463812468
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,8 +11,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.266526, y: 0.19294244, z: 0.54314315}
-  m_Center: {x: 0, y: 0.085148126, z: 0.16944332}
+  m_Size: {x: 1.63156, y: 0.14629236, z: 1.1752577}
+  m_Center: {x: 0.013033427, y: 0.09108131, z: 0.058660142}
 --- !u!114 &498854300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,6 +26,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 21300000, guid: 1fe3bdfb29df3024d9c724e7752d2b3b, type: 3}
+  agentName: 
   navTolerance: 2
   talkRange: 5
   patrolSpeed: 5
