@@ -6189,7 +6189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583766265315398680, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 780.68
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583766265315398680, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6240,6 +6240,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526171943927132067, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526171943927132067, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -6286,6 +6290,10 @@ PrefabInstance:
     - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714979252927141695, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7131775912194280780, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6334,6 +6342,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 355910234717121217, guid: c28316046265df047b90b88e52471dce, type: 3}
   m_PrefabInstance: {fileID: 701982472}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &701982474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2571814095431876465, guid: c28316046265df047b90b88e52471dce, type: 3}
+  m_PrefabInstance: {fileID: 701982472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &701982475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701982474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 179
+  m_MinHeight: -1
+  m_PreferredWidth: 179
+  m_PreferredHeight: -1
+  m_FlexibleWidth: 0
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1001 &704598467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18652,7 +18685,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.8402256, y: 1}
+    m_SensorSize: {x: 1.7274436, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
