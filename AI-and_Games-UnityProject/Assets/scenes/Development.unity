@@ -1648,6 +1648,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Name
+      value: Dug
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: talkRange
       value: 5
       objectReference: {fileID: 0}
@@ -1657,11 +1661,15 @@ PrefabInstance:
       objectReference: {fileID: 1982329856}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: What
+      value: It might not be obviours.... but the colorful squares in this room...
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[1]
+      value: are actually <color=red>APPLES</color>
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -3040,6 +3048,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Name
+      value: Cug
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: talkRange
       value: 5
       objectReference: {fileID: 0}
@@ -3049,11 +3061,24 @@ PrefabInstance:
       objectReference: {fileID: 1895477005}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: Hi
+      value: Hi friend. Yes, FRIEND! If you don't want to lose all your items when
+        you get caught, we can hold them for you!
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[1]
+      value: At a reasonable price of course. We are FRIEND after all!
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[2]
+      value: Why the guard won't catch us?
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[3]
+      value: You are the only one that wandering around so suspiciously!!
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -4638,7 +4663,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538721923}
-  m_LocalRotation: {x: 0.4669738, y: 0.042412035, z: -0.022430368, w: 0.8829686}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412076, z: -0.02243039, w: 0.8829686}
   m_LocalPosition: {x: 43.782223, y: 32.6, z: 90.572205}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
@@ -6163,6 +6188,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583766265315398680, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 780.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 583766265315398680, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -6177,6 +6206,30 @@ PrefabInstance:
     - target: {fileID: 609920280234571555, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_Name
       value: HudScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 907767178841417474, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907767178841417474, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907767178841417474, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907767178841417474, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907767178841417474, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907767178841417474, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526171943927132067, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6208,6 +6261,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3009244296573635972, guid: c28316046265df047b90b88e52471dce, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968783116561876386, guid: c28316046265df047b90b88e52471dce, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7131775912194280780, guid: c28316046265df047b90b88e52471dce, type: 3}
@@ -11901,6 +11978,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Name
+      value: Bug
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: talkRange
       value: 5
       objectReference: {fileID: 0}
@@ -11910,11 +11991,19 @@ PrefabInstance:
       objectReference: {fileID: 1476321518}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: Nah...
+      value: Hi man, if you see something weird....
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[1]
+      value: IT'S NOT A BUG!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[2]
+      value: IT'S A FEATURE!! FEATURE!!!!
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -12652,6 +12741,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Name
+      value: Eug
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: talkRange
       value: 5
       objectReference: {fileID: 0}
@@ -12661,11 +12754,24 @@ PrefabInstance:
       objectReference: {fileID: 238108624}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: Yeah..
+      value: This kitchen smells so bad....
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[1]
+      value: You see the pipes there, it's actually <color=red>connected to our toilets</color>...
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[2]
+      value: There was a time, some idot <color=red>opened the large pipe at the
+        corner using a screw driver</color>.
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[3]
+      value: CAN YOU IMAGINE THE DAMN SMELL!!
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -12820,9 +12926,31 @@ PrefabInstance:
     m_TransformParent: {fileID: 681519490}
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Name
+      value: Aug
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 294723199}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[0]
+      value: Guards aren't that scary. But they will <color=red>switch the music
+        and do crazy prequisitions once in a while</color>.
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[1]
+      value: <color=red>If you find any crate, better hide all your stuff there before
+        they caught you during prequisition</color>.
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: Speach.Array.data[2]
+      value: Why? They will take over everything you have!
+      objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -18487,7 +18615,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141337184}
-  m_LocalRotation: {x: 0.4669738, y: 0.042412035, z: -0.022430368, w: 0.8829686}
+  m_LocalRotation: {x: 0.4669738, y: 0.042412076, z: -0.02243039, w: 0.8829686}
   m_LocalPosition: {x: 43.782223, y: 32.6, z: 90.572205}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -18524,7 +18652,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.5123808, y: 1}
+    m_SensorSize: {x: 1.8402256, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
