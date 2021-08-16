@@ -67,6 +67,9 @@ public class Director : MonoBehaviour
 			Instance = this;
 			DontDestroyOnLoad(this);
 		}
+
+		LoadAudioManager();
+		StartBGM();
 	}
 	private void Update()
 	{
@@ -94,11 +97,6 @@ public class Director : MonoBehaviour
 
 	private void StartGame()
 	{
-		LoadManagers();
-		// audio
-		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Primary, audioDataBase.suspension);
-		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Secondary, audioDataBase.action);
-		AudioManager.Instance.SetMusicLayerTrackVolumn(AudioManager.MusicLayer.Secondary, 0);
 		// ui
 		UIManager.Instance.Initialize();
 		UIManager.Instance.HideAllScreens();
@@ -160,8 +158,10 @@ public class Director : MonoBehaviour
 
 	private void PlayerSuccessTheGame()
 	{
-		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, successfulEscapedDialogue);
-		GameEnd();
+		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, successfulEscapedDialogue, dialogueFinished: () =>
+		 {
+			 GameEnd();
+		 });
 	}
 
 	public void GameEnd()
@@ -232,12 +232,19 @@ public class Director : MonoBehaviour
 
 	}
 
-	private void LoadManagers()
+	private void LoadAudioManager()
 	{
 		if(!AudioManager.Instance)
 		{
 			Instantiate(audioManagerPrefab);
 		}
+	}
+
+	private void StartBGM()
+	{
+		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Primary, audioDataBase.suspension);
+		AudioManager.Instance.PlayMusicOnLayer(AudioManager.MusicLayer.Secondary, audioDataBase.action);
+		AudioManager.Instance.SetMusicLayerTrackVolumn(AudioManager.MusicLayer.Secondary, 0);
 	}
 
 	public void GuardCaughtPlayer(Player player)

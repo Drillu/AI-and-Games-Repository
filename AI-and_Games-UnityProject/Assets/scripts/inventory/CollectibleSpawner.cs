@@ -15,7 +15,6 @@ public class CollectibleSpawner : MonoBehaviour, IInteractable
 	[SerializeField] bool interactThroughSpawner;
 	[SerializeField] bool respawnable;
 	[SerializeField] float minRespawnInterval;
-	[SerializeField] int amountToSpawn;
 
 	Collectible spawnedItem;
 	private void Awake()
