@@ -11,8 +11,14 @@ public class Prisoner : Agent, IInteractable
 	[SerializeField] PatrolPath patrolPath;
 	public bool panicOnPrequisition;
 	[Header("Speach")]
-	public List<string> Speach;
-	public string Name = "";
+	public List<DialoguePool> dialoguePool;
+	public List<string> Speach {
+		get
+		{
+			int randomInd = Random.Range(0, dialoguePool.Count);
+			return dialoguePool[randomInd].dialogue;
+		}
+	}
 	[Header("Inventory")]
 	public Inventory inventory = new Inventory();
 	AgentMovingBehavior Behavior;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Inventorys;
 using UnityEngine;
 
-public class Guard : Agent
+public class Guard : Agent, IInteractable
 {
 	[SerializeField] float patrolSpeed;
 	[SerializeField] float chasingSpeed;
@@ -16,13 +16,15 @@ public class Guard : Agent
 	AgentMovingBehavior Behavior;
 	private bool isPrequisitioning;
 
-
+	[Header("Interaction")]
+	[SerializeField] List<DialoguePool> dialoguePool;
+	[SerializeField] float interactRange;
 	// Start is called before the first frame update
 	void Start()
 	{
 		GameEvents.OnPrequisitionStart.AddListener(OnPrequisitionStart);
 		GameEvents.OnPrequisitionEnd.AddListener(OnPrequisitionEnd);
-		if (!gameObject.GetComponent<GuardPatrolBehaviour>())
+		if(!gameObject.GetComponent<GuardPatrolBehaviour>())
 		{
 			Behavior = gameObject.AddComponent<GuardPatrolBehaviour>();
 		}
@@ -77,9 +79,28 @@ public class Guard : Agent
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, caughtPlayerRange);
 	}
-	
+
 	public override Inventory GetInventory()
 	{
 		return null;
+	}
+
+	public void Interact(GameObject initiater)
+	{
+		if(!Director.Instance.isPrequisitioning)
+		{
+			int randomInd = UnityEngine.Random.Range(0, dialoguePool.Count);
+			UIManager.Instance.SwitchToHudAndShowDialogue(GetIconSprite(), GetAgentName(), dialoguePool[randomInd].dialogue);
+		}
+	}
+
+	public float GetInteractRange()
+	{
+		return interactRange;
+	}
+
+	public Vector3 GetInteractCenter()
+	{
+		return transform.position;
 	}
 }

@@ -1673,6 +1673,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: agentName
       value: Dug
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -1689,11 +1693,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: It might not be obviours.... but the colorful squares in this room...
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[1]
-      value: are actually <color=red>APPLES</color>
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: 'It might not be obviours.... but the colorful squares in this room... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: 'are actually <color=red>APPLES</color> '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[0]
+      value: Resources are limited here in this prison, which means....
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[1]
+      value: If the cops took too many stuff from you, you'll be here with us FOREVER!!!
+        HAHAHAHAHA!
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -3093,6 +3126,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: agentName
       value: Cug
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -3109,20 +3146,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: Hi friend. Yes, FRIEND! If you don't want to lose all your items when
-        you get caught, we can hold them for you!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[1]
-      value: At a reasonable price of course. We are FRIEND after all!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[2]
-      value: Why the guard won't catch us?
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[3]
-      value: You are the only one that wandering around so suspiciously!!
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: 'Hi friend. Yes, FRIEND! If you don''t want to lose all your items when
+        you get caught, we can hold them for you! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: 'At a reasonable price of course. We are FRIEND after all! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[2]
+      value: 'At a reasonable price of course. We are FRIEND after all! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[0]
+      value: 'Why the guard won''t catch us? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[1]
+      value: 'You are the only one that wandering around so suspiciously!! '
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -12135,6 +12204,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: agentName
       value: Bug
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -12151,15 +12224,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: Hi man, if you see something weird....
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[1]
-      value: IT'S NOT A BUG!!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[2]
-      value: IT'S A FEATURE!! FEATURE!!!!
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: 'Hi man, if you see something weird.... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: 'IT''S NOT A BUG!! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[2]
+      value: 'IT''S A FEATURE!! FEATURE!!!! '
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -12906,6 +12999,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: agentName
       value: Eug
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -12922,20 +13019,66 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: This kitchen smells so bad....
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[1]
-      value: You see the pipes there, it's actually <color=red>connected to our toilets</color>...
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[2]
-      value: There was a time, some idot <color=red>opened the large pipe at the
-        corner using a screw driver</color>.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[3]
-      value: CAN YOU IMAGINE THE DAMN SMELL!!
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: 'This kitchen smells so bad.... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: 'You see the pipes there, it''s actually <color=red>connected to our
+        toilets</color>... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[2]
+      value: 'There was a time, some idot <color=red>opened the large pipe at the
+        corner using a screw driver</color>. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[3]
+      value: 'CAN YOU IMAGINE THE DAMN SMELL!! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[0]
+      value: I know it's now obvious....
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[1]
+      value: But if you go check some tables in this kitchen, you might find some
+        chewing gum...
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[2]
+      value: You probably doesn't want to know how many time they have been used!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[3]
+      value: 'CAN YOU IMAGINE THE DAMN SMELL!! '
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072098, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_Radius
@@ -13091,6 +13234,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: agentName
       value: Aug
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
@@ -13103,17 +13250,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[0]
-      value: Guards aren't that scary. But they will <color=red>switch the music
-        and do crazy prequisitions once in a while</color>.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[1]
-      value: <color=red>If you find any crate, better hide all your stuff there before
-        they caught you during prequisition</color>.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: Speach.Array.data[2]
-      value: Why? They will take over everything you have!
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: 'Guards aren''t that scary. But they will <color=red>switch the music
+        and do crazy prequisitions once in a while</color>. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: '<color=red>If you find any crate, better hide all your stuff there
+        before they caught you during prequisition</color>. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[2]
+      value: 'Why? They will take over everything you have! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[0]
+      value: They are also two bath rooms on the side if you haven't noticed yet...
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[1]
+      value: People sometimes left some of their stuff there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 498854300, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[2]
+      value: I heard someone dropped hes soap on purpose once just to........ you
+        know that right!
       objectReference: {fileID: 0}
     - target: {fileID: 8557605386933072100, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
       propertyPath: m_RootOrder
@@ -16812,9 +16996,53 @@ PrefabInstance:
     m_TransformParent: {fileID: 472573391}
     m_Modifications:
     - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: agentName
+      value: Fug
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a520f0209fc31a544a35eeb00535b476, type: 3}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 522889887}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: interactRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: See the counter on the top?
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: We will turn it into red and start prequisition when it reaches 0.
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[2]
+      value: And that's when the FUN BEGINS!
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[0]
+      value: Do you know what's my Favorate game?
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[1]
+      value: It's called "TAKE ALL YOUR STUFF"! HAHAHAHA
+      objectReference: {fileID: 0}
     - target: {fileID: 2696208472445981924, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
       propertyPath: m_Name
       value: Guard
@@ -17757,9 +17985,49 @@ PrefabInstance:
     m_TransformParent: {fileID: 472573391}
     m_Modifications:
     - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: agentName
+      value: Gug
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a520f0209fc31a544a35eeb00535b476, type: 3}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1697425084}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: interactRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[0]
+      value: Prequisition........Prequisition..........
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[0].dialogue.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[0]
+      value: Don't worry, we are not America cops, we won't kill you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 250978232896183998, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
+      propertyPath: dialoguePool.Array.data[1].dialogue.Array.data[1]
+      value: We only gonna take all your stuff if we caught you in the prequisition!!!
+      objectReference: {fileID: 0}
     - target: {fileID: 2696208472445981924, guid: ae77d79e15e940246af9f69e0a636a23, type: 3}
       propertyPath: m_Name
       value: Guard (1)

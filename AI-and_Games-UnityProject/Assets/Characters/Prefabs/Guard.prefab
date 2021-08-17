@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 0}
+  agentName: 
   navTolerance: 2
   patrolSpeed: 3
   chasingSpeed: 6
@@ -22,6 +23,21 @@ MonoBehaviour:
   chasingTargetLayer:
     serializedVersion: 2
     m_Bits: 8
+  dialoguePool: []
+  interactRange: 0
+--- !u!65 &7282048874820749566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2696208472445981924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2644489, y: 0.5995471, z: 1}
+  m_Center: {x: 0.011334052, y: 0.28333926, z: 0}
 --- !u!1001 &4590726744050740060
 PrefabInstance:
   m_ObjectHideFlags: 0
