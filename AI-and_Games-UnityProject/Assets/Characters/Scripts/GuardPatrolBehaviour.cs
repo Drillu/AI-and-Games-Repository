@@ -7,10 +7,10 @@ public class GuardPatrolBehaviour : PatrolBehavior
 	public override void Act()
 	{
 		base.Act();
-		if (Director.Instance.isPrequisitioning && !Director.Instance.IsInteractingWithUI)
+		if(Director.Instance.isPrequisitioning && !Director.Instance.IsInteractingWithUI)
 		{
 			Agent player = PlayerInChasingRange();
-			if (player)
+			if(player && player.GetInventory().inventoryItems.Count > 0)
 			{
 				GetComponent<Guard>().SwitchToPrequisitionBehaviour(player);
 			}
@@ -20,9 +20,9 @@ public class GuardPatrolBehaviour : PatrolBehavior
 	private Agent PlayerInChasingRange()
 	{
 		RaycastHit[] hitinfos = Physics.SphereCastAll(transform.position, chasingRange, transform.forward, 0, chasingTargetLayer);
-		foreach (RaycastHit hitinfo in hitinfos)
+		foreach(RaycastHit hitinfo in hitinfos)
 		{
-			if (hitinfo.collider.gameObject.GetComponent<Player>())
+			if(hitinfo.collider.gameObject.GetComponent<Player>())
 			{
 				return hitinfo.collider.gameObject.GetComponent<Player>();
 			}
