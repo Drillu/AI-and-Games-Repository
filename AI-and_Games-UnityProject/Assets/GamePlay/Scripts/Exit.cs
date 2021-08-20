@@ -37,28 +37,33 @@ public class Exit : MonoBehaviour, IInteractable
 	public void Interact(GameObject initiater)
 	{
 		Player player = initiater.GetComponent<Player>();
-		if(unlocked)
+
+		if(player)
 		{
-			if(exitType == ExitType.Toilet)
+			if(!unlocked)
 			{
-				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, Director.Instance.playerUnlockToiletDialogue);
+				bool canExit = PlayerCanExit(player);
+				if(canExit)
+				{
+					unlocked = true;
+					Director.Instance.PlayerExit(this);
+				}
+				else
+				{
+					UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), exitTipText);
+				}
 			}
 			else
-			{
-				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, Director.Instance.playerUnlockPipeDialogue);
-			}
-		}
-		else if(player)
-		{
-			bool canExit = PlayerCanExit(player);
-			if(canExit)
 			{
 				Director.Instance.PlayerExit(this);
-				unlocked = true;
-			}
-			else
-			{
-				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, exitTipText);
+				//if(exitType == ExitType.Toilet)
+				//{
+				//	UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), Director.Instance.playerUnlockToiletDialogue);
+				//}
+				//else
+				//{
+				//	UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), Director.Instance.playerUnlockPipeDialogue);
+				//}
 			}
 		}
 	}

@@ -19,8 +19,12 @@ public class MainMenuScript : MonoBehaviour
     public void PlayGame()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-        
     }
+
+	public void StartGame()
+	{
+		Director.Instance.LoadGameScene();
+	}
 
     public void QuitGame()
     {

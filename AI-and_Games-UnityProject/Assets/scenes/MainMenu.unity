@@ -2623,9 +2623,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1038301346}
-        m_TargetAssemblyTypeName: Director, Assembly-CSharp
-        m_MethodName: LoadGameScene
+      - m_Target: {fileID: 1056074711}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

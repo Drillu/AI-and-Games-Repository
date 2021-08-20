@@ -7,14 +7,14 @@ public class TransitionScreen : ScreenBase
 {
 	[SerializeField] Image transitionImage;
 	[SerializeField] TextMeshProUGUI transitionText;
-
+	bool isTransitioning;
 	public override void Initialize()
 	{
 	}
 
 	public override bool ListenToInput()
 	{
-		return false;
+		return isTransitioning;
 	}
 	public void SetTransitionText(string text)
 	{
@@ -35,6 +35,7 @@ public class TransitionScreen : ScreenBase
 
 	IEnumerator FadeCR(float duration, int sign)
 	{
+		isTransitioning = true;
 		float delta = Time.deltaTime / duration;
 		delta *= sign;
 		Color c = transitionImage.color;
@@ -44,5 +45,6 @@ public class TransitionScreen : ScreenBase
 			transitionImage.color = c;
 			yield return new WaitForEndOfFrame();
 		} while(c.a > 0 && c.a < 1);
+		isTransitioning = false;
 	}
 }

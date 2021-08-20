@@ -160,19 +160,31 @@ public class Director : MonoBehaviour
 	{
 		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, successfulEscapedDialogue, dialogueFinished: () =>
 		 {
-			 GameEnd();
+			StartCoroutine(GameEnd());
 		 });
 	}
 
-	public void GameEnd()
+	public IEnumerator GameEnd()
 	{
 		isGaming = false;
 		GameEvents.OnPrequisitionStart.RemoveAllListeners();
 		GameEvents.OnPrequisitionEnd.RemoveAllListeners();
+
+		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.TransitionScreen);
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().SetTransitionText("Thanks for playing!");
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().FadeOut(2f);
+		yield return new WaitForSeconds(3f);
 		Addressables.UnloadSceneAsync(gameSceneHandler).Completed += (handler) =>
 		{
 			mainMenuHandler = Addressables.LoadSceneAsync(mainMenuSceneRef, LoadSceneMode.Single);
+			mainMenuHandler.Completed += MainMenuHandler_Completed;
 		};
+	}
+
+	private void MainMenuHandler_Completed(AsyncOperationHandle<SceneInstance> obj)
+	{
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().SetTransitionText(string.Empty);
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().FadeIn(2f);
 	}
 
 	public void QuitApp()
@@ -247,14 +259,14 @@ public class Director : MonoBehaviour
 		AudioManager.Instance.SetMusicLayerTrackVolumn(AudioManager.MusicLayer.Secondary, 0);
 	}
 
-	public void GuardCaughtPlayer(Player player)
+	public void GuardCaughtPlayer(Guard guard, Player player)
 	{
 		if(!isTalkingToGuard)
 		{
 			isTalkingToGuard = true;
 			player.GetComponent<NavagentMover>().StopMoving();
 			player.GetComponent<NavagentMover>().ClearDestination();
-			UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtGuardDialogue, dialogueFinished: () =>
+			UIManager.Instance.SwitchToHudAndShowDialogue(guard.GetIconSprite(), guard.GetAgentName(), getCaughtGuardDialogue, dialogueFinished: () =>
 			{
 				StartCoroutine(GuardCaughtPlayerCR(player));
 			});
@@ -263,14 +275,21 @@ public class Director : MonoBehaviour
 
 	IEnumerator GuardCaughtPlayerCR(Player player)
 	{
+		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.TransitionScreen);
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().SetTransitionText(string.Empty);
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().FadeOut(2);
+		yield return new WaitForSeconds(3);
 		FindPlayerAndResetPosition();
-		yield return new WaitForSeconds(1);
+		UIManager.Instance.GetScreenComponent<TransitionScreen>().FadeIn(2f);
+		yield return new WaitForSeconds(3);
 		StartGetCaughtDialogue();
 		isTalkingToGuard = false;
 	}
 
 	public void PlayerExit(Exit exit)
 	{
+		GameObject playerGO = GameObject.FindWithTag("Player");
+		Player player = playerGO.GetComponent<Player>();
 		if(exit.exitType == Exit.ExitType.Toilet)
 		{
 			toiletUnlocked = true;
@@ -280,7 +299,7 @@ public class Director : MonoBehaviour
 			}
 			else
 			{
-				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockToiletDialogue);
+				UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), playerUnlockToiletDialogue);
 			}
 		}
 		else if(exit.exitType == Exit.ExitType.Pipe)
@@ -288,11 +307,11 @@ public class Director : MonoBehaviour
 			pipeUnlocked = true;
 			if(toiletUnlocked)
 			{
-				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockPipeAndToiletDialogue);
+				UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), playerUnlockPipeAndToiletDialogue);
 			}
 			else
 			{
-				UIManager.Instance.SwitchToHudAndShowDialogue(null, null, playerUnlockPipeDialogue);
+				UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), playerUnlockPipeDialogue);
 			}
 
 		}
@@ -300,13 +319,17 @@ public class Director : MonoBehaviour
 
 	public void StartNewGameDialogue()
 	{
+		GameObject playerGO = GameObject.FindWithTag("Player");
+		Player player = playerGO.GetComponent<Player>();
 		UIManager.Instance.SwitchToScreen(UIManager.ScreenType.HudScreen);
-		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(null, null, newGameDialogue);
+		UIManager.Instance.GetScreenComponent<HudScreen>().InitializeAndShowDialoguePanel(player.GetIconSprite(), player.GetAgentName(), newGameDialogue);
 	}
 
 	public void StartGetCaughtDialogue()
 	{
-		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, getCaughtDialogue);
+		GameObject playerGO = GameObject.FindWithTag("Player");
+		Player player = playerGO.GetComponent<Player>();
+		UIManager.Instance.SwitchToHudAndShowDialogue(player.GetIconSprite(), player.GetAgentName(), getCaughtDialogue);
 	}
 
 }

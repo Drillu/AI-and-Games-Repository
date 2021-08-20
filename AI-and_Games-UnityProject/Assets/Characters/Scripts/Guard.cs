@@ -70,7 +70,7 @@ public class Guard : Agent, IInteractable
 	public void CaughtPlayer(Player player)
 	{
 		player.GetInventory().RemoveAllItems();
-		Director.Instance.GuardCaughtPlayer(player);
+		Director.Instance.GuardCaughtPlayer(this, player);
 	}
 	private void OnDrawGizmosSelected()
 	{
