@@ -11,8 +11,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/scenes/demo.unity
     guid: f2b2d2fe0b82e3b4cafa7720906241d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/scenes/Map.unity
     guid: ddc467a5a9e46814ba36a557ed9a4884
+  - enabled: 0
+    path: Assets/scenes/MainMenu.unity
+    guid: 4c2e3c83064d1614da37d7780d0e411c
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8385b2639041bc4469c9f26d01df82da, type: 2}

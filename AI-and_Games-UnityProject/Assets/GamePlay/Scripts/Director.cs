@@ -24,7 +24,6 @@ public class Director : MonoBehaviour
 	AsyncOperationHandle<SceneInstance> mainMenuHandler;
 
 	[Header("Prefabs")]
-	[SerializeField] GameObject playerGO;
 	[SerializeField] GameObject prisonerGO;
 	[SerializeField] GameObject guardGO;
 
@@ -174,11 +173,8 @@ public class Director : MonoBehaviour
 		UIManager.Instance.GetScreenComponent<TransitionScreen>().SetTransitionText("Thanks for playing!");
 		UIManager.Instance.GetScreenComponent<TransitionScreen>().FadeOut(2f);
 		yield return new WaitForSeconds(3f);
-		Addressables.UnloadSceneAsync(gameSceneHandler).Completed += (handler) =>
-		{
-			mainMenuHandler = Addressables.LoadSceneAsync(mainMenuSceneRef, LoadSceneMode.Single);
-			mainMenuHandler.Completed += MainMenuHandler_Completed;
-		};
+		mainMenuHandler = Addressables.LoadSceneAsync(mainMenuSceneRef, LoadSceneMode.Single);
+		mainMenuHandler.Completed += MainMenuHandler_Completed;
 	}
 
 	private void MainMenuHandler_Completed(AsyncOperationHandle<SceneInstance> obj)

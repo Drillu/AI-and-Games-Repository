@@ -128,6 +128,10 @@ public class DialoguePanel : HudScreenPanel
 		foreach (char c in text)
 		{
 			dialogueText.maxVisibleCharacters++;
+			if(!uiConfigs)
+			{
+				Debug.LogError("UIConfig is null");
+			}
 			yield return new WaitForSeconds(1f / uiConfigs.dialogueSpeedCPS);
 		}
 		if (IsShowingLastDialogueLine())

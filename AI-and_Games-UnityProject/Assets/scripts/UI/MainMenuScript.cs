@@ -42,4 +42,9 @@ public class MainMenuScript : MonoBehaviour
 	{
 		Director.Instance.PlayerSuccessTheGame();
 	}
+
+	public void Quit()
+	{
+		Director.Instance.QuitApp();
+	}
 }

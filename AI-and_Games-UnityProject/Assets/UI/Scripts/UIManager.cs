@@ -95,8 +95,7 @@ public class UIManager : MonoBehaviour
 		{
 			if (InputManager.Instance.IsShowInventoryButtonPressed)
 			{
-				SwitchToScreen(ScreenType.HudScreen);
-				GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
+				ShowPlayerInventory();
 			}
 		}
 		else
@@ -108,6 +107,13 @@ public class UIManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void ShowPlayerInventory()
+	{
+		SwitchToScreen(ScreenType.HudScreen);
+		GetScreenComponent<HudScreen>().InitializeAndShowPlayerInventoryPanel();
+	}
+
 	public void QuitCurrentScreen(ScreenBase currentScreen)
 	{
 		if (currentActiveScreens.Peek() == currentScreen)

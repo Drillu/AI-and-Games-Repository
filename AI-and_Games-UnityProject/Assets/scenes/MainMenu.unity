@@ -895,7 +895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &563412585
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1455,9 +1455,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1038301346}
-        m_TargetAssemblyTypeName: Director, Assembly-CSharp
-        m_MethodName: QuitApp
+      - m_Target: {fileID: 1056074711}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1544,11 +1544,11 @@ PrefabInstance:
       objectReference: {fileID: 8557605386933072103, guid: ab9d7abc8bb9a7240a13f0814289050a, type: 3}
     - target: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
       propertyPath: prequisitionDuration
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
       propertyPath: prequisitionInterval
-      value: 120
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
       propertyPath: gameSceneRef.m_AssetGUID
@@ -1568,17 +1568,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
---- !u!114 &1038301346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3671889024397968891, guid: 2096a7d11c9ebe540bc98c4f37ce8a57, type: 3}
-  m_PrefabInstance: {fileID: 1038301345}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc28a4010a3e7e4ca55aa3b50df0fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1054098686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1911,9 +1900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Title
-
-'
+  m_text: Prison Break
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8464792435178974db6a0711884a92ab, type: 2}
   m_sharedMaterial: {fileID: -2023556352551476916, guid: 8464792435178974db6a0711884a92ab, type: 2}
