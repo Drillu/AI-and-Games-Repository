@@ -60,7 +60,7 @@ public class Director : MonoBehaviour
 	{
 		if(Instance && Instance != this)
 		{
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 		else
 		{
@@ -156,11 +156,11 @@ public class Director : MonoBehaviour
 		playerGO.GetComponent<NavagentMover>().Warp(playerSpawnPoint);
 	}
 
-	private void PlayerSuccessTheGame()
+	public void PlayerSuccessTheGame()
 	{
 		UIManager.Instance.SwitchToHudAndShowDialogue(null, null, successfulEscapedDialogue, dialogueFinished: () =>
 		 {
-			StartCoroutine(GameEnd());
+			 StartCoroutine(GameEnd());
 		 });
 	}
 
@@ -236,7 +236,9 @@ public class Director : MonoBehaviour
 
 	public Inventorys.Inventory GetPlayerInventory()
 	{
-		return Player.Instance.GetInventory();
+		GameObject playerGO = GameObject.FindWithTag("Player");
+		Player player = playerGO.GetComponent<Player>();
+		return player.GetInventory();
 	}
 
 	public void StartCountDown()

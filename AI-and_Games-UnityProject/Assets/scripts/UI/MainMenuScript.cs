@@ -37,4 +37,9 @@ public class MainMenuScript : MonoBehaviour
         StartCoroutine(LoadLevel(0));
         Time.timeScale = 1f;
     }
+
+	public void ManualEnd()
+	{
+		Director.Instance.PlayerSuccessTheGame();
+	}
 }
